@@ -1,0 +1,66 @@
+---
+title: "Building Trees"
+description: "Como construir árvores LATS-P para agentes MindLoop."
+---
+
+# Building Trees
+
+A árvore LATS-P é um **modelo declarativo** que define:
+
+- a lógica de decisão  
+- a progressão cognitiva  
+- o encadeamento normativo  
+- os resultados possíveis  
+
+---
+
+## Estrutura básica de um nó
+
+```json
+{
+  "id": "injury_check",
+  "question": "O evento envolve lesão?",
+  "children": [
+    {
+      "id": "injury_yes",
+      "answer": "sim",
+      "question": "A lesão é grave?"
+    },
+    {
+      "id": "injury_no",
+      "answer": "não",
+      "result": "Sem lesão"
+    }
+  ]
+}
+```
+
+## Tipos de nós
+### 1. Decision Node
+
+Pergunta + múltiplos caminhos possíveis.
+
+### 2. Rule Node
+
+O agente verifica critérios objetivos:
+
+```json
+{
+  "rule": "volume > 1 litro e produto é inflamável"
+}
+```
+
+### 3. Terminal Node
+
+Entrega um resultado:
+
+```json
+{ "result": "Acidente Grave" }
+```
+
+## Como escrever boas perguntas?
+
+✔ Curta e objetiva
+✔ Um único conceito por pergunta
+✔ Evitar ambiguidade
+✔ Evitar múltiplas condições no mesmo nó

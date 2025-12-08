@@ -1,0 +1,185 @@
+---
+title: "Architecture"
+description: "Arquitetura interna da plataforma MindLoop."
+---
+
+# Arquitetura da MindLoop
+
+A arquitetura da MindLoop foi projetada para ser modular, transparente e escalável.
+
+Ela se divide em cinco camadas principais:
+
+---
+
+## 1. Interface Layer (UI)
+
+A camada onde o usuário:
+
+- escreve consultas,
+- visualiza explicações,
+- aprova/edita caminhos,
+- navega dashboards,
+- revisa logs e auditorias.
+
+A UI é construída em **Next.js + Tailwind + MDX**.
+
+---
+
+## 2. Reasoning Layer
+
+A camada de raciocínio combina:
+
+- 🧠 LLMs (Azure OpenAI ou provedores configuráveis)  
+- 🌳 LATS-P™ (navegação por árvore de decisão probabilística)  
+- 🔍 RAG Engine (recuperação semântica)  
+- 👤 HITL (intervenção humana)  
+- 🎲 Entropia (gestão de incerteza)
+
+O fluxo típico:
+
+1. O usuário pergunta algo ao agente.  
+2. O RAG fornece contexto normativo/técnico.  
+3. A árvore LATS-P identifica os nós relevantes.  
+4. O LLM interpreta o evento e propõe caminhos.  
+5. Entropia define quando HITL é necessário.  
+6. O agente gera raciocínio rastreável.
+
+---
+
+## 3. Memory Layer
+
+Uma mistura de:
+
+- memória simbólica (árvores, logs, justificativas)
+- memória vetorial (FAISS, Qdrant, Pinecone)
+- memória operacional (estatísticas, histórico de raciocínio)
+
+---
+
+## 4. Integration Layer
+
+A camada que se conecta ao mundo real:
+
+- Webhooks
+- APIs corporativas
+- SharePoint / PowerBI / ERP
+- Bases de dados normativas (ANP, Petrobras, OSHA etc.)
+- Arquivos locais
+
+---
+
+## 5. Security Layer
+
+Inclui:
+
+- logs detalhados por nó
+- trilha de auditoria dos raciocínios
+- versionamento de árvores
+- permissões por usuário e por agente
+- isolamento de clientes (tenant-level)
+
+---
+
+## Diagrama (alto nível)
+
+```txt
+[ UI ] → [ Cognitive Agent ] → [ LATS-P ] → [ RAG ] → [ Memory ]
+                                                ↓
+                                          [ Integrations ]
+                                                ↓
+                                             [ Logs ]
+
+A arquitetura foi pensada para escalar tanto em profundidade (complexidade cognitiva) quanto em largura (múltiplos agentes/domínios).
+
+
+---
+
+# 📄 **platform/users-permissions.mdx**
+
+```mdx
+---
+title: "Users & Permissions"
+description: "Gestão de usuários, papéis e permissões dentro da plataforma MindLoop."
+---
+
+# Usuários e Permissões
+
+A MindLoop implementa um sistema robusto de permissões inspirado em RBAC (Role-Based Access Control) com extensões próprias.
+
+---
+
+## Papéis principais
+
+### 👤 Viewer  
+Pode:
+
+- consultar agentes
+- ler documentação
+- visualizar raciocínios anteriores
+
+---
+
+### ✍️ Operator  
+Pode:
+
+- executar agentes  
+- aprovar decisões HITL  
+- enviar documentos para o RAG  
+- rodar classificações
+
+---
+
+### 🧠 Agent Builder  
+Pode:
+
+- criar e editar agentes  
+- modificar árvores LATS-P  
+- testar fluxos  
+- configurar memórias  
+
+---
+
+### 🛡️ Admin  
+Pode tudo, incluindo:
+
+- gerenciar usuários  
+- versionar árvores  
+- ativar logs avançados  
+- definir políticas de uso corporativo  
+
+---
+
+## Permissões por agente
+
+Cada agente pode ter:
+
+- permissões de leitura  
+- permissões de execução  
+- permissões de edição  
+- permissões de auditoria  
+
+Todas independentes.
+
+---
+
+## HITL Permissions
+
+Somente usuários autorizados podem:
+
+- revisar raciocínios com entropia alta  
+- sobrescrever caminhos da árvore  
+- aprovar conclusões em domínios críticos
+
+---
+
+## Auditoria e Logs
+
+Todo raciocínio gera:
+
+- timestamp  
+- usuário  
+- contexto usado  
+- caminho da árvore  
+- entropia por nó  
+- justificativas do modelo  
+- decisão final

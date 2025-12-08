@@ -1,0 +1,99 @@
+---
+title: "How Cognitive Agents Work"
+description: "Arquitetura interna dos Agentes Cognitivos MindLoop."
+---
+
+# Como funcionam os Cognitive Agents?
+
+Um agente cognitivo MindLoop é composto por cinco elementos principais:
+
+---
+
+## 1. 🎯 Propósito  
+Define o que o agente faz:
+
+- Classificar eventos SMS  
+- Interpretar normas  
+- Gerar diagnósticos  
+- Ajudar operadores em decisões críticas  
+
+---
+
+## 2. 🧠 Módulo de Raciocínio (LATS-P)
+
+O agente usa o **framework LATS-P**, que combina:
+
+- árvores de decisão probabilísticas  
+- navegação inteligente  
+- backtracking  
+- entropia por nó  
+- escolha adaptativa dos caminhos  
+
+A árvore representa o **conhecimento estruturado** do domínio.
+
+---
+
+## 3. 📚 Módulo de Contexto (RAG Engine)
+
+Responsável por:
+
+- buscar normas relevantes  
+- recuperar trechos técnicos  
+- fornecer referências ao LLM  
+- explicar decisões  
+
+É aqui que entram PDF, docs da empresa, procedimentos, normas, histórico etc.
+
+---
+
+## 4. 🧬 Módulo de Memória
+
+Cada agente possui uma **memória autônoma**, que armazena:
+
+- decisões anteriores  
+- justificativas humanas (HITL)  
+- correções do operador  
+- padrões de erros  
+- contexto vetorial  
+- sugestões de melhorias da árvore  
+
+---
+
+## 5. 👤 Human-in-the-Loop (HITL)
+
+Quando o agente:
+
+- está incerto,  
+- encontra ambiguidades,  
+- ou atinge entropia acima do threshold,
+
+ele **pede intervenção humana**.
+
+O usuário transforma isso em conhecimento permanente para o agente.
+
+---
+
+## Diagrama do fluxo
+
+```txt
+User Request
+     ↓
+[ Agent Input Processor ]
+     ↓
+[ RAG Context + LATS-P Tree ]
+     ↓
+LLM Reasoner → Entropy Analysis → HITL (se necessário)
+     ↓
+[ Explanation + Final Decision ]
+     ↓
+[ Memory Update ]
+
+---
+
+### O que é possível construir hoje?
+
+- classificadores normativos
+- auditores automáticos
+- agentes para triagem de eventos
+- copilotos de conformidade
+- agentes multi-árvore para análises complexas

@@ -1,0 +1,132 @@
+{
+  "price": {
+    "title": "Preços claros e acessíveis",
+    "pricing": "Planos",
+    "slogan": "Comece com inteligência real.",
+    "monthly_bill": "Cobrança Mensal",
+    "annual_bill": "Cobrança Anual",
+    "annual_info": "cobrado em ciclo anual",
+    "monthly_info": "cobrado mensalmente",
+    "mo": "/mês",
+    "contact": "para falar com o nosso time.",
+    "contact_2": "Você pode testar os planos sem ser cobrado.",
+    "faq": "Perguntas Frequentes",
+    "faq_detail": "Encontre respostas rápidas sobre uso, limites e integrações da MindLoop. Se precisar, fale com o time para suporte personalizado.",
+    "signup": "Criar conta",
+    "upgrade": "Fazer upgrade",
+    "manage_subscription": "Gerenciar assinatura",
+    "go_to_dashboard": "Ir para o painel"
+  },
+
+  "marketing": {
+    "introducing": "Apresentando a MindLoop",
+    "title": "IA que pensa com você — não no seu lugar.",
+    "sub_title": "Agentes de raciocínio avançado para decisões críticas em ANP, SMS e operações complexas.",
+    "get_started": "Começar agora",
+    "view_on_github": "Ver no GitHub",
+    "explore_product": "Explorar Produto",
+    "features": "Funcionalidades",
+    "sub_features": "Inteligência assistiva com explicabilidade e confiabilidade operacional.",
+    "k8s_features": "Raciocínio estruturado multietapas",
+    "devops_features": "IA conectada a processos reais",
+    "price_features": "Escalável para empresas de todos os portes",
+    "main_nav_features": "Home",
+    "main_nav_pricing": "Planos",
+    "main_nav_products": "Produto",
+    "main_nav_projects": "Projetos",
+    "main_nav_blog": "Publicações",
+    "main_nav_documentation": "Documentação",
+    "login": "Login",
+    "signup": "Criar conta",
+
+    "contributors": {
+      "contributors_desc": "Profissionais que impulsionam a MindLoop",
+      "developers_first": "Apoiando mais de ",
+      "developers_second": " especialistas em decisões críticas"
+    },
+
+    "right_side": {
+      "deploy_on_vercel_title": "Raciocínio em tempo real",
+      "deploy_on_vercel_desc": "Veja classificações, explicações e análise normativa em segundos.",
+      "ship_on_cloudflare_title": "Infraestrutura corporativa",
+      "ship_on_cloudflare_desc": "Camadas de segurança, BYOK e performance empresarial.",
+      "showcase_title": "Casos de uso reais",
+      "showcase_desc": "Veja como operações, EHS e compliance usam IA assistiva para decisões críticas."
+    },
+
+    "features_grid": {
+      "monorepo_title": "LATS-P",
+      "monorepo_desc": "Raciocínio multietapas probabilístico com backtracking e explicabilidade.",
+      "i18n_title": "RAG Normativo",
+      "i18n_desc": "Busca inteligente em múltiplos indexadores com entendimento contextual.",
+      "payments_title": "HITL Evolutivo",
+      "payments_desc": "Human-in-the-Loop integrado. A IA aprende com o seu julgamento.",
+      "nextauth_title": "Árvores de Decisão Dinâmicas",
+      "nextauth_desc": "Fluxos normativos adaptáveis a diferentes setores e regulações."
+    },
+
+    "sponsor": {
+      "title": "Confiada por líderes em SMS e Operações",
+      "donate": "Apoiar o projeto"
+    },
+
+    "video": {
+      "first_text": "Veja a IA raciocinando ao vivo",
+      "second_text1": "decidindo com contexto ",
+      "second_text2": "e explicabilidade",
+      "time_text": "em segundos"
+    },
+
+    "people_comment": {
+      "title": "O que especialistas dizem",
+      "desc": "Depoimentos reais de profissionais que transformaram seus processos decisórios com a MindLoop."
+    }
+  },
+
+  "login": {
+    "back": "Voltar",
+    "welcome_back": "Bem-vindo de volta",
+    "signin_title": "Entre com seu e-mail para acessar sua conta",
+    "singup_title": "Não tem conta? Crie agora.",
+    "signin_email": "Entrar com e-mail",
+    "signin_others": "Ou continue com",
+    "signup": "Criar conta",
+    "privacy": "apenas seu e-mail e foto de perfil serão armazenados.",
+    "signup_github": "Criar conta com GitHub"
+  },
+
+  "common": {
+    "copyright": "Copyright © ${currentYear} MindLoop IAA™ — Assisted Artificial Intelligence. Todos os direitos reservados.",
+    "dashboard": {
+      "main_nav_documentation": "Documentação",
+      "main_nav_support": "Suporte",
+      "sidebar_nav_clusters": "Agentes",
+      "sidebar_nav_billing": "Assinatura",
+      "sidebar_nav_settings": "Configurações",
+      "title_text": "Gerencie seus agentes e fluxos de raciocínio."
+    }
+  },
+
+  "business": {
+    "k8s": {
+      "new_cluster": "Novo Agente",
+      "no_cluster_title": "Nenhum agente criado",
+      "no_cluster_content": "Você ainda não criou agentes de raciocínio. Comece agora."
+    },
+    "billing": {
+      "billing": "Assinatura",
+      "content": "Gerencie seu plano e informações de cobrança",
+      "noSubscription": "Você ainda não possui assinatura ativa.",
+      "subscriptionInfo": "Você está atualmente no plano <strong>{plan}</strong>. A renovação ocorrerá em <strong>{date}</strong>.",
+      "manage_subscription": "Gerenciar assinatura",
+      "upgrade": "Fazer upgrade"
+    }
+  },
+
+  "dropdown": {
+    "dashboard": "Painel",
+    "billing": "Assinatura",
+    "settings": "Configurações",
+    "sign_out": "Sair"
+  }
+}

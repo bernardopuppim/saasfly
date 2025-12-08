@@ -13,89 +13,76 @@ import { Toaster } from "@saasfly/ui/toaster";
 
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
-import { i18n } from "~/config/i18n-config";
-import { siteConfig } from "~/config/site";
 
-// import { Suspense } from "react";
-// import { PostHogPageview } from "~/config/providers";
-
+// Fonts
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-// Font files can be colocated inside of `pages`
 const fontHeading = localFont({
   src: "../styles/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
 });
 
-export function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
-
 export const metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "MindLoop IAA™ — Inteligência Artificial Assistida",
+    template: "%s | MindLoop",
   },
-  description: siteConfig.description,
+  description:
+    "A MindLoop cria sistemas inteligentes que raciocinam, aprendem e evoluem junto com você. A IA do futuro não é artificial — é colaborativa.",
   keywords: [
-    "Next.js",
-    "Shadcn ui",
-    "Sass",
-    "Fast ",
-    "Simple ",
-    "Easy",
-    "Cloud Native",
+    "MindLoop",
+    "IAA",
+    "Inteligência Artificial Assistida",
+    "Human in the Loop",
+    "HITL",
+    "LATS-P",
+    "AI Agents",
+    "Raciocínio multietapas",
+    "Safety",
+    "SMS",
+    "ANP",
+    "Oil & Gas",
   ],
-  authors: [
-    {
-      name: "saasfly",
-    },
-  ],
-  creator: "Saasfly",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    locale: "pt_BR",
+    url: "https://mindloop.ia.br",
+    title: "MindLoop IAA™ — Inteligência Artificial Assistida",
+    description:
+      "A IA do futuro não é artificial — é compartilhada. Conheça a filosofia IAA™.",
+    siteName: "MindLoop",
+    images: [
+      {
+        url: "/og/mindloop-og.png",
+        width: 1200,
+        height: 630,
+        alt: "MindLoop — IAA™ Assisted Artificial Intelligence",
+      },
+    ],
   },
   icons: {
     icon: "/logo.svg",
-    // shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://show.saasfly.io/"),
-  // manifest: `${siteConfig.url}/site.webmanifest`,
+  metadataBase: new URL("https://mindloop.ia.br"),
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="pt-BR" suppressHydrationWarning>
         <head />
-        {/*<Suspense>*/}
-        {/*  <PostHogPageview />*/}
-        {/*</Suspense>*/}
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable,
-            fontHeading.variable,
+            fontHeading.variable
           )}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
-          >
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <NextDevtoolsProvider>{children}</NextDevtoolsProvider>
             <Analytics />
             <SpeedInsights />

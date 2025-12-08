@@ -1,0 +1,50 @@
+---
+title: "Building Your First Agent"
+description: "Tutorial passo a passo para criar seu primeiro Agente Cognitivo."
+---
+
+# Construindo seu primeiro agente
+
+Este é um guia prático para criar seu primeiro Agente Cognitivo MindLoop.
+
+---
+
+# 1. Defina o propósito do agente
+
+Antes de tudo, responda:
+
+> “O que este agente deve decidir, explicar ou avaliar?”
+
+Exemplos:
+
+- classificar um evento segundo ANP  
+- interpretar desvios normativos  
+- auxiliar operadores em uma decisão técnica  
+- identificar requisitos aplicáveis  
+
+---
+
+# 2. Crie a árvore LATS-P
+
+Cada agente usa uma ou mais árvores.  
+Exemplo simples:
+
+```json
+{
+  "id": "root",
+  "question": "O evento envolve lesão?",
+  "children": [
+    {
+      "id": "injury_yes",
+      "answer": "sim",
+      "question": "A lesão é grave?",
+      "children": [...]
+    },
+    {
+      "id": "injury_no",
+      "answer": "não",
+      "result": "Sem lesão"
+    }
+  ]
+}
+```

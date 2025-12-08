@@ -1,0 +1,118 @@
+---
+title: "Introduction to LATS-P"
+description: "Fundamentos do framework LATS-P."
+---
+
+# Introduction to LATS-P
+
+O LATS-P é o mecanismo que permite que agentes MindLoop tomem decisões complexas de forma:
+
+- **estruturada**,  
+- **explicável**,  
+- **probabilística**,  
+- **adaptativa**,  
+- e **colaborativa**.
+
+---
+
+## Por que não usar apenas um LLM?
+
+LLMs geram boas respostas, mas não garantem:
+
+❌ consistência  
+❌ auditabilidade  
+❌ aderência normativa  
+❌ explicações rastreáveis  
+❌ decisões reproduzíveis  
+
+O LATS-P resolve isso ao:
+
+### ✔ combinar lógica + estatística + contexto + supervisão humana.
+
+---
+
+## Componentes do LATS-P
+
+### 1. 🌳 Árvore de Decisão (Tree Spec)
+
+A árvore representa:
+
+- conhecimento especializado  
+- normas  
+- regras técnicas  
+- hierarquias  
+- caminhos condicionais  
+
+Nós podem conter:
+
+- perguntas  
+- condições  
+- regras de negócio  
+- critérios normativos  
+- resultados finais  
+
+---
+
+### 2. 🤖 LLM Reasoner
+
+O modelo:
+
+- interpreta o texto do usuário  
+- avalia o contexto  
+- decide qual ramo seguir  
+- gera justificativas  
+- ressalta incertezas  
+
+---
+
+### 3. 📊 Módulo Probabilístico
+
+Cada nó possui:
+
+- distribuição de probabilidade  
+- score de confiança  
+- entropia  
+- pesos dinâmicos  
+
+Isso permite decisões mais robustas e seguras.
+
+---
+
+### 4. 🔁 Backtracking
+
+Se o agente:
+
+- encontra inconsistências,  
+- detecta entropia alta,  
+- ou percebe erro lógico,  
+
+ele **retrocede automaticamente** para reavaliar caminhos alternativos.
+
+---
+
+### 5. 👤 HITL – Human In The Loop
+
+Quando necessário, o LATS-P solicita:
+
+- revisão  
+- validação  
+- correção  
+
+E isso alimenta a **memória evolutiva** do agente.
+
+---
+
+## Fluxo visual
+
+```txt
+User Input
+   ↓
+RAG Context → LLM → Node Evaluation
+   ↓
+Probability + Entropy Check
+   ↓
+Choose Branch → Justify
+   ↓
+Backtrack if needed
+   ↓
+Decision → Explanation → Memory Update
