@@ -6,7 +6,8 @@ import Image from "next/image";
 import { cn } from "@saasfly/ui";
 
 // Importa o tipo do MDX gerado pelo Contentlayer
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "contentlayer2/react";
+
 
 export function Mdx({ code }: { code: string }) {
   const Component = useMDXComponent(code);
