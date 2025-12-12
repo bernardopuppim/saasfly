@@ -1,13 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env"],
-  "tasks": {
-    "topo": {
-      "dependsOn": ["^topo"]
-    },
 
+  "globalDependencies": ["**/.env"],
+
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
       "outputs": [
         ".next/**",
         "! .next/cache/**",
@@ -25,12 +22,10 @@
     },
 
     "lint": {
-      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
 
     "typecheck": {
-      "dependsOn": ["^topo"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
 
