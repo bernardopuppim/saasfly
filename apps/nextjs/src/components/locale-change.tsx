@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import { Button } from "@saasfly/ui/button";
 import {
@@ -14,11 +14,18 @@ import * as Icons from "@saasfly/ui/icons";
 
 import { i18n, localeMap } from "~/config/i18n-config";
 
-export function LocaleChange({ url }: { url: string }) {
+export function LocaleChange() {
   const router = useRouter();
+  const pathname = usePathname(); // <-- captura a rota atual
 
   function onClick(locale: string) {
-    router.push(`/${locale}/` + url);
+    if (!pathname) return;
+
+    // Remove o prefixo atual /br /en /es
+    const parts = pathname.split("/").filter(Boolean);
+    parts[0] = locale; // substitui o idioma
+
+    router.push("/" + parts.join("/"));
   }
 
   return (
@@ -26,20 +33,14 @@ export function LocaleChange({ url }: { url: string }) {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
           <Icons.Languages />
-          <span className="sr-only"></span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <div>
-          {i18n.locales.map((locale) => {
-            return (
-              // <Link href={redirectedPathName(locale)}>{locale}</Link>
-              <DropdownMenuItem key={locale} onClick={() => onClick(locale)}>
-                <span>{localeMap[locale]}</span>
-              </DropdownMenuItem>
-            );
-          })}
-        </div>
+        {i18n.locales.map((locale) => (
+          <DropdownMenuItem key={locale} onClick={() => onClick(locale)}>
+            <span>{localeMap[locale]}</span>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "Saasfly",
-  description: "We provide an easier way to build saas service in production",
-  url: "https://github.com/saasfly/saasfly",
-  ogImage: "",
+  name: "MindLoop",
+  description: "AI built to think and evolve with you",
+  url: "https://mindloop.ia.br",
+  ogImage: "/images/avatars/Mindloop_login_laptop.png",
   links: {
-    github: "https://github.com/saasfly/saasfly",
+    github: "https://github.com/maindloop",
   },
 };

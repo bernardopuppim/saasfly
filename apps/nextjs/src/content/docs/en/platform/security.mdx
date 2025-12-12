@@ -1,0 +1,78 @@
+---
+title: "Security"
+description: "Segurança, auditoria e práticas recomendadas na MindLoop."
+---
+
+# Segurança na MindLoop
+
+Segurança é parte central da filosofia IAA™.
+
+A plataforma segue os princípios:
+
+- Zero-trust  
+- Least privilege  
+- Auditabilidade completa  
+- Versionamento imutável  
+
+---
+
+## Autenticação
+
+- Clerk/Auth0 (SaaS)
+- SSO corporativo via SAML/SCIM
+- JWT token rotation
+
+---
+
+## Segurança dos agentes
+
+Cada execução de agente gera:
+
+- trilha completa da árvore  
+- logs de entropia  
+- contexto usado  
+- versão do agente  
+- justificativas
+
+Esses registros **não podem ser apagados**.
+
+---
+
+## Segurança do RAG
+
+Todos os documentos são:
+
+- versionados  
+- verificados quanto a duplicidade  
+- analisados quanto a confidencialidade  
+- isolados por workspace  
+
+---
+
+## Criptografia
+
+### Em repouso  
+AES-256
+
+### Em trânsito  
+TLS 1.3
+
+---
+
+## Controles administrativos
+
+Admins podem:
+
+- revogar acessos  
+- verificar uso por agente  
+- consultar logs de auditoria  
+- bloquear usuários suspeitos  
+
+---
+
+## Compliance (roadmap)
+
+- SOC 2  
+- ISO 27001  
+- GDPR  
+- LGPD  

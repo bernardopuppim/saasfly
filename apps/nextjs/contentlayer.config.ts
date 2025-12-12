@@ -10,32 +10,58 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 /* --------------------------------------------------------
-   COMPUTED FIELDS PADRÃO
+   FUNÇÃO QUE IDENTIFICA IDIOMA + SLUG
 -------------------------------------------------------- */
-const defaultComputedFields: ComputedFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
-  },
-  slugAsParams: {
-    type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
-  },
-};
+function computeLang(doc) {
+  // Exemplo flattenedPath:
+  // "br/docs/changelog"
+  const parts = doc._raw.flattenedPath.split("/");
+  return parts[0]; // "br" ou "en"
+}
+
+function computeSlug(doc) {
+  const parts = doc._raw.flattenedPath.split("/");
+
+  const lang = parts[0];
+  const afterLang = parts.slice(1).join("/"); // remove "br"
+
+  return `/${lang}/${afterLang}`;
+}
+
+function computeSlugAsParams(doc) {
+  const parts = doc._raw.flattenedPath.split("/");
+  return parts.slice(2).join("/"); // remove lang + docs
+}
 
 /* --------------------------------------------------------
-   DOCUMENTAÇÃO (docs/**)
+   DOCUMENTAÇÃO MULTI-IDIOMA (br/docs/** e en/docs/**)
 -------------------------------------------------------- */
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: `docs/**/*.{md,mdx}`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    description: { type: "string" },
+    description: { type: "string", required: false },
     published: { type: "boolean", default: true },
   },
-  computedFields: defaultComputedFields,
+  computedFields: {
+    lang: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFilePath.split("/")[1], 
+      // ex: docs/br/getting-started/intro.mdx → br
+    },
+    slug: {
+      type: "string",
+      resolve: (doc) =>
+        `/docs/${doc._raw.flattenedPath.replace(/^docs\/(br|en)\//, "")}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) =>
+        doc._raw.flattenedPath.replace(/^docs\/(br|en)\//, ""),
+    },
+  },
 }));
 
 /* --------------------------------------------------------
@@ -43,7 +69,7 @@ export const Doc = defineDocumentType(() => ({
 -------------------------------------------------------- */
 export const Guide = defineDocumentType(() => ({
   name: "Guide",
-  filePathPattern: `guides/**/*.mdx`,
+  filePathPattern: `*/guides/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -52,7 +78,11 @@ export const Guide = defineDocumentType(() => ({
     published: { type: "boolean", default: true },
     featured: { type: "boolean", default: false },
   },
-  computedFields: defaultComputedFields,
+  computedFields: {
+    lang: { type: "string", resolve: computeLang },
+    slug: { type: "string", resolve: computeSlug },
+    slugAsParams: { type: "string", resolve: computeSlugAsParams },
+  },
 }));
 
 /* --------------------------------------------------------
@@ -60,21 +90,25 @@ export const Guide = defineDocumentType(() => ({
 -------------------------------------------------------- */
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `blog/**/*.mdx`,
+  filePathPattern: `*/blog/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string" },
     date: { type: "date", required: true },
-    published: { type: "boolean", default: true },
     image: { type: "string", required: true },
     authors: {
       type: "list",
       of: { type: "string" },
       required: true,
     },
+    published: { type: "boolean", default: true },
   },
-  computedFields: defaultComputedFields,
+  computedFields: {
+    lang: { type: "string", resolve: computeLang },
+    slug: { type: "string", resolve: computeSlug },
+    slugAsParams: { type: "string", resolve: computeSlugAsParams },
+  },
 }));
 
 /* --------------------------------------------------------
@@ -82,7 +116,7 @@ export const Post = defineDocumentType(() => ({
 -------------------------------------------------------- */
 export const Author = defineDocumentType(() => ({
   name: "Author",
-  filePathPattern: `authors/**/*.mdx`,
+  filePathPattern: `*/authors/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
@@ -90,61 +124,73 @@ export const Author = defineDocumentType(() => ({
     avatar: { type: "string", required: true },
     twitter: { type: "string", required: true },
   },
-  computedFields: defaultComputedFields,
+  computedFields: {
+    lang: { type: "string", resolve: computeLang },
+    slug: { type: "string", resolve: computeSlug },
+    slugAsParams: { type: "string", resolve: computeSlugAsParams },
+  },
 }));
 
 /* --------------------------------------------------------
-   PÁGINAS
+   PÁGINAS SIMPLES MULTI-IDIOMA
 -------------------------------------------------------- */
 export const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
+  filePathPattern: `*/pages/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string" },
   },
-  computedFields: defaultComputedFields,
+  computedFields: {
+    lang: { type: "string", resolve: computeLang },
+    slug: { type: "string", resolve: computeSlug },
+    slugAsParams: { type: "string", resolve: computeSlugAsParams },
+  },
 }));
 
 /* --------------------------------------------------------
-   PROJECTS
+   PROJETOS MULTI-IDIOMA
 -------------------------------------------------------- */
 export const Project = defineDocumentType(() => ({
   name: "Project",
-  filePathPattern: `projects/**/*.mdx`,
+  filePathPattern: `*/projects/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     description: { type: "string" },
-    published: { type: "boolean", default: true },
     cover: { type: "string" },
+    published: { type: "boolean", default: true },
   },
+
   computedFields: {
+    lang: { type: "string", resolve: computeLang },
     slug: {
       type: "string",
       resolve: (doc) => {
-        // remove o prefixo "projects/"
-        const raw = doc._raw.flattenedPath.replace(/^projects\//, "");
-        return `/projects/${raw}`;
+        const lang = computeLang(doc);
+        const slug = doc._raw.flattenedPath
+          .split("/")
+          .slice(2)
+          .join("/");
+
+        return `/${lang}/projects/${slug}`;
       },
     },
     slugAsParams: {
       type: "string",
-      resolve: (doc) => {
-        return doc._raw.flattenedPath.replace(/^projects\//, "");
-      },
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(2).join("/"),
     },
   },
 }));
-
 
 /* --------------------------------------------------------
    EXPORT FINAL
 -------------------------------------------------------- */
 export default makeSource({
   contentDirPath: "./src/content",
-  documentTypes: [Page, Doc, Guide, Post, Author, Project],
+  documentTypes: [Doc, Guide, Post, Author, Page, Project],
+
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
@@ -153,18 +199,7 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: "github-dark",
-          onVisitLine(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-          onVisitHighlightedLine(node) {
-            const classes = node.properties.className || [];
-            node.properties.className = [...classes, "line--highlighted"];
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"];
-          },
+          keepBackground: false,
         },
       ],
       [
@@ -172,7 +207,6 @@ export default makeSource({
         {
           properties: {
             className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
           },
         },
       ],

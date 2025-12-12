@@ -1,0 +1,75 @@
+---
+title: "Agent Memory Model"
+description: "Como funciona a memória dos Agentes Cognitivos MindLoop."
+---
+
+# Modelo de Memória do Agente
+
+A memória é o que permite que agentes MindLoop **evoluam continuamente**.
+
+---
+
+# Tipos de Memória
+
+## 1. 📘 Memória Simbólica (Estrutural)
+
+Inclui:
+
+- árvores de decisão (versões anteriores)
+- correções HITL
+- critérios confirmados
+- caminhos rejeitados
+- Justificativas salvas manualmente
+
+---
+
+## 2. 🔍 Memória Vetorial (FAISS/Qdrant)
+
+Armazena:
+
+- embeddings de eventos anteriores  
+- explicações do LLM  
+- trechos técnicos relevantes  
+- padrões de classificação  
+
+Isso permite:
+
+- comparação por similaridade  
+- recuperação de casos semelhantes  
+- identificação de inconsistências  
+
+---
+
+## 3. 🧠 Memória Operacional
+
+Inclui:
+
+- estatísticas de uso  
+- nós mais acessados  
+- entropias médias por nó  
+- erros comuns  
+- recomendações de melhoria  
+
+---
+
+# Atualização de Memória
+
+Após cada execução, o agente salva:
+
+1. entrada do usuário  
+2. contexto utilizado  
+3. caminho percorrido  
+4. justificativas  
+5. entropia  
+6. decisão final  
+7. eventual intervenção humana  
+
+---
+
+# Benefícios
+
+- agentes ficam mais confiáveis  
+- reduzem erros recorrentes  
+- antecipam ambiguidades  
+- se adaptam ao estilo cognitivo da empresa  
+- mantêm histórico auditável  

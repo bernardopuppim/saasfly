@@ -4,23 +4,18 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import type { User } from "@saasfly/auth";
 import { useSelectedLayoutSegment } from "next/navigation";
-
-import { Button } from "@saasfly/ui/button";
 import { cn } from "@saasfly/ui";
 
 import { MainNav } from "./main-nav";
 import { LocaleChange } from "~/components/locale-change";
-import { useSigninModal } from "~/hooks/use-signin-modal";
-import { UserAccountNav } from "./user-account-nav";
 import { ModeToggle } from "~/components/mode-toggle";
 
 import useScroll from "~/hooks/use-scroll";
 import type { MainNavItem } from "~/types";
 
 interface NavBarProps {
-  user: Pick<User, "name" | "image" | "email"> | undefined;
+  user?: { name?: string; image?: string; email?: string };
   items?: MainNavItem[];
   children?: React.ReactNode;
   rightElements?: React.ReactNode;
@@ -42,7 +37,6 @@ export function NavBar({
 }: NavBarProps) {
   const scrolled = useScroll(30);
   const segment = useSelectedLayoutSegment();
-  const signInModal = useSigninModal();
 
   return (
     <header
@@ -98,58 +92,15 @@ export function NavBar({
         {/* RIGHT: Actions */}
         <div className="flex items-center gap-4">
           {rightElements}
-          {/*
-          */}
-          
-          <div className="mt-6">
+
+        {/* Language Selector */}
+        <div className="mt-[2px]">
+          <LocaleChange />
+        </div>
+
+          <div className="mt-1">
             <ModeToggle />
           </div>
-          
-
-          {/* LOGIN 
-          {!user && (
-            <Link href={`/${lang}/login-clerk`}>
-              <Button
-                variant="outline"
-                size="sm"
-                className="
-                  border-[hsl(var(--border))]
-                  text-foreground
-                  hover:text-[hsl(var(--brand))]
-                  hover:border-[hsl(var(--brand))]
-                  transition-all
-                "
-              >
-                Login
-              </Button>
-            </Link>
-          )}*/}
-
-          {/* SIGNUP 
-          {!user ? (
-            <Button
-              size="sm"
-              onClick={signInModal.onOpen}
-              className="
-                px-4
-                bg-[hsl(var(--brand))]
-                text-white
-                hover:bg-[hsl(var(--brand)/0.85)]
-                rounded-full
-                transition
-              "
-            >
-              {typeof marketing.signup === "string"
-                ? marketing.signup
-                : "Criar conta"}
-            </Button>
-          ) : (
-            <UserAccountNav
-              user={user}
-              params={{ lang }}
-              dict={dropdown}
-            />
-          )}*/}
         </div>
       </div>
     </header>

@@ -14,7 +14,6 @@ import ProductFlowSection from "~/components/brand/ProductFlowSection";
 import TestimonialsSection from "~/components/brand/TestimonialsSection";
 
 import { Button } from "@saasfly/ui/button";
-
 import type { Locale } from "~/config/i18n-config";
 
 export default async function IndexPage({
@@ -22,16 +21,14 @@ export default async function IndexPage({
 }: {
   params: { lang: Locale };
 }) {
+  // ❗ Se remover i18n, remova esta linha
   const dict = await getDictionary(lang);
 
   return (
     <>
-      {/* ========================= */}
-      {/* HERO — Mantido exatamente como estava */}
-      {/* ========================= */}
+      {/* HERO */}
       <section className="max-w-[1320px] mx-auto flex flex-col px-6 md:px-12 lg:px-20 py-0 lg:flex-row lg:items-center lg:justify-between lg:py-10 gap-16">
         <div className="max-w-xl space-y-8">
-          {/* Badge */}
           <p className="text-xs md:text-sm font-medium text-brand uppercase tracking-[0.2em] mb-2">
             IAA™ · Assisted Artificial Intelligence
             <br />
@@ -50,6 +47,7 @@ export default async function IndexPage({
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            {/* ❗ Se remover login, substitua rota */}
             <Button
               asChild
               size="lg"
@@ -73,8 +71,8 @@ export default async function IndexPage({
           </div>
         </div>
 
-        {/* Mockup */}
         <div className="relative w-full max-w-xl flex items-center justify-center">
+          {/* ❗ Certifique-se de que este arquivo existe */}
           <Image
             src="/images/avatars/Mindloop_login_laptop.png"
             alt="Mockup MindLoop"
@@ -85,70 +83,30 @@ export default async function IndexPage({
         </div>
       </section>
 
-      {/* ========================================== */}
-      {/* MANIFESTO MINDLOOP */}
-      {/* ========================================== */}
+      {/* Manifesto */}
       <section className="container max-w-4xl py-24 md:py-28 text-center space-y-8">
-        <h2
-          className="
-            text-3xl md:text-5xl font-semibold
-            bg-gradient-to-r from-[hsl(var(--brand))]
-            to-[hsl(var(--brand)/0.6)]
-            bg-clip-text text-transparent
-          "
-        >
+        <h2 className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-[hsl(var(--brand))] to-[hsl(var(--brand)/0.6)] bg-clip-text text-transparent">
           A inteligência do futuro não é artificial — é compartilhada.
         </h2>
 
         <p className="text-neutral-600 dark:text-neutral-300 text-lg leading-relaxed max-w-3xl mx-auto">
           A MindLoop acredita que a IA deve ser uma ferramenta — não um
-          trabalhador. Criamos sistemas que raciocinam, aprendem e evoluem
-          junto com humanos, respeitando o contexto, o discernimento e a
-          experiência que só pessoas têm.
+          trabalhador...
         </p>
       </section>
 
-      {/* ========================================== */}
-      {/* TRUSTED BY / CONFIANÇA */}
-      {/* ========================================== */}
       <TrustedBySection />
-
-      {/* ========================================== */}
-      {/* CONCEITO IAA™ VISUAL */}
-      {/* ========================================== */}
       <IAAConceptSection />
-
-      {/* ========================================== */}
-      {/* SUPERPODERES / POR QUE MINDLOOP */}
-      {/* ========================================== */}
       <SuperpowersSection />
-
-      {/* ========================================== */}
-      {/* SOBRE + STORYTELLING */}
-      {/* ========================================== */}
       <AboutSection />
       <StorySection />
-
-      {/* ========================================== */}
-      {/* CULTURA & JORNADA */}
-      {/* ========================================== */}
       <CultureSection />
       <TimelineSection />
-
-      {/* ========================================== */}
-      {/* FLUXO DO PRODUTO / DIAGRAMA */}
-      {/* ========================================== */}
       <ProductFlowSection />
-
-      {/* ========================================== */}
-      {/* TIME & DEPOIMENTOS */}
-      {/* ========================================== */}
       <TeamSection />
       <TestimonialsSection />
 
-      {/* ========================================== */}
-      {/* CTA FINAL */}
-      {/* ========================================== */}
+      {/* CTA Final */}
       <section className="container py-28 md:py-32 text-center space-y-6">
         <h2 className="text-3xl md:text-4xl font-semibold">
           Vamos construir o futuro da inteligência.
@@ -156,7 +114,7 @@ export default async function IndexPage({
 
         <p className="text-neutral-600 dark:text-neutral-300 text-lg max-w-2xl mx-auto">
           Se você acredita que a IA deve amplificar — não substituir — o
-          potencial humano, então você acredita no que estamos construindo.
+          potencial humano...
         </p>
 
         <div className="flex justify-center gap-4">
@@ -167,10 +125,7 @@ export default async function IndexPage({
           </Link>
 
           <Link href="/contact">
-            <Button
-              variant="outline"
-              className="px-8 py-6 rounded-full text-base"
-            >
+            <Button variant="outline" className="px-8 py-6 rounded-full text-base">
               Fale com a MindLoop
             </Button>
           </Link>
