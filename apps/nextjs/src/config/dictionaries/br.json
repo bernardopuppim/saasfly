@@ -18,6 +18,29 @@
     "go_to_dashboard": "Ir para o painel"
   },
 
+  "home": {
+    "hero": {
+      "tagline": "IAA™ · Assisted Artificial Intelligence",
+      "tagline_sub": "AI built to think and evolve with you",
+      "title": "Delegar decisões à IA é arriscado",
+      "title_highlight": "Raciocinar com ela é poderoso",
+      "description": "A MindLoop cria sistemas inteligentes que raciocinam, aprendem e evoluem junto com você. Não no seu lugar.",
+      "cta_primary": "Começar agora",
+      "cta_secondary": "Agendar uma demonstração",
+      "image_alt": "Mockup MindLoop"
+    },
+    "manifesto": {
+      "title": "A inteligência do futuro não é artificial — é compartilhada.",
+      "description": "A MindLoop acredita que a IA deve ser uma ferramenta — não um trabalhador..."
+    },
+    "cta_final": {
+      "title": "Vamos construir o futuro da inteligência.",
+      "description": "Se você acredita que a IA deve amplificar — não substituir — o potencial humano...",
+      "cta_primary": "Começar agora",
+      "cta_secondary": "Fale com a MindLoop"
+    }
+  },
+
   "marketing": {
     "introducing": "Apresentando a MindLoop",
     "title": "IA que pensa com você — não no seu lugar.",

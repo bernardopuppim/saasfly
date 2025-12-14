@@ -90,26 +90,49 @@ export const Guide = defineDocumentType(() => ({
 -------------------------------------------------------- */
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `*/blog/**/*.mdx`,
+  filePathPattern: "blog/**/*.mdx",
   contentType: "mdx",
+
   fields: {
     title: { type: "string", required: true },
     description: { type: "string" },
+    image: { type: "string" },
     date: { type: "date", required: true },
-    image: { type: "string", required: true },
-    authors: {
-      type: "list",
-      of: { type: "string" },
-      required: true,
-    },
+    authors: { type: "list", of: { type: "string" } },
+
+    // 🔴 FALTAVA
     published: { type: "boolean", default: true },
   },
+
   computedFields: {
-    lang: { type: "string", resolve: computeLang },
-    slug: { type: "string", resolve: computeSlug },
-    slugAsParams: { type: "string", resolve: computeSlugAsParams },
+    // 🔴 FALTAVA
+    lang: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/")[1],
+      // ex: blog/br/server-client-components → br
+    },
+
+    // ✅ slug correto para Link()
+    slug: {
+      type: "string",
+      resolve: (doc) => {
+        const parts = doc._raw.flattenedPath.split("/");
+        const lang = parts[1];
+        const slug = parts.slice(2).join("/");
+
+        return `/${lang}/blog/${slug}`;
+      },
+    },
+
+    // ✅ útil para generateStaticParams
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) =>
+        doc._raw.flattenedPath.split("/").slice(2).join("/"),
+    },
   },
 }));
+
 
 /* --------------------------------------------------------
    AUTORES

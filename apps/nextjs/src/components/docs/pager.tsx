@@ -5,14 +5,16 @@ import { cn } from "@saasfly/ui";
 import { buttonVariants } from "@saasfly/ui/button";
 import * as Icons from "@saasfly/ui/icons";
 
+import type { SidebarNavItem } from "~/types";
 import { getDocsConfig } from "~/config/ui/docs";
 
-interface DocsPagerProps {
-  doc: Doc;
+interface PagerProps {
+  currentSlug: string;
+  sidebarNav: SidebarNavItem[];
 }
 
-export function DocsPager({ doc }: DocsPagerProps) {
-  const pager = getPagerForDoc(doc);
+export function Pager({ currentSlug, sidebarNav }: PagerProps) {
+  const pager = getPagerForSlug(currentSlug, sidebarNav);
 
   if (!pager) {
     return null;
@@ -42,14 +44,14 @@ export function DocsPager({ doc }: DocsPagerProps) {
   );
 }
 
-export function getPagerForDoc(doc: Doc) {
+export function getPagerForSlug(currentSlug: string, sidebarNav: SidebarNavItem[]) {
   const flattenedLinks = [
     null,
-    ...flatten(getDocsConfig("en").sidebarNav),
+    ...flatten(sidebarNav),
     null,
   ];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href,
+    (link) => currentSlug === link?.href,
   );
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =
@@ -60,6 +62,15 @@ export function getPagerForDoc(doc: Doc) {
     prev,
     next,
   };
+}
+
+// Legacy wrapper for backward compatibility
+interface DocsPagerProps {
+  doc: Doc;
+}
+
+export function DocsPager({ doc }: DocsPagerProps) {
+  return <Pager currentSlug={doc.slug} sidebarNav={getDocsConfig(doc.lang).sidebarNav} />;
 }
 
 // @ts-ignore

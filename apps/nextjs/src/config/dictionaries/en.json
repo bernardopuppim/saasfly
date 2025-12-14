@@ -18,6 +18,29 @@
     "go_to_dashboard": "Go to dashboard",
     "": ""
   },
+  "home": {
+    "hero": {
+      "tagline": "IAA™ · Assisted Artificial Intelligence",
+      "tagline_sub": "AI built to think and evolve with you",
+      "title": "Delegating decisions to AI is risky",
+      "title_highlight": "Reasoning with it is powerful",
+      "description": "MindLoop creates intelligent systems that reason, learn and evolve with you. Not instead of you.",
+      "cta_primary": "Get Started",
+      "cta_secondary": "Schedule a Demo",
+      "image_alt": "MindLoop Mockup"
+    },
+    "manifesto": {
+      "title": "The intelligence of the future is not artificial — it's shared.",
+      "description": "MindLoop believes that AI should be a tool — not a worker..."
+    },
+    "cta_final": {
+      "title": "Let's build the future of intelligence.",
+      "description": "If you believe AI should amplify — not replace — human potential...",
+      "cta_primary": "Get Started",
+      "cta_secondary": "Talk to MindLoop"
+    }
+  },
+
   "marketing": {
     "introducing": "Introducing MindLoop",
     "title": "Ship your apps to the world easier with ",

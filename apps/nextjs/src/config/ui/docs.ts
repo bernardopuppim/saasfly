@@ -106,17 +106,5 @@ export const getDocsConfig = (lang: string) => ({
         { title: "In Progress", href: `/${lang}/docs/in-progress` },
       ],
     },
-
-    {
-      id: "projects",
-      title: "Projects",
-      items: [
-        { title: "Overview", href: `/${lang}/docs/projects` },
-
-        // TEMPORÁRIO — será dinâmico depois
-        { title: "OSHA", href: `/${lang}/docs/projects/osha` },
-        { title: "ANP", href: `/${lang}/docs/projects/anp` },
-      ],
-    },
   ],
 });

@@ -26,11 +26,11 @@ export const getProjectsConfig = (lang: string): DocsConfig => {
         id: "projects",
         title: "PROJETOS",
         items: allProjects
-          .filter((p) => p.published !== false)
+          .filter((p) => p.published !== false && p.lang === lang)
           .sort((a, b) => a.title.localeCompare(b.title))
           .map((p) => ({
             title: p.title,
-            href: `/${lang}${p.slug}`, // AQUI ESTÁ A SOLUÇÃO
+            href: p.slug,
           })),
       },
     ],
