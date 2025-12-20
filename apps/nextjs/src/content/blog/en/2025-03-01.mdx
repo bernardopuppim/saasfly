@@ -1,0 +1,193 @@
+---
+title: When AI Explores More Than One Path (And Why That’s Not a Bug)
+description: Why allowing multiple hypotheses in LATS-P brought the system closer to how humans actually reason.
+date: "2024-03-01"
+authors:
+  - repo
+image: /images/blog/blog-post-2.png
+---
+
+## “Did I go too far by exploring more than one path?”
+
+That question came up naturally during the project.
+
+And looking back now, it turned out to be one of the most important questions of all.
+
+At several points, the system didn’t commit to a single decision immediately.  
+Instead, it kept **multiple hypotheses alive**.
+
+My first reaction was discomfort.
+
+> *“Isn’t this going to explode complexity?”*  
+> *“Shouldn’t it just decide and move on?”*
+
+But a deeper question followed:
+
+> *Why does this bother me so much?*
+
+---
+
+## Our obsession with single answers
+
+As engineers, analysts, and decision-makers, we’re trained to look for **one correct answer**.
+
+One label.  
+One class.  
+One final outcome.
+
+But real life doesn’t work that way.
+
+When an incident happens, no one starts with certainty.
+
+Questions unfold step by step:
+- Is it an accident or an incident?
+- Was there an actual impact or only potential?
+- Is the reported volume precise or estimated?
+
+At the beginning, **several explanations coexist**.
+
+---
+
+## The unexpected insight: I already think like this
+
+At some point, I paused and noticed something uncomfortable.
+
+When *I* analyze an event, my internal reasoning looks like this:
+
+> “It could be this…  
+> but if it’s that, everything changes…  
+> let me keep both options open for now.”
+
+In other words:  
+**I don’t decide immediately.**
+
+I explore.
+
+---
+
+## Why forcing early decisions breaks AI systems
+
+Early in the project, I tried to “discipline” the model:
+
+- pick one path,
+- commit,
+- don’t look back.
+
+The result?
+- fragile decisions,
+- wrong classifications,
+- artificial confidence.
+
+The system sounded certain…  
+but was quietly wrong.
+
+---
+
+## LATS-P: keeping hypotheses alive — with limits
+
+That’s when **LATS-P (Language Agent Tree Search – Probabilistic)** started to make real sense.
+
+The idea was not:
+> “Explore everything.”
+
+But rather:
+> “Explore **a little**, **with rules**, **for a short time**.”
+
+Each path carried:
+- a probability,
+- a cost (log_prob),
+- a reason to stay alive.
+
+Weak paths died quickly.  
+Strong ones earned the right to continue.
+
+---
+
+## This isn’t indecision — it’s computational caution
+
+There’s a huge difference between:
+- endless indecision  
+- and **deliberate delay**
+
+The system wasn’t confused.  
+It was saying:
+
+> *“It’s too early to be certain.”*
+
+In critical, regulated environments, that’s not a flaw — it’s a strength.
+
+---
+
+## Where clarity actually emerges: child nodes
+
+Something interesting began to happen.
+
+At higher levels of the tree, ambiguity was common.  
+But as the system moved deeper…
+
+Child nodes brought clarity.
+
+What looked uncertain at the top became obvious after two or three well-posed questions.
+
+Exactly how experienced humans reason.
+
+---
+
+## The classic mistake we avoided
+
+Many AI systems fail for a simple reason:
+
+> They confuse speed with intelligence.
+
+Deciding too early feels efficient.  
+In high-stakes domains, it’s dangerous.
+
+Keeping multiple paths alive *briefly* turned out to be the right balance between:
+- performance,
+- explainability,
+- safety.
+
+---
+
+## A parallel with real-world investigations
+
+Good incident investigations never start with conclusions.
+
+They start with hypotheses.
+
+And those hypotheses are eliminated one by one as evidence appears.
+
+LATS-P evolved into something very close to that:
+> a **probability-guided investigation**
+
+---
+
+## The question that changed how I design AI
+
+Today, when I think about intelligent systems, I no longer ask:
+
+> “Does it decide fast?”
+
+I ask:
+
+> **“Does it know when *not* to decide yet?”**
+
+That difference changes everything.
+
+---
+
+## Final thought
+
+Exploring more than one path is not a sign of weakness.
+
+It’s a sign of respect for the complexity of reality.
+
+And maybe that’s one of the most important lessons of this project:
+
+> **The best AI isn’t the one that answers fastest.  
+> It’s the one that waits for the right moment to answer.**
+
+---
+
+👉 **In the next article**, I’ll explain how  
+**intelligent pruning and entropy-based thresholds** kept this exploration from turning into computational chaos.

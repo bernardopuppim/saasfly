@@ -1,0 +1,196 @@
+---
+title: Ambiguity Is Not a Bug — It’s the Real World Talking
+description: Why some decisions should never be forced by AI, and how human-in-the-loop became the most important design choice of the project.
+date: "2025-02-01"
+authors:
+  - repo
+image: /images/blog/blog-post-4.png
+---
+
+## The day I realized the system was “working” — even when it stopped
+
+At some point in the project, something strange started happening.
+
+The system would run.
+The AI would evaluate the event.
+And then… it would stop.
+
+No answer.
+No classification.
+No final label.
+
+Just a message that basically said:
+
+> *“I’m not sure. A human needs to decide.”*
+
+My first reaction was frustration.
+
+> *“Great. It broke.”*
+
+But it hadn’t.
+
+It was doing exactly what it was supposed to do.
+
+---
+
+## The uncomfortable truth about real incidents
+
+In theory, regulations look clean.
+
+They’re written as if reality were always precise:
+- clear volumes,
+- clear impacts,
+- clear responsibilities.
+
+In practice?
+
+Incident descriptions look like this:
+
+> “There may have been a small leak.”  
+> “It’s not clear if the product reached the environment.”  
+> “The volume is estimated, but not confirmed.”  
+
+This is not an edge case.
+
+This is **most cases**.
+
+---
+
+## The mistake I almost made: forcing certainty
+
+At first, I tried to “solve” this.
+
+I thought:
+- maybe the prompt isn’t good enough,
+- maybe the model needs more context,
+- maybe RAG will clarify things.
+
+So I added more:
+- more documents,
+- more embeddings,
+- more reasoning.
+
+The answers got longer.
+They sounded smarter.
+
+They were still guessing.
+
+And guessing, in this context, is dangerous.
+
+---
+
+## The key insight: ambiguity is a signal, not a failure
+
+Then I noticed a pattern.
+
+Whenever the model hesitated, the **entropy** was high.
+Multiple paths looked plausible.
+None clearly dominated.
+
+That wasn’t noise.
+
+That was the system telling me something important:
+
+> *“The information provided is insufficient to make a safe decision.”*
+
+That’s not an AI problem.
+That’s a **process problem**.
+
+---
+
+## Enter Human-in-the-Loop (HITL) — but not as a patch
+
+Most systems treat HITL like a fallback:
+
+> “If the AI fails, ask a human.”
+
+That framing is wrong.
+
+In this project, HITL became a **first-class design element**.
+
+The AI does not escalate because it is weak.
+It escalates because **some decisions are inherently human**.
+
+Especially when:
+- the cost of being wrong is high,
+- the information is incomplete,
+- accountability matters.
+
+---
+
+## The moment everything changed
+
+I remember one specific test.
+
+The system reached a node asking about environmental impact volume.
+Two branches were possible.
+Both had reasonable arguments.
+
+Instead of picking one, the system paused and said:
+
+> “Here are the options.  
+> Here’s why each one could apply.  
+> You decide.”
+
+That was the moment I realized:
+
+This wasn’t automation.
+This was **augmented decision-making**.
+
+---
+
+## Why this is better than full automation
+
+Letting AI decide everything feels efficient.
+Until you have to explain the decision.
+
+With HITL:
+- the human owns the final call,
+- the AI documents the reasoning,
+- and the system records *why* that path was chosen.
+
+No black box.
+No silent assumptions.
+No post-incident surprises.
+
+---
+
+## A subtle but powerful shift in responsibility
+
+Something interesting happens when you design systems this way.
+
+People stop asking:
+> “What did the AI decide?”
+
+And start asking:
+> “What information did the AI surface for the decision?”
+
+That’s a much healthier question.
+
+---
+
+## The lesson I didn’t expect to learn
+
+I went into this project trying to reduce human involvement.
+
+I came out realizing that the real goal was different:
+
+> **Reduce human uncertainty, not human presence.**
+
+AI isn’t here to replace judgment.
+It’s here to **support it — honestly**.
+
+---
+
+## Final thought
+
+If your AI system never asks for help,
+it’s probably overconfident.
+
+And overconfidence is the most dangerous bug of all.
+
+---
+
+👉 **In the next article**, I’ll tell the story of how  
+**letting the AI explore more than one path — briefly —  
+actually made the final decision stronger, not weaker.**
