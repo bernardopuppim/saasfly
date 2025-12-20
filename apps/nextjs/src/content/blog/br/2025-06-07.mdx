@@ -1,176 +1,175 @@
 ---
-title: Deploying Next.js Apps
-description: How to deploy your Next.js apps on Vercel.
+title: Eu tentei ensinar uma IA a seguir regras. Ela tentou ser inteligente demais.
+description: Uma história real sobre por que inteligência artificial falha em ambientes regulados — e como mudar o papel da IA muda tudo.
 date: "2024-01-02"
 authors:
   - repo
 image: /images/blog/blog-post-3.png
 ---
 
-<Callout>
-  The text below is from the [Tailwind
-  CSS](https://play.tailwindcss.com/uj1vGACRJA?layout=preview) docs. I copied it
-  here to test the markdown styles. **Tailwind is awesome. You should use it.**
-</Callout>
+## Tudo começou com uma pergunta simples
 
-Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
+> *“Dá para usar inteligência artificial para classificar eventos regulatórios?”*
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+Parecia óbvio que sim.  
+Afinal, a IA já escreve textos, interpreta documentos complexos, responde perguntas difíceis…  
+por que não ajudaria a classificar um incidente ambiental ou de segurança?
 
-We get lots of complaints about it actually, with people regularly asking us things like:
-
-> Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
-> We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
-
-The `@tailwindcss/typography` plugin is our attempt to give you what you _actually_ want, without any of the downsides of doing something stupid like disabling our base styles.
-
-It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
-
-```html
-<article class="prose">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
-  <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
-  </p>
-  <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
-  </p>
-</article>
-```
-
-For more information about how to use the plugin and the features it includes, [read the documentation](https://github.com/tailwindcss/typography/blob/master/README.md).
+Na prática, a resposta foi: **não do jeito que eu imaginava**.
 
 ---
 
-## What to expect from here on out
+## A primeira tentativa: “deixa a IA decidir”
 
-What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like **bold text**, unordered lists, ordered lists, code blocks, block quotes, _and even italics_.
+Como muita gente faz hoje, comecei pelo caminho mais fácil:
 
-It's important to cover all of these use cases for a few reasons:
+- envio o texto do evento,
+- junto a norma aplicável,
+- peço para a IA dizer qual é a classificação correta.
 
-1.  We want everything to look good out of the box.
-2.  Really just the first reason, that's the whole point of the plugin.
-3.  Here's a third pretend reason though a list with three items looks more realistic than a list with two items.
+Funcionou… mais ou menos.
 
-Now we're going to try out another header style.
+Às vezes ela acertava com uma clareza impressionante.  
+Outras vezes, dava respostas que *soavam* inteligentes — mas estavam simplesmente erradas.
 
-### Typography should be easy
+E o pior:  
+eram erradas **com convicção**.
 
-So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
+---
 
-Something a wise person once told me about typography is:
+## Quando “parece certo” não é suficiente
 
-> Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.
+Em um dos testes, o evento dizia algo como:
 
-It's probably important that images look okay here by default as well:
+> *“Houve um vazamento de óleo diesel que atingiu um corpo hídrico.”*
 
-<Image
-  src="/images/blog/blog-post-4.jpg"
-  width="718"
-  height="404"
-  alt="Image"
-/>
+Para qualquer pessoa da área, isso é um acidente ambiental claro.
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+A IA respondeu algo como:
 
-Now I'm going to show you an example of an unordered list to make sure that looks good, too:
+> *“Trata-se de um incidente operacional com potencial impacto ambiental.”*
 
-- So here is the first item in this list.
-- In this example we're keeping the items short.
-- Later, we'll use longer, more complex list items.
+Tecnicamente bonito.  
+Regulatoriamente errado.
 
-And that's the end of this section.
+A norma não pergunta se *parece* incidente.  
+Ela pergunta:
 
-## What if we stack headings?
+- houve vazamento?
+- atingiu o meio ambiente?
+- qual foi o volume?
 
-### We should make sure that looks good, too.
+Não existe interpretação.  
+Existe **regra**.
 
-Sometimes you have headings directly underneath each other. In those cases you often have to undo the top margin on the second heading because it usually looks better for the headings to be closer together than a paragraph followed by a heading should be.
+Foi aí que caiu a ficha.
 
-### When a heading comes after a paragraph …
+---
 
-When a heading comes after a paragraph, we need a bit more space, like I already mentioned above. Now let's see what a more complex list would look like.
+## O erro não era da IA. Era do papel que eu dei a ela.
 
-- **I often do this thing where list items have headings.**
+A IA estava fazendo exatamente o que foi treinada para fazer:
 
-For some reason I think this looks cool which is unfortunate because it's pretty annoying to get the styles right.
+- interpretar textos,
+- inferir significados,
+- escolher a resposta mais provável.
 
-I often have two or three paragraphs in these list items, too, so the hard part is getting the spacing between the paragraphs, list item heading, and separate list items to all make sense. Pretty tough honestly, you could make a strong argument that you just shouldn't write this way.
+O problema é que **regulação não funciona por probabilidade**.
 
-- **Since this is a list, I need at least two items.**
+Ela funciona como um checklist rígido:
 
-I explained what I'm doing already in the previous list item, but a list wouldn't be a list if it only had one item, and we really want this to look realistic. That's why I've added this second list item so I actually have something to look at when writing the styles.
+> se X aconteceu, então Y se aplica.
 
-- **It's not a bad idea to add a third item either.**
+Não importa se parece exagero.  
+Não importa se foi pequeno.  
+Não importa se “na maioria dos casos” seria outra coisa.
 
-I think it probably would've been fine to just use two items but three is definitely not worse, and since I seem to be having no trouble making up arbitrary things to type, I might as well include it.
+---
 
-After this sort of list I usually have a closing statement or paragraph, because it kinda looks weird jumping right to a heading.
+## Uma analogia que mudou tudo
 
-## Code should look okay by default.
+Imagine um GPS que, em vez de seguir regras de trânsito, resolvesse “interpretar o contexto”:
 
-I think most people are going to use [highlight.js](https://highlightjs.org/) or [Prism](https://prismjs.com/) or something if they want to style their code blocks but it wouldn't hurt to make them look _okay_ out of the box, even with no syntax highlighting.
+> “Esse sinal vermelho parece opcional.”  
+> “Normalmente ninguém para aqui.”  
+> “A chance de acidente é baixa.”
 
-Here's what a default `tailwind.config.js` file looks like at the time of writing:
+Seria um desastre.
 
-```js
-module.exports = {
-  purge: [],
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
-};
-```
+E eu estava tentando usar uma IA exatamente assim —  
+como um GPS opinativo em um ambiente que exige **semáforos absolutos**.
 
-Hopefully that looks good enough to you.
+---
 
-### What about nested lists?
+## A virada: e se a IA não decidisse nada?
 
-Nested lists basically always look bad which is why editors like Medium don't even let you do it, but I guess since some of you goofballs are going to do it we have to carry the burden of at least making it work.
+Em vez de pedir:
 
-1.  **Nested lists are rarely a good idea.**
+> *“qual é a classificação correta?”*
 
-- You might feel like you are being really "organized" or something but you are just creating a gross shape on the screen that is hard to read.
-- Nested navigation in UIs is a bad idea too, keep things as flat as possible.
-- Nesting tons of folders in your source code is also not helpful.
+passei a perguntar:
 
-2.  **Since we need to have more items, here's another one.**
+> *“essa condição foi atendida?”*
 
-- I'm not sure if we'll bother styling more than two levels deep.
-- Two is already too much, three is guaranteed to be a bad idea.
-- If you nest four levels deep you belong in prison.
+A norma virou um **fluxo de perguntas**, não um texto solto.
 
-3.  **Two items isn't really a list, three is good though.**
+Algo como:
 
-- Again please don't nest lists if you want people to actually read your content.
-- Nobody wants to look at this.
-- I'm upset that we even have to bother styling this.
+- houve impacto ambiental?
+- o produto era perigoso?
+- o volume ultrapassou determinado limite?
 
-The most annoying thing about lists in Markdown is that `<li>` elements aren't given a child `<p>` tag unless there are multiple paragraphs in the list item. That means I have to worry about styling that annoying situation too.
+A IA não escolhe o caminho.  
+Ela apenas responde cada pergunta **uma de cada vez**.
 
-- **For example, here's another nested list.**
+Como um assistente técnico lendo o relatório em voz alta,  
+enquanto a regra decide o próximo passo.
 
-But this time with a second paragraph.
+---
 
-- These list items won't have `<p>` tags
-- Because they are only one line each
+## O resultado foi quase anticlimático — e isso foi ótimo
 
-- **But in this second top-level list item, they will.**
+De repente:
 
-This is especially annoying because of the spacing on this paragraph.
+- os erros ficaram previsíveis,
+- as decisões ficaram explicáveis,
+- e quando algo dava errado… dava para entender *por quê*.
 
-- As you can see here, because I've added a second line, this list item now has a `<p>` tag.
+A IA deixou de ser um oráculo misterioso  
+e virou um operador extremamente disciplinado.
 
-This is the second line I'm talking about by the way.
+Ela não “acha”.  
+Ela **verifica**.
 
-- Finally here's another list item so it's more like a list.
+---
 
-- A closing list item, but with no nested list, because why not?
+## O que eu aprendi com isso
 
-And finally a sentence to close off this section.
+A maior armadilha ao usar IA em decisões críticas é querer que ela seja inteligente demais.
+
+Em ambientes regulados, inteligência não é criatividade.  
+É **consistência**.
+
+A IA funciona melhor quando:
+
+- interpreta textos confusos,
+- extrai evidências,
+- e respeita limites claros impostos por humanos.
+
+---
+
+## A conclusão que ficou
+
+Depois de tudo isso, cheguei a uma frase que guia o projeto até hoje:
+
+> **A IA não deve decidir a regra.  
+Ela deve ajudar a aplicá-la.**
+
+Quando fazemos isso, ela deixa de ser um risco —  
+e passa a ser uma aliada poderosa.
+
+---
+
+👉 **No próximo artigo**, a história fica ainda mais interessante:  
+o dia em que percebi que **nem toda ambiguidade é erro da IA** —  
+às vezes, o mundo é que é ambíg
