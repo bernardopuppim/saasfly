@@ -1,26 +1,24 @@
-"use client";
+import { getDictionary } from "~/lib/get-dictionary";
+import type { Locale } from "~/config/i18n-config";
 
-import Reveal from "../ui/Reveal";
-import SectionTitle from "../ui/SectionTitle";
-import GradientText from "../ui/GradientText";
+export default async function AboutSection({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang);
 
-export default function AboutSection() {
   return (
     <section className="container py-24">
-      <Reveal className="max-w-4xl mx-auto text-center space-y-6">
-        <SectionTitle>
-          Sobre a <GradientText>MindLoop</GradientText>
-        </SectionTitle>
+      <div className="max-w-4xl mx-auto text-center space-y-6">
+        <h2 className="text-3xl md:text-4xl font-semibold">
+          {dict.home.sections.about.title} <span className="text-brand">{dict.home.sections.about.title_highlight}</span>
+        </h2>
 
         <p className="text-neutral-600 dark:text-neutral-300 text-lg">
-          Criamos a MindLoop com a convicção de que a inteligência artificial
-          do futuro não substituirá humanos — ela trabalhará ao lado deles.
+          {dict.home.sections.about.description_1}
         </p>
 
         <p className="text-neutral-600 dark:text-neutral-300 text-lg">
-          Nosso nome representa esse ciclo: um <strong>loop</strong> de aprendizado entre humano e máquina.
+          {dict.home.sections.about.description_2}
         </p>
-      </Reveal>
+      </div>
     </section>
   );
 }

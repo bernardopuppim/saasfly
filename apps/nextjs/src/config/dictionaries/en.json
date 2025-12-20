@@ -25,8 +25,6 @@
       "title": "Delegating decisions to AI is risky",
       "title_highlight": "Reasoning with it is powerful",
       "description": "MindLoop creates intelligent systems that reason, learn and evolve with you. Not instead of you.",
-      "cta_primary": "Get Started",
-      "cta_secondary": "Schedule a Demo",
       "image_alt": "MindLoop Mockup"
     },
     "manifesto": {
@@ -35,12 +33,96 @@
     },
     "cta_final": {
       "title": "Let's build the future of intelligence.",
-      "description": "If you believe AI should amplify — not replace — human potential...",
-      "cta_primary": "Get Started",
-      "cta_secondary": "Talk to MindLoop"
+      "description": "If you believe AI should amplify — not replace — human potential..."
+    },
+    "sections": {
+      "trusted_by": {
+        "tagline": "Trusted by EHS, Compliance and Operations professionals",
+        "badge_oil_gas": "Oil & Gas Operations",
+        "badge_energy": "Energy & Generation",
+        "badge_sms": "EHS & Compliance Teams"
+      },
+      "iaa_concept": {
+        "tagline": "IAA™ — Assisted Artificial Intelligence",
+        "title": "Intelligence is not artificial. It's collaborative.",
+        "description": "MindLoop is designed around learning loops: humans interpret, adjust and guide — and AI records, learns and evolves. Every decision is the result of structured dialogue between experts and systems.",
+        "human_label": "Human",
+        "human_desc": "Context, responsibility, judgment and practical experience.",
+        "ai_label": "MindLoop AI",
+        "ai_desc": "Multi-step reasoning, memory, normative search and explanations.",
+        "loop_label": "Learning Loop",
+        "loop_desc": "Each interaction adjusts the model, refines criteria and strengthens trust between people and machine."
+      },
+      "superpowers": {
+        "title": "Why",
+        "title_highlight": "MindLoop",
+        "description": "We are not just \"another AI chat\". MindLoop was created to handle serious decisions, in regulated environments, with real impact on people, assets and the environment.",
+        "item_1_title": "Multi-step reasoning",
+        "item_1_desc": "Goes beyond chat answers. Handles incidents, standards and context in structured decision chains.",
+        "item_2_title": "Total transparency",
+        "item_2_desc": "Each classification comes with criteria, decision trail and normative reference.",
+        "item_3_title": "Continuous learning",
+        "item_3_desc": "Human interventions (HITL) feed the system, improving future decisions without losing control.",
+        "item_4_title": "Ready for critical environments",
+        "item_4_desc": "Architecture designed for regulated operations, audits, process safety and EHS."
+      },
+      "about": {
+        "title": "About",
+        "title_highlight": "MindLoop",
+        "description_1": "We created MindLoop with the conviction that the artificial intelligence of the future will not replace humans — it will work alongside them.",
+        "description_2": "Our name represents this cycle: a learning loop between human and machine."
+      },
+      "story": {
+        "title": "Why does MindLoop exist?",
+        "description_1": "MindLoop was born from practice in high-risk environments, where decisions cannot be blindly delegated to AI models. We saw firsthand the risk of treating incidents, standards and people as simple tokens in a prompt.",
+        "description_2": "Our response was to create a different paradigm: Assisted Artificial Intelligence. We don't want to replace the expert — we want to give them a more robust, fast and explainable reasoning structure."
+      },
+      "culture": {
+        "title": "Our",
+        "title_highlight": "Culture",
+        "description": "MindLoop was born to unite technology, science and humanity.",
+        "item_1_title": "Radical Curiosity",
+        "item_1_desc": "We are always asking 'why?' and 'what if?'.",
+        "item_2_title": "Ethical Responsibility",
+        "item_2_desc": "AI requires care, transparency and respect for humans.",
+        "item_3_title": "Continuous Evolution",
+        "item_3_desc": "Nothing is static. Learning is part of our DNA."
+      },
+      "timeline": {
+        "title": "Our Journey",
+        "year_2024": "2024",
+        "text_2024": "The idea is born: AI must amplify humans, not replace them.",
+        "year_2025": "2025",
+        "text_2025": "Creation of IAA™ philosophy – Assisted Artificial Intelligence.",
+        "year_2026": "2026",
+        "text_2026": "MindLoop establishes its first cognitive agents framework."
+      },
+      "product_flow": {
+        "title": "How MindLoop thinks with you.",
+        "description": "Behind the simple interface, MindLoop coordinates multiple agents, standards and memories to deliver a solid and explainable decision.",
+        "step_1_label": "1. Event input",
+        "step_1_text": "Free description, attachments and operational context sent by field or control team.",
+        "step_2_label": "2. MindLoop reasoning",
+        "step_2_text": "LATS-P, normative RAG, memory and incident history work together to understand the case.",
+        "step_3_label": "3. Classifications & explanations",
+        "step_3_text": "ANP typology, EHS classification and criteria are returned with decision trail.",
+        "step_4_label": "4. Logs & audit",
+        "step_4_text": "Everything is recorded in structured form, for internal audits, regulators and continuous improvement."
+      },
+      "team": {
+        "title": "Who is behind MindLoop"
+      },
+      "testimonials": {
+        "title": "What experts say about MindLoop",
+        "quote_1": "MindLoop finally brought structure and explainability to decisions that previously depended on long debates between areas.",
+        "name_1": "EHS Manager",
+        "role_1": "Oil & gas industry",
+        "quote_2": "Seeing the ANP classification, EHS and the reasoning trail side by side changed the quality of our investigations.",
+        "name_2": "Incident Coordinator",
+        "role_2": "Offshore operation"
+      }
     }
   },
-
   "marketing": {
     "introducing": "Introducing MindLoop",
     "title": "Ship your apps to the world easier with ",

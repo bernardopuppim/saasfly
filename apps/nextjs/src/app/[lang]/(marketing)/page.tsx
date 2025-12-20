@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { getDictionary } from "~/lib/get-dictionary";
 
@@ -13,7 +12,6 @@ import StorySection from "~/components/brand/StorySection";
 import ProductFlowSection from "~/components/brand/ProductFlowSection";
 import TestimonialsSection from "~/components/brand/TestimonialsSection";
 
-import { Button } from "@saasfly/ui/button";
 import type { Locale } from "~/config/i18n-config";
 
 export default async function IndexPage({
@@ -43,29 +41,6 @@ export default async function IndexPage({
           <p className="text-base md:text-lg text-[hsl(var(--foreground)/0.7)] leading-relaxed">
             {dict.home.hero.description}
           </p>
-
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-7 py-6 text-base rounded-full"
-            >
-              <Link href={`/${lang}/login`}>{dict.home.hero.cta_primary}</Link>
-            </Button>
-
-            <Button
-              variant="outline"
-              className="
-                bg-[hsl(var(--background))]
-                text-[hsl(var(--foreground))]
-                border border-[hsl(var(--border))]
-                hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]
-                px-8 py-6 rounded-full text-base
-              "
-            >
-              {dict.home.hero.cta_secondary}
-            </Button>
-          </div>
         </div>
 
         <div className="relative w-full max-w-xl flex items-center justify-center">
@@ -90,16 +65,16 @@ export default async function IndexPage({
         </p>
       </section>
 
-      <TrustedBySection />
-      <IAAConceptSection />
-      <SuperpowersSection />
-      <AboutSection />
-      <StorySection />
-      <CultureSection />
-      <TimelineSection />
-      <ProductFlowSection />
-      <TeamSection />
-      <TestimonialsSection />
+      <TrustedBySection lang={lang} />
+      <IAAConceptSection lang={lang} />
+      <SuperpowersSection lang={lang} />
+      <AboutSection lang={lang} />
+      <StorySection lang={lang} />
+      <CultureSection lang={lang} />
+      <TimelineSection lang={lang} />
+      <ProductFlowSection lang={lang} />
+      <TeamSection lang={lang} />
+      <TestimonialsSection lang={lang} />
 
       {/* CTA Final */}
       <section className="container py-28 md:py-32 text-center space-y-6">
@@ -110,20 +85,6 @@ export default async function IndexPage({
         <p className="text-neutral-600 dark:text-neutral-300 text-lg max-w-2xl mx-auto">
           {dict.home.cta_final.description}
         </p>
-
-        <div className="flex justify-center gap-4">
-          <Link href={`/${lang}/login`}>
-            <Button className="px-8 py-6 rounded-full text-base">
-              {dict.home.cta_final.cta_primary}
-            </Button>
-          </Link>
-
-          <Link href="/contact">
-            <Button variant="outline" className="px-8 py-6 rounded-full text-base">
-              {dict.home.cta_final.cta_secondary}
-            </Button>
-          </Link>
-        </div>
       </section>
     </>
   );

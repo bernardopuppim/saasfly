@@ -1,22 +1,12 @@
-"use client";
-
-import Reveal from "../ui/Reveal";
-import SectionTitle from "../ui/SectionTitle";
-import TeamMemberCard from "./TeamMemberCard";
+import { getDictionary } from "~/lib/get-dictionary";
+import type { Locale } from "~/config/i18n-config";
+import TeamSectionClient from "./TeamSectionClient";
 import { team } from "~/data/team";
 
-export default function TeamSection() {
-  return (
-    <section className="container py-28">
-      <Reveal>
-        <SectionTitle>Quem está por trás da MindLoop</SectionTitle>
+export default async function TeamSection({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang);
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          {team.map((person, index) => (
-            <TeamMemberCard key={index} {...person} />
-          ))}
-        </div>
-      </Reveal>
-    </section>
+  return (
+    <TeamSectionClient title={dict.home.sections.team.title} team={team} />
   );
 }

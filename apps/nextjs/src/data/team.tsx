@@ -1,7 +1,7 @@
 export const team = [
   {
     name: "Bernardo Puppim",
-    role: "Founder & CEO",
+    role: "Head de Pesquisa Aplicada e Inovação",
     img: "/images/team/MindLoop_carimbo.png",
   },
   {

@@ -1,44 +1,36 @@
-"use client";
+import { getDictionary } from "~/lib/get-dictionary";
+import type { Locale } from "~/config/i18n-config";
 
-import useScrollInView from "~/hooks/use-scroll-in-view";
+export default async function SuperpowersSection({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang);
 
-const items = [
-  {
-    title: "Raciocínio multietapas",
-    desc: "Vai além de respostas de chat. Lida com incidentes, normas e contexto em cadeias de decisão estruturadas.",
-  },
-  {
-    title: "Transparência total",
-    desc: "Cada classificação vem acompanhada de critério, trilha de decisão e referência normativa.",
-  },
-  {
-    title: "Aprendizado contínuo",
-    desc: "Intervenções humanas (HITL) alimentam o sistema, melhorando decisões futuras sem perder controle.",
-  },
-  {
-    title: "Pronto para ambientes críticos",
-    desc: "Arquitetura pensada para operações reguladas, auditorias, segurança de processo e SMS.",
-  },
-];
-
-export default function SuperpowersSection() {
-  const { ref, inView } = useScrollInView();
+  const items = [
+    {
+      title: dict.home.sections.superpowers.item_1_title,
+      desc: dict.home.sections.superpowers.item_1_desc,
+    },
+    {
+      title: dict.home.sections.superpowers.item_2_title,
+      desc: dict.home.sections.superpowers.item_2_desc,
+    },
+    {
+      title: dict.home.sections.superpowers.item_3_title,
+      desc: dict.home.sections.superpowers.item_3_desc,
+    },
+    {
+      title: dict.home.sections.superpowers.item_4_title,
+      desc: dict.home.sections.superpowers.item_4_desc,
+    },
+  ];
 
   return (
     <section className="container py-24">
-      <div
-        ref={ref}
-        className={`max-w-5xl mx-auto text-center transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
+      <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-          Por que <span className="text-brand">MindLoop</span>?
+          {dict.home.sections.superpowers.title} <span className="text-brand">{dict.home.sections.superpowers.title_highlight}</span>?
         </h2>
         <p className="text-neutral-600 dark:text-neutral-300 text-lg max-w-3xl mx-auto mb-12">
-          Não somos apenas “mais um chat com IA”. A MindLoop foi criada para
-          lidar com decisões sérias, em ambientes regulados, com impacto real em
-          pessoas, ativos e meio ambiente.
+          {dict.home.sections.superpowers.description}
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 text-left">

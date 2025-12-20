@@ -17,7 +17,6 @@
     "manage_subscription": "Gerenciar assinatura",
     "go_to_dashboard": "Ir para o painel"
   },
-
   "home": {
     "hero": {
       "tagline": "IAA™ · Assisted Artificial Intelligence",
@@ -25,8 +24,6 @@
       "title": "Delegar decisões à IA é arriscado",
       "title_highlight": "Raciocinar com ela é poderoso",
       "description": "A MindLoop cria sistemas inteligentes que raciocinam, aprendem e evoluem junto com você. Não no seu lugar.",
-      "cta_primary": "Começar agora",
-      "cta_secondary": "Agendar uma demonstração",
       "image_alt": "Mockup MindLoop"
     },
     "manifesto": {
@@ -35,12 +32,96 @@
     },
     "cta_final": {
       "title": "Vamos construir o futuro da inteligência.",
-      "description": "Se você acredita que a IA deve amplificar — não substituir — o potencial humano...",
-      "cta_primary": "Começar agora",
-      "cta_secondary": "Fale com a MindLoop"
+      "description": "Se você acredita que a IA deve amplificar — não substituir — o potencial humano..."
+    },
+    "sections": {
+      "trusted_by": {
+        "tagline": "Confiado por profissionais de EHS, Compliance e Operações",
+        "badge_oil_gas": "Operações de Óleo & Gás",
+        "badge_energy": "Energia & Geração",
+        "badge_sms": "Times de SMS & Compliance"
+      },
+      "iaa_concept": {
+        "tagline": "IAA™ — Inteligência Artificial Assistida",
+        "title": "A inteligência não é artificial. Ela é colaborativa.",
+        "description": "A MindLoop foi desenhada em torno de loops de aprendizado: humanos interpretam, ajustam e orientam — e a IA registra, aprende e evolui. Cada decisão é resultado de um diálogo estruturado entre especialistas e sistemas.",
+        "human_label": "Humano",
+        "human_desc": "Contexto, responsabilidade, julgamento e experiência prática.",
+        "ai_label": "IA MindLoop",
+        "ai_desc": "Raciocínio multietapas, memória, busca normativa e explicações.",
+        "loop_label": "Loop de Aprendizado",
+        "loop_desc": "Cada interação ajusta o modelo, refina critérios e fortalece a confiança entre pessoas e máquina."
+      },
+      "superpowers": {
+        "title": "Por que",
+        "title_highlight": "MindLoop",
+        "description": "Não somos apenas \"mais um chat com IA\". A MindLoop foi criada para lidar com decisões sérias, em ambientes regulados, com impacto real em pessoas, ativos e meio ambiente.",
+        "item_1_title": "Raciocínio multietapas",
+        "item_1_desc": "Vai além de respostas de chat. Lida com incidentes, normas e contexto em cadeias de decisão estruturadas.",
+        "item_2_title": "Transparência total",
+        "item_2_desc": "Cada classificação vem acompanhada de critério, trilha de decisão e referência normativa.",
+        "item_3_title": "Aprendizado contínuo",
+        "item_3_desc": "Intervenções humanas (HITL) alimentam o sistema, melhorando decisões futuras sem perder controle.",
+        "item_4_title": "Pronto para ambientes críticos",
+        "item_4_desc": "Arquitetura pensada para operações reguladas, auditorias, segurança de processo e SMS."
+      },
+      "about": {
+        "title": "Sobre a",
+        "title_highlight": "MindLoop",
+        "description_1": "Criamos a MindLoop com a convicção de que a inteligência artificial do futuro não substituirá humanos — ela trabalhará ao lado deles.",
+        "description_2": "Nosso nome representa esse ciclo: um loop de aprendizado entre humano e máquina."
+      },
+      "story": {
+        "title": "Por que a MindLoop existe?",
+        "description_1": "A MindLoop nasce da prática em ambientes de alto risco, em que decisões não podem ser delegadas cegamente a modelos de IA. Vimos de perto o risco de tratar incidentes, normas e pessoas como simples tokens em um prompt.",
+        "description_2": "Nossa resposta foi criar um paradigma diferente: Inteligência Artificial Assistida. Não queremos substituir o especialista — queremos dar a ele uma estrutura de raciocínio mais robusta, rápida e explicável."
+      },
+      "culture": {
+        "title": "Nossa",
+        "title_highlight": "Cultura",
+        "description": "A MindLoop nasceu para unir tecnologia, ciência e humanidade.",
+        "item_1_title": "Curiosidade Radical",
+        "item_1_desc": "Estamos sempre perguntando 'por quê?' e 'e se?'.",
+        "item_2_title": "Responsabilidade Ética",
+        "item_2_desc": "IA requer cuidado, transparência e respeito pelo humano.",
+        "item_3_title": "Evolução Contínua",
+        "item_3_desc": "Nada é estático. Aprender faz parte do nosso DNA."
+      },
+      "timeline": {
+        "title": "Nossa Jornada",
+        "year_2024": "2024",
+        "text_2024": "A ideia nasce: IA deve amplificar o humano, não substituí-lo.",
+        "year_2025": "2025",
+        "text_2025": "Criação da filosofia IAA™ – Inteligência Artificial Assistida.",
+        "year_2026": "2026",
+        "text_2026": "MindLoop estabelece seu primeiro framework de agentes cognitivos."
+      },
+      "product_flow": {
+        "title": "Como a MindLoop pensa com você.",
+        "description": "Debaixo da interface simples, a MindLoop coordena múltiplos agentes, normas e memórias para entregar uma decisão sólida e explicável.",
+        "step_1_label": "1. Entrada do evento",
+        "step_1_text": "Descrição livre, anexos e contexto operacional enviados pelo time de campo ou controle.",
+        "step_2_label": "2. Raciocínio MindLoop",
+        "step_2_text": "LATS-P, RAG normativo, memória e histórico de incidentes trabalham juntos para entender o caso.",
+        "step_3_label": "3. Classificações & explicações",
+        "step_3_text": "Tipologia ANP, classificação SMS e critérios são retornados com trilha de decisão.",
+        "step_4_label": "4. Logs & auditoria",
+        "step_4_text": "Tudo fica registrado de forma estruturada, para auditorias internas, reguladores e melhoria contínua."
+      },
+      "team": {
+        "title": "Quem está por trás da MindLoop"
+      },
+      "testimonials": {
+        "title": "O que especialistas dizem sobre a MindLoop",
+        "quote_1": "A MindLoop finalmente trouxe estrutura e explicabilidade para decisões que antes dependiam de longos debates entre áreas.",
+        "name_1": "Gerente de SMS",
+        "role_1": "Indústria de óleo & gás",
+        "quote_2": "Ver a classificação ANP, SMS e a trilha de raciocínio lado a lado mudou a qualidade das nossas investigações.",
+        "name_2": "Coordenador de Incidentes",
+        "role_2": "Operação offshore"
+      }
     }
   },
-
   "marketing": {
     "introducing": "Apresentando a MindLoop",
     "title": "IA que pensa com você — não no seu lugar.",
@@ -61,13 +142,11 @@
     "main_nav_documentation": "Documentação",
     "login": "Login",
     "signup": "Criar conta",
-
     "contributors": {
       "contributors_desc": "Profissionais que impulsionam a MindLoop",
       "developers_first": "Apoiando mais de ",
       "developers_second": " especialistas em decisões críticas"
     },
-
     "right_side": {
       "deploy_on_vercel_title": "Raciocínio em tempo real",
       "deploy_on_vercel_desc": "Veja classificações, explicações e análise normativa em segundos.",
@@ -76,7 +155,6 @@
       "showcase_title": "Casos de uso reais",
       "showcase_desc": "Veja como operações, EHS e compliance usam IA assistiva para decisões críticas."
     },
-
     "features_grid": {
       "monorepo_title": "LATS-P",
       "monorepo_desc": "Raciocínio multietapas probabilístico com backtracking e explicabilidade.",
@@ -87,25 +165,21 @@
       "nextauth_title": "Árvores de Decisão Dinâmicas",
       "nextauth_desc": "Fluxos normativos adaptáveis a diferentes setores e regulações."
     },
-
     "sponsor": {
       "title": "Confiada por líderes em SMS e Operações",
       "donate": "Apoiar o projeto"
     },
-
     "video": {
       "first_text": "Veja a IA raciocinando ao vivo",
       "second_text1": "decidindo com contexto ",
       "second_text2": "e explicabilidade",
       "time_text": "em segundos"
     },
-
     "people_comment": {
       "title": "O que especialistas dizem",
       "desc": "Depoimentos reais de profissionais que transformaram seus processos decisórios com a MindLoop."
     }
   },
-
   "login": {
     "back": "Voltar",
     "welcome_back": "Bem-vindo de volta",
@@ -117,7 +191,6 @@
     "privacy": "apenas seu e-mail e foto de perfil serão armazenados.",
     "signup_github": "Criar conta com GitHub"
   },
-
   "common": {
     "copyright": "Copyright © ${currentYear} MindLoop IAA™ — Assisted Artificial Intelligence. Todos os direitos reservados.",
     "dashboard": {
@@ -129,7 +202,6 @@
       "title_text": "Gerencie seus agentes e fluxos de raciocínio."
     }
   },
-
   "business": {
     "k8s": {
       "new_cluster": "Novo Agente",
@@ -145,7 +217,6 @@
       "upgrade": "Fazer upgrade"
     }
   },
-
   "dropdown": {
     "dashboard": "Painel",
     "billing": "Assinatura",

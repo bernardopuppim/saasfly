@@ -1,54 +1,27 @@
-"use client";
+import { getDictionary } from "~/lib/get-dictionary";
+import type { Locale } from "~/config/i18n-config";
+import TestimonialsSectionClient from "./TestimonialsSectionClient";
 
-import useScrollInView from "~/hooks/use-scroll-in-view";
+export default async function TestimonialsSection({ lang }: { lang: Locale }) {
+  const dict = await getDictionary(lang);
 
-const testimonials = [
-  {
-    quote:
-      "A MindLoop finalmente trouxe estrutura e explicabilidade para decisões que antes dependiam de longos debates entre áreas.",
-    name: "Gerente de SMS",
-    role: "Indústria de óleo & gás",
-  },
-  {
-    quote:
-      "Ver a classificação ANP, SMS e a trilha de raciocínio lado a lado mudou a qualidade das nossas investigações.",
-    name: "Coordenador de Incidentes",
-    role: "Operação offshore",
-  },
-];
-
-export default function TestimonialsSection() {
-  const { ref, inView } = useScrollInView();
+  const testimonials = [
+    {
+      quote: dict.home.sections.testimonials.quote_1,
+      name: dict.home.sections.testimonials.name_1,
+      role: dict.home.sections.testimonials.role_1,
+    },
+    {
+      quote: dict.home.sections.testimonials.quote_2,
+      name: dict.home.sections.testimonials.name_2,
+      role: dict.home.sections.testimonials.role_2,
+    },
+  ];
 
   return (
-    <section className="container py-24">
-      <div
-        ref={ref}
-        className={`max-w-5xl mx-auto text-center transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
-        <h2 className="text-3xl md:text-4xl font-semibold mb-10">
-          O que especialistas dizem sobre a MindLoop
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8 text-left">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="p-6 rounded-2xl border bg-card/40 shadow-sm shadow-brand/5 flex flex-col gap-4"
-            >
-              <p className="text-sm text-neutral-600 dark:text-neutral-200 italic">
-                “{t.quote}”
-              </p>
-              <div>
-                <p className="text-sm font-semibold">{t.name}</p>
-                <p className="text-xs text-neutral-500">{t.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <TestimonialsSectionClient
+      title={dict.home.sections.testimonials.title}
+      testimonials={testimonials}
+    />
   );
 }
