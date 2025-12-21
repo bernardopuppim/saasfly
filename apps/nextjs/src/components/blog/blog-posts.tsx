@@ -25,15 +25,15 @@ export function BlogPosts({ posts }: BlogPostsProps) {
       <section>
         <h2 className="font-heading mb-4 text-3xl">Last Post</h2>
         <article className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
+          <div className="flex justify-center">
             {posts[0]?.image && (
-                  <Image
-                    alt={posts[0].title}
-                    className="w-full max-w-md rounded-lg border object-cover object-center md:h-56"
-                    height={226}
-                    src={posts[0].image}
-                    width={402}
-                  />
+              <Image
+                alt={posts[0].title}
+                className="w-full max-w-md rounded-lg border object-cover object-center md:h-56"
+                height={226}
+                src={posts[0].image}
+                width={402}
+              />
             )}
           </div>
           <div className="flex flex-col justify-center">
