@@ -1,0 +1,190 @@
+---
+title: Por que paramos de usar RAG em tudo (e o sistema ficou melhor)
+description: Como remover o uso indiscriminado de RAG melhorou desempenho, confiabilidade e qualidade das decisões.
+date: "2024-06-01"
+authors:
+  - repo
+image: /images/blog/blog-post-7.png
+---
+
+## A suposição inicial: “Mais contexto é sempre melhor”
+
+No início do projeto, havia uma crença quase inquestionável:
+
+> **Se o modelo tiver mais contexto, ele tomará decisões melhores.**
+
+Então fizemos o que a maioria dos sistemas de IA faz hoje:
+- recuperamos documentos  
+- geramos embeddings  
+- reordenamos trechos (rerank)  
+- injetamos grandes blocos de texto em cada decisão  
+
+RAG em tudo.  
+O tempo todo.
+
+Parecia *seguro*.
+
+E caro.
+
+---
+
+## As primeiras fissuras: latência, retries e frustração
+
+À medida que o sistema cresceu, os sintomas ficaram claros:
+
+- tempos de resposta elevados  
+- requisições de rerank estourando timeout  
+- embeddings sendo recalculados repetidamente  
+- chamadas de LLM empilhadas  
+
+Mas pior do que a performance foi algo mais sutil:
+
+> **O modelo simplesmente não usava a maior parte daquele contexto.**
+
+Pagávamos um preço alto por pouco valor real.
+
+---
+
+## Uma pergunta simples (e desconfortável)
+
+Em certo momento, surgiu a pergunta:
+
+> *Toda decisão realmente precisa de conhecimento externo?*
+
+E a resposta honesta foi: **não**.
+
+Muitos passos da árvore de decisão eram:
+- determinísticos  
+- estruturais  
+- puramente classificatórios  
+
+Exemplos:
+- escolhas entre categorias mutuamente exclusivas  
+- interpretação de limites numéricos  
+- aplicação de lógica regulatória já codificada na árvore  
+
+Nesses casos, o RAG não ajudava.  
+Ele apenas estava ali.
+
+---
+
+## A virada de chave: estrutura também é conhecimento
+
+Esse foi o ponto de inflexão.
+
+A própria árvore de decisão já carregava:
+- conhecimento de domínio  
+- lógica normativa  
+- raciocínio de especialistas  
+
+Chamar RAG em cada nó era redundante.
+
+Então invertimos a lógica:
+
+> **Nada de RAG, a menos que seja realmente necessário.**
+
+---
+
+## Quando o RAG faz sentido de verdade
+
+O RAG continuou existindo — mas de forma seletiva.
+
+Ele passou a ser usado apenas:
+- quando ainda havia ambiguidade após a poda  
+- quando a descrição do evento era insuficiente  
+- quando a decisão exigia fundamentação textual  
+- quando memória histórica ou normativa era relevante  
+
+Em outras palavras:
+
+> **O RAG se tornou contextual, não automático.**
+
+---
+
+## Ganhos imediatos de performance
+
+O impacto foi grande:
+
+- tempo de execução drasticamente menor  
+- retries quase inexistentes  
+- embeddings reaproveitados  
+- chamadas de rerank raras  
+
+O sistema deixou de parecer “pesado”.
+
+Ficou ágil.
+
+---
+
+## Decisões melhores com menos informação (sim)
+
+Aqui vem a parte contraintuitiva:
+
+> **A qualidade das decisões melhorou.**
+
+O motivo é simples:
+o modelo parou de se distrair.
+
+Em vez de tentar conciliar:
+- descrição do evento  
+- trechos recuperados  
+- normas completas  
+- contexto irrelevante  
+
+Ele passou a focar em:
+- a pergunta atual  
+- os caminhos válidos  
+- a incerteza real  
+
+---
+
+## RAG como ferramenta de precisão, não como muleta
+
+Antes, o RAG era usado de forma defensiva:
+> *“Vai que o modelo precise disso.”*
+
+Depois da mudança, ele virou algo cirúrgico:
+> *“Só use se não for possível avançar sem isso.”*
+
+Essa distinção mudou tudo.
+
+---
+
+## Um benefício oculto: explicações mais claras
+
+Com menos contexto injetado:
+- as explicações ficaram mais curtas  
+- as justificativas, mais diretas  
+- o raciocínio, mais auditável  
+
+Em ambientes regulados, isso faz toda a diferença.
+
+---
+
+## Uma lição mais ampla sobre sistemas de IA
+
+Essa experiência traz uma lição que vai além do projeto:
+
+> **Mais dados não confirmam mais inteligência.**
+
+Bons sistemas:
+- sabem o que já sabem  
+- pedem ajuda apenas quando necessário  
+- respeitam tempo, custo e carga cognitiva  
+
+---
+
+## Conclusão: inteligência é seletiva
+
+Desligar o RAG por padrão pareceu arriscado no começo.
+
+Mas revelou algo essencial:
+
+> **Um sistema inteligente não é o que lê tudo.  
+> É o que sabe quando não precisa ler.**
+
+---
+
+👉 **No próximo artigo**, exploro como o  
+**Human-in-the-Loop deixou de ser um “plano B”  
+e passou a atuar como uma verdadeira camada de governança.**

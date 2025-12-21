@@ -1,0 +1,190 @@
+---
+title: Why We Stopped Using RAG Everywhere (and the System Got Better)
+description: How removing unnecessary Retrieval-Augmented Generation calls improved speed, reliability, and decision quality.
+date: "2024-05-01"
+authors:
+  - repo
+image: /images/blog/blog-post-7.png
+---
+
+## The original assumption: “More context is always better”
+
+At the beginning of the project, one belief felt almost unquestionable:
+
+> **If the model has more context, it will make better decisions.**
+
+So we did what most AI systems do today:
+- retrieve documents  
+- generate embeddings  
+- rerank passages  
+- inject large chunks of text into every decision  
+
+RAG everywhere.  
+All the time.
+
+It felt *safe*.
+
+And expensive.
+
+---
+
+## The first cracks: latency, retries, and frustration
+
+As the system grew, the symptoms became obvious:
+
+- long response times  
+- rerank requests timing out  
+- embeddings being recomputed repeatedly  
+- LLM calls stacked on top of each other  
+
+But worse than performance was something subtler:
+
+> **The model wasn’t actually using most of that context.**
+
+We were paying a high price for very little value.
+
+---
+
+## A simple but uncomfortable question
+
+At some point, we asked:
+
+> *Does every decision really need external knowledge?*
+
+And the honest answer was: **no**.
+
+Many steps in the decision tree were:
+- deterministic  
+- structural  
+- purely classificatory  
+
+Examples:
+- choosing between mutually exclusive categories  
+- interpreting numeric thresholds  
+- following regulatory logic already encoded in the tree  
+
+RAG wasn’t helping.  
+It was just… there.
+
+---
+
+## The key realization: structure is knowledge too
+
+This was the turning point.
+
+The decision tree itself already contained:
+- domain knowledge  
+- regulatory logic  
+- expert reasoning  
+
+Calling RAG on every node was redundant.
+
+So we flipped the default:
+
+> **No RAG unless it is truly needed.**
+
+---
+
+## When RAG actually makes sense
+
+We kept RAG — but only where it adds real value.
+
+Specifically:
+- when ambiguity remains after pruning  
+- when the event description lacks critical details  
+- when justification requires textual grounding  
+- when historical or normative memory is relevant  
+
+In other words:
+
+> **RAG became contextual, not automatic.**
+
+---
+
+## The immediate performance gains
+
+The impact was dramatic:
+
+- execution time dropped sharply  
+- retries almost disappeared  
+- embeddings were reused instead of recomputed  
+- rerank calls became rare  
+
+The system stopped feeling “heavy”.
+
+It became responsive.
+
+---
+
+## Better decisions with less information (yes, really)
+
+Here’s the counterintuitive part:
+
+> **Decision quality improved.**
+
+Why?
+
+Because the model stopped being distracted.
+
+Instead of juggling:
+- event description  
+- retrieved passages  
+- regulatory excerpts  
+- irrelevant context  
+
+It focused on:
+- the current question  
+- the valid candidate paths  
+- the actual uncertainty  
+
+---
+
+## RAG as a precision tool, not a safety blanket
+
+Before, RAG was used defensively:
+> *“Just in case the model needs it.”*
+
+After the change, RAG became surgical:
+> *“Use this only if the decision cannot progress without it.”*
+
+That distinction changed everything.
+
+---
+
+## The hidden benefit: clearer explanations
+
+With less context injected:
+- explanations became shorter  
+- justifications became clearer  
+- reasoning chains became easier to audit  
+
+This mattered a lot in a regulated environment.
+
+---
+
+## A broader lesson for AI systems
+
+The lesson goes beyond this project:
+
+> **More data is not the same as more intelligence.**
+
+Good systems:
+- know what they already know  
+- ask for help only when necessary  
+- respect time, cost, and cognitive load  
+
+---
+
+## Conclusion: intelligence is selective
+
+Turning RAG off by default felt risky at first.
+
+But it revealed something important:
+
+> **An intelligent system is not the one that reads everything.  
+> It’s the one that knows when reading is unnecessary.**
+
+---
+
+👉 **In the next article**, I’ll explore how  
+**Human-in-the-Loop evolved from a fallback mechanism into a governance layer — and why that distinction matters.**

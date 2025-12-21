@@ -27,13 +27,13 @@ export function BlogPosts({ posts }: BlogPostsProps) {
         <article className="relative grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             {posts[0]?.image && (
-              <Image
-                alt={posts[0].title}
-                className="w-full rounded-lg border object-cover object-center md:h-64 lg:h-72"
-                height={226}
-                src={posts[0].image}
-                width={402}
-              />
+                  <Image
+                    alt={posts[0].title}
+                    className="w-full max-w-md rounded-lg border object-cover object-center md:h-56"
+                    height={226}
+                    src={posts[0].image}
+                    width={402}
+                  />
             )}
           </div>
           <div className="flex flex-col justify-center">

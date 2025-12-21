@@ -1,0 +1,182 @@
+---
+title: When AI Learns to Stop Thinking (Pruning, Entropy, and the End of Chaos)
+description: How intelligent pruning and entropy-based criteria transformed a chaotic decision tree into a reliable system.
+date: "2024-04-01"
+authors:
+  - repo
+image: /images/blog/blog-post-5.png
+---
+
+## The real fear: “this is going to become a computational monster”
+
+At some point in the project, one thing became clear:
+
+> **If we let the AI explore too many paths, this won’t scale.**
+
+Keeping multiple hypotheses alive made sense conceptually.  
+But in practice, a very real fear emerged:
+
+- trees growing uncontrollably  
+- long execution times  
+- confusing decisions  
+- exploding computational costs  
+
+It was the classic dilemma:
+
+> **either you explore deeply, or you run fast.**
+
+Having both felt impossible.
+
+---
+
+## The turning point: thinking like an experienced investigator
+
+That’s when a simple — almost obvious — question appeared:
+
+> *Does a good investigator analyze every possible hypothesis until the end?*
+
+Of course not.
+
+They discard hypotheses constantly.
+
+Not by intuition,  
+but by **lack of evidence**.
+
+That insight became the technical core of the system:
+
+> **information-driven pruning.**
+
+---
+
+## Entropy: when uncertainty is real (and when it isn’t)
+
+Not every uncertainty deserves human attention.
+
+Some uncertainty is just noise.
+
+Entropy entered the system as an honest measure of doubt:
+
+- Low entropy → the model is confident  
+- High entropy → multiple answers are competing  
+
+But the most important insight was this:
+
+> **entropy only makes sense *after* pruning.**
+
+---
+
+## The classic mistake we almost made
+
+Early on, the system treated all children equally.
+
+Even those with:
+- score = 0  
+- clearly incoherent justifications  
+- explicit contradictions with the event text  
+
+The result?
+
+- artificially high entropy  
+- unnecessary HITL triggers  
+- poor decisions disguised as “uncertainty”  
+
+The doubt wasn’t real.  
+It was **manufactured**.
+
+---
+
+## The rule that changed everything: score zero doesn’t get a voice
+
+The fix was simple — and powerful:
+
+> **Children with score == 0 do not participate in entropy.  
+> They do not participate in HITL.  
+> They do not participate in decisions.**
+
+They are pruned.
+
+No drama.
+
+No debate.
+
+---
+
+## The immediate impact of pruning
+
+As soon as pruning was applied:
+
+- entropy collapsed  
+- HITL stopped triggering unnecessarily  
+- the correct paths naturally emerged  
+
+The system started behaving like an experienced specialist:
+
+> *“This clearly makes no sense. Ignore it.”*
+
+---
+
+## HITL stopped being a crutch and became an exception
+
+Before, humans were called because the system was confused.
+
+After pruning, humans were called only when:
+
+- two **truly plausible** hypotheses competed  
+- the event description was genuinely ambiguous  
+- objective information was missing  
+
+In other words:
+
+> **HITL became governance, not correction.**
+
+---
+
+## Knowing when to stop thinking is intelligence
+
+Perhaps the most counterintuitive insight of the project was this:
+
+> **A smart AI knows when to stop thinking.**
+
+Exploring everything is not intelligence.  
+It’s brute force.
+
+What we built instead was a system that:
+- explores less  
+- discards faster  
+- decides at the right moment  
+
+---
+
+## A system that respects time and risk
+
+This combination of:
+- score-based pruning  
+- clean entropy  
+- limited exploration  
+
+created something rare:
+
+> **a system that is explainable, fast, and reliable at the same time.**
+
+Nothing was guessed.  
+Nothing was over-analyzed.
+
+---
+
+## Conclusion: fewer paths, more truth
+
+In the end, pruning wasn’t just an optimization.
+
+It was a philosophical decision.
+
+It told the system:
+
+> *“You don’t need to consider everything.  
+> You need to consider what makes sense.”*
+
+And interestingly enough, that’s exactly how good professionals make decisions in the real world.
+
+---
+
+👉 **In the next article**, I’ll tackle a critical topic:
+**why RAG shouldn’t run all the time — and how turning it off made the system both faster and more accurate.**
