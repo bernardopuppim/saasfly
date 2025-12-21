@@ -30,9 +30,9 @@ export function BlogPosts({ posts }: BlogPostsProps) {
               <Image
                 alt={posts[0].title}
                 className="w-full rounded-lg border object-cover object-center md:h-64 lg:h-72"
-                height={452}
+                height={226}
                 src={posts[0].image}
-                width={804}
+                width={402}
               />
             )}
           </div>
