@@ -10,6 +10,7 @@ import { cn } from "@saasfly/ui";
 import { MainNav } from "./main-nav";
 import { LocaleChange } from "~/components/locale-change";
 import { ModeToggle } from "~/components/mode-toggle";
+import { GitHubStar } from "~/components/github-star";
 
 import useScroll from "~/hooks/use-scroll";
 import type { MainNavItem } from "~/types";
@@ -92,6 +93,9 @@ export function NavBar({
         {/* RIGHT: Actions */}
         <div className="flex items-center gap-4">
           {rightElements}
+
+          {/* GitHub Star */}
+          <GitHubStar />
 
         {/* Language Selector */}
         <div className="mt-[2px]">
