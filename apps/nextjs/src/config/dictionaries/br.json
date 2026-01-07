@@ -1,141 +1,137 @@
 {
   "price": {
-    "title": "Acesso simples a um laboratório de ideias",
-    "pricing": "Planos",
-    "slogan": "Experimente, construa e aprenda.",
-    "monthly_bill": "Cobrança Mensal",
-    "annual_bill": "Cobrança Anual",
-    "annual_info": "cobrado em ciclo anual",
-    "monthly_info": "cobrado mensalmente",
+    "title": "Acesso a um laboratório de experimentação",
+    "pricing": "Acesso",
+    "slogan": "Construa portfólio. Teste ideias. Documente aprendizados.",
+    "monthly_bill": "Acesso Mensal",
+    "annual_bill": "Acesso Anual",
+    "annual_info": "acesso contínuo ao laboratório",
+    "monthly_info": "acesso mensal ao ambiente experimental",
     "mo": "/mês",
-    "contact": "para conversar sobre usos experimentais ou institucionais.",
-    "contact_2": "Os projetos podem ser explorados sem compromisso comercial.",
+    "contact": "para discutir colaboração, pesquisa ou estudos de caso.",
+    "contact_2": "A MindLoop não oferece soluções prontas nem automação decisória.",
     "faq": "Perguntas Frequentes",
-    "faq_detail": "Entenda o propósito experimental, os limites e a filosofia HITL da MindLoop. Para usos específicos, fale com o time.",
-    "signup": "Criar conta",
-    "upgrade": "Explorar mais recursos",
+    "faq_detail": "Entenda o caráter experimental, educacional e exploratório da MindLoop.",
+    "signup": "Entrar no laboratório",
+    "upgrade": "Ampliar acesso",
     "manage_subscription": "Gerenciar acesso",
-    "go_to_dashboard": "Ir para o laboratório"
+    "go_to_dashboard": "Ir para os experimentos"
   },
   "home": {
     "hero": {
       "tagline": "IAA™ · Assisted Artificial Intelligence",
       "tagline_sub": "A place to experiment with thinking systems",
-      "title": "Automatizar decisões não é o objetivo",
-      "title_highlight": "Aprender a raciocinar com IA é",
-      "description": "A MindLoop é um laboratório de experimentação onde ideias, métodos e sistemas de IA são testados com humanos no centro do processo.",
+      "title": "Delegar decisões à IA é arriscado",
+      "title_highlight": "Raciocinar com ela é poderoso",
+      "description": "A MindLoop é um espaço experimental para explorar como humanos e sistemas de IA podem pensar juntos em problemas complexos.",
       "image_alt": "Mockup MindLoop"
     },
     "manifesto": {
-      "title": "IA não é produto final. É meio de investigação.",
-      "description": "A MindLoop existe para explorar como humanos e sistemas podem pensar juntos. Cada projeto é um experimento — não uma resposta definitiva."
+      "title": "Ideias antes de produtos. Raciocínio antes de automação.",
+      "description": "Cada projeto da MindLoop é um experimento documentado. O objetivo não é entregar respostas, mas investigar como decisões podem ser melhor estruturadas."
     },
     "cta_final": {
-      "title": "Vamos experimentar novas formas de pensar.",
-      "description": "Se você acredita que IA deve apoiar o raciocínio humano, este laboratório é para você."
+      "title": "Portfólio com ideias reais.",
+      "description": "Aqui você acessa ideias em construção: projetos, textos, artigos, reflexões e protótipos que desenvolvo ao longo do tempo. A MindLoop funciona como uma extensão viva do meu pensamento."
     },
     "sections": {
       "trusted_by": {
-        "tagline": "Explorado por profissionais de EHS, Engenharia e Operações",
+        "tagline": "Explorado por profissionais curiosos e pesquisadores aplicados",
         "badge_oil_gas": "Óleo & Gás",
         "badge_energy": "Energia",
-        "badge_sms": "SMS & Compliance"
+        "badge_sms": "SMS & Regulação"
       },
       "iaa_concept": {
         "tagline": "IAA™ — Inteligência Artificial Assistida",
-        "title": "IA como parceira de raciocínio",
-        "description": "Os projetos da MindLoop são construídos com loops HITL. O humano interpreta, questiona e decide. A IA organiza, sugere e explica.",
+        "title": "IA como objeto de estudo",
+        "description": "Inteligência Artificial Assistida é um conceito criado para orientar o uso consciente da IA. Na MindLoop, a IA não recebe responsabilidade nem toma decisões. Ela atua como um amplificador do pensamento humano e como meio de acesso ao conhecimento acumulado pela humanidade.",
         "human_label": "Humano",
-        "human_desc": "Contexto, responsabilidade, decisão e senso crítico.",
-        "ai_label": "IA MindLoop",
-        "ai_desc": "Estruturação, memória, busca contextual e apoio ao raciocínio.",
+        "human_desc": "Responsável pelo sentido e pela decisão. Formula hipóteses, interpreta resultados, avalia consequências e assume integralmente a responsabilidade pelas escolhas realizadas.",
+        "ai_label": "IAA™",
+        "ai_desc": "Atua como suporte cognitivo. Organiza informações, recupera conhecimento, sugere caminhos de raciocínio e torna explícitas relações que auxiliam o pensamento humano.",
         "loop_label": "Loop Experimental",
-        "loop_desc": "Cada interação gera aprendizado — para o sistema e para quem o utiliza."
+        "loop_desc": "Espaço de aprendizado contínuo entre humano e IA. O valor está na iteração, na reflexão e no refinamento do raciocínio — não na resposta final."
       },
       "superpowers": {
-        "title": "Por que a",
+        "title": "O que torna a",
         "title_highlight": "MindLoop",
-        "description": "Este não é um produto fechado. É um ambiente para testar ideias em cenários complexos e regulados.",
-        "item_1_title": "Engenharia de contexto",
-        "item_1_desc": "Exploramos como contexto, normas e histórico influenciam o raciocínio assistido.",
-        "item_2_title": "Explicabilidade como premissa",
-        "item_2_desc": "Todo experimento busca tornar o raciocínio visível e questionável.",
-        "item_3_title": "HITL por design",
-        "item_3_desc": "O humano nunca sai do loop. A decisão é sempre dele.",
-        "item_4_title": "Foco em aprendizado",
-        "item_4_desc": "Cada projeto gera conhecimento reutilizável e portfólio técnico."
+        "description": "Um ambiente para testar ideias complexas com responsabilidade.",
+        "item_1_title": "Projetos como portfólio",
+        "item_1_desc": "Cada experimento é um artefato documentado de aprendizado.",
+        "item_2_title": "Engenharia de contexto",
+        "item_2_desc": "Investigamos como contexto molda decisões assistidas por IA.",
+        "item_3_title": "HITL como premissa",
+        "item_3_desc": "O humano permanece no centro de todas as decisões.",
+        "item_4_title": "Exploração responsável",
+        "item_4_desc": "Sem promessas de automação ou substituição humana."
       },
       "about": {
         "title": "Sobre o",
-        "title_highlight": "Laboratório MindLoop",
-        "description_1": "A MindLoop é um espaço para experimentar sistemas cognitivos aplicados.",
-        "description_2": "Aqui, errar, ajustar e aprender fazem parte do processo."
+        "title_highlight": "Laboratório",
+        "description_1": "A MindLoop é um laboratório independente de experimentação em IA aplicada.",
+        "description_2": "Aqui, projetos existem para gerar aprendizado, não produtos comerciais."
       },
       "story": {
-        "title": "Por que este laboratório existe?",
-        "description_1": "Nasceu da necessidade de testar ideias antes de transformá-las em produtos ou decisões reais.",
-        "description_2": "A MindLoop documenta caminhos de raciocínio, não verdades absolutas."
+        "title": "Por que um laboratório?",
+        "description_1": "Porque decisões reais exigem reflexão antes de automação.",
+        "description_2": "A MindLoop documenta caminhos de pensamento, não respostas finais."
       },
-      "culture": {
-        "title": "Nossa",
-        "title_highlight": "Cultura",
-        "description": "Experimentar com responsabilidade.",
-        "item_1_title": "Exploração Intelectual",
-        "item_1_desc": "Testamos hipóteses, não promessas.",
-        "item_2_title": "Humano no Centro",
-        "item_2_desc": "IA como apoio, nunca como autoridade.",
-        "item_3_title": "Conhecimento Aberto",
-        "item_3_desc": "Projetos pensados como portfólio e aprendizado coletivo."
-      },
+  "culture": {
+    "title": "Nossa",
+    "title_highlight": "Cultura",
+    "description": "Pensar antes de construir, sempre a partir de problemas reais.",
+    "item_1_title": "Pesquisa aplicada",
+    "item_1_desc": "Cada projeto nasce de um problema concreto e é tratado como um experimento prático.",
+    "item_2_title": "Humildade técnica",
+    "item_2_desc": "IA não é autoridade nem solução pronta — é ferramenta para apoiar decisões humanas.",
+    "item_3_title": "Aprendizado verificável",
+    "item_3_desc": "O valor está no processo documentado, testado e aplicável a contextos reais."
+  },
       "timeline": {
         "title": "Evolução do Laboratório",
-        "year_2024": "2024",
-        "text_2024": "Primeiros experimentos com IA assistiva.",
         "year_2025": "2025",
-        "text_2025": "Formalização da filosofia IAA™ e HITL.",
-        "year_2026": "2026",
-        "text_2026": "Consolidação de frameworks experimentais."
+        "text_2025": "Formalização do laboratório e filosofia AAI."
       },
       "product_flow": {
-        "title": "Como os experimentos funcionam",
-        "description": "Cada fluxo é um teste de como humanos e IA podem raciocinar juntos.",
-        "step_1_label": "1. Contexto inicial",
-        "step_1_text": "Entrada livre de informações, hipóteses e dados.",
+        "title": "Como os experimentos acontecem",
+        "description": "Cada fluxo é um estudo de caso.",
+        "step_1_label": "1. Pergunta inicial",
+        "step_1_text": "Formulação do problema ou hipótese.",
         "step_2_label": "2. Estruturação assistida",
-        "step_2_text": "A IA ajuda a organizar normas, histórico e possibilidades.",
-        "step_3_label": "3. Interpretação humana",
-        "step_3_text": "O humano valida, ajusta e decide.",
-        "step_4_label": "4. Registro do aprendizado",
-        "step_4_text": "O processo vira conhecimento reutilizável."
+        "step_2_text": "IA organiza normas, dados e possibilidades.",
+        "step_3_label": "3. Análise humana",
+        "step_3_text": "O humano interpreta e decide.",
+        "step_4_label": "4. Registro",
+        "step_4_text": "O aprendizado vira portfólio."
       },
       "team": {
-        "title": "Quem experimenta na MindLoop"
+        "title": "Quem constrói os experimentos"
       },
       "testimonials": {
-        "title": "O que profissionais dizem",
-        "quote_1": "A MindLoop nos ajudou a estruturar o pensamento, não a terceirizar decisões.",
-        "name_1": "Especialista em SMS",
-        "role_1": "Setor industrial",
-        "quote_2": "É mais um laboratório de ideias do que uma ferramenta pronta — e isso é o diferencial.",
-        "name_2": "Engenheiro de Operações",
-        "role_2": "Ambiente regulado"
+        "title": "Percepções do laboratório",
+        "quote_1": "Aqui o valor está no raciocínio, não na resposta.",
+        "name_1": "Especialista técnico",
+        "role_1": "Ambiente regulado",
+        "quote_2": "É um ótimo espaço para construir portfólio real em IA.",
+        "name_2": "Engenheiro",
+        "role_2": "Pesquisa aplicada"
       }
     }
   },
   "marketing": {
-    "introducing": "Conheça o Laboratório MindLoop",
-    "title": "Experimentação guiada por IA assistiva.",
-    "sub_title": "Projetos, ideias e frameworks para raciocínio humano + IA.",
-    "get_started": "Explorar laboratório",
+    "introducing": "MindLoop Experimental Lab",
+    "title": "Um laboratório para pensar com IA.",
+    "sub_title": "Exploração, pesquisa aplicada e construção de portfólio.",
+    "get_started": "Entrar no laboratório",
     "view_on_github": "Ver experimentos no GitHub",
     "explore_product": "Explorar projetos",
-    "features": "O que exploramos",
-    "sub_features": "Métodos, não atalhos.",
+    "features": "O que investigamos",
+    "sub_features": "Métodos antes de ferramentas.",
     "k8s_features": "Raciocínio estruturado",
-    "devops_features": "IA aplicada a problemas reais",
-    "price_features": "Escala como aprendizado",
+    "devops_features": "IA aplicada a contextos reais",
+    "price_features": "Aprendizado contínuo",
     "main_nav_features": "Home",
-    "main_nav_pricing": "Planos",
+    "main_nav_pricing": "Acesso",
     "main_nav_products": "Produto",
     "main_nav_projects": "Projetos",
     "main_nav_blog": "Publicações",
@@ -143,84 +139,41 @@
     "login": "Login",
     "signup": "Criar conta",
     "contributors": {
-      "contributors_desc": "Pessoas que constroem conhecimento",
+      "contributors_desc": "Pessoas construindo conhecimento",
       "developers_first": "Mais de ",
-      "developers_second": " profissionais explorando IA assistiva"
+      "developers_second": " profissionais explorando IA"
     },
     "right_side": {
-      "deploy_on_vercel_title": "Aprendizado em tempo real",
-      "deploy_on_vercel_desc": "Veja hipóteses sendo testadas ao vivo.",
-      "ship_on_cloudflare_title": "Infraestrutura para experimentação",
-      "ship_on_cloudflare_desc": "Ambiente seguro para testar ideias.",
-      "showcase_title": "Projetos em evolução",
-      "showcase_desc": "Cada caso é um experimento documentado."
+      "deploy_on_vercel_title": "Experimentação contínua",
+      "deploy_on_vercel_desc": "Hipóteses testadas em tempo real.",
+      "ship_on_cloudflare_title": "Ambiente seguro",
+      "ship_on_cloudflare_desc": "Infraestrutura para experimentos.",
+      "showcase_title": "Projetos vivos",
+      "showcase_desc": "Nenhum experimento é definitivo."
     },
     "features_grid": {
       "monorepo_title": "LATS-P",
-      "monorepo_desc": "Exploração de raciocínio multietapas.",
+      "monorepo_desc": "Pesquisa em raciocínio multietapas.",
       "i18n_title": "RAG Contextual",
       "i18n_desc": "Contexto como variável central.",
       "payments_title": "HITL",
-      "payments_desc": "Humano sempre no controle.",
+      "payments_desc": "Humano sempre no loop.",
       "nextauth_title": "Fluxos experimentais",
-      "nextauth_desc": "Estruturas adaptáveis para diferentes hipóteses."
+      "nextauth_desc": "Estruturas adaptáveis."
     },
     "sponsor": {
-      "title": "Um laboratório aberto à colaboração",
+      "title": "Um laboratório aberto",
       "donate": "Apoiar o laboratório"
     },
     "video": {
-      "first_text": "Veja ideias ganhando forma",
+      "first_text": "Veja ideias sendo testadas",
       "second_text1": "com raciocínio assistido ",
       "second_text2": "e contexto",
-      "time_text": "em tempo real"
+      "time_text": "ao vivo"
     },
     "people_comment": {
-      "title": "Experiências reais",
-      "desc": "Relatos de quem usa a MindLoop para pensar melhor."
+      "title": "Aprendizados compartilhados",
+      "desc": "Relatos de quem constrói portfólio com a MindLoop."
     }
-  },
-  "login": {
-    "back": "Voltar",
-    "welcome_back": "Bem-vindo ao laboratório",
-    "signin_title": "Entre para explorar os projetos",
-    "singup_title": "Ainda não participa? Crie sua conta.",
-    "signin_email": "Entrar com e-mail",
-    "signin_others": "Ou continue com",
-    "signup": "Criar conta",
-    "privacy": "usamos apenas o essencial para acesso.",
-    "signup_github": "Criar conta com GitHub"
-  },
-  "common": {
-    "copyright": "Copyright © ${currentYear} MindLoop IAA™ — Laboratório de Inteligência Artificial Assistida.",
-    "dashboard": {
-      "main_nav_documentation": "Documentação",
-      "main_nav_support": "Suporte",
-      "sidebar_nav_clusters": "Agentes",
-      "sidebar_nav_billing": "Acesso",
-      "sidebar_nav_settings": "Configurações",
-      "title_text": "Gerencie seus experimentos e fluxos de raciocínio."
-    }
-  },
-  "business": {
-    "k8s": {
-      "new_cluster": "Novo Experimento",
-      "no_cluster_title": "Nenhum experimento criado",
-      "no_cluster_content": "Crie seu primeiro fluxo de raciocínio."
-    },
-    "billing": {
-      "billing": "Acesso",
-      "content": "Gerencie seu plano de exploração",
-      "noSubscription": "Você ainda não possui acesso ativo.",
-      "subscriptionInfo": "Você está no plano <strong>{plan}</strong>. Renovação em <strong>{date}</strong>.",
-      "manage_subscription": "Gerenciar acesso",
-      "upgrade": "Explorar mais"
-    }
-  },
-  "dropdown": {
-    "dashboard": "Laboratório",
-    "billing": "Acesso",
-    "settings": "Configurações",
-    "sign_out": "Sair"
   }
 }
