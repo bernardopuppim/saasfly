@@ -35,6 +35,12 @@
       "description": "Aqui você acessa ideias em construção: projetos, textos, artigos, reflexões e protótipos que desenvolvo ao longo do tempo. A MindLoop funciona como uma extensão viva do meu pensamento."
     },
     "sections": {
+      "trusted_by": {
+        "tagline": "Explorado por profissionais curiosos e pesquisadores aplicados",
+        "badge_oil_gas": "Óleo & Gás",
+        "badge_energy": "Energia",
+        "badge_sms": "SMS & Regulação"
+      },
       "iaa_concept": {
         "tagline": "IAA™ — Inteligência Artificial Assistida",
         "title": "IA como objeto de estudo",
@@ -45,6 +51,30 @@
         "ai_desc": "Atua como suporte cognitivo. Organiza informações, recupera conhecimento, sugere caminhos de raciocínio e torna explícitas relações que auxiliam o pensamento humano.",
         "loop_label": "Loop Experimental",
         "loop_desc": "Espaço de aprendizado contínuo entre humano e IA. O valor está na iteração, na reflexão e no refinamento do raciocínio — não na resposta final."
+      },
+      "superpowers": {
+        "title": "O que torna a",
+        "title_highlight": "MindLoop",
+        "description": "Um ambiente para testar ideias complexas com responsabilidade.",
+        "item_1_title": "Projetos como portfólio",
+        "item_1_desc": "Cada experimento é um artefato documentado de aprendizado.",
+        "item_2_title": "Engenharia de contexto",
+        "item_2_desc": "Investigamos como contexto molda decisões assistidas por IA.",
+        "item_3_title": "HITL como premissa",
+        "item_3_desc": "O humano permanece no centro de todas as decisões.",
+        "item_4_title": "Exploração responsável",
+        "item_4_desc": "Sem promessas de automação ou substituição humana."
+      },
+      "about": {
+        "title": "Sobre o",
+        "title_highlight": "Laboratório",
+        "description_1": "A MindLoop é um laboratório independente de experimentação em IA aplicada.",
+        "description_2": "Aqui, projetos existem para gerar aprendizado, não produtos comerciais."
+      },
+      "story": {
+        "title": "Por que um laboratório?",
+        "description_1": "Porque decisões reais exigem reflexão antes de automação.",
+        "description_2": "A MindLoop documenta caminhos de pensamento, não respostas finais."
       },
       "culture": {
         "title": "Nossa",
@@ -57,8 +87,38 @@
         "item_3_title": "Aprendizado verificável",
         "item_3_desc": "O valor está no processo documentado, testado e aplicável a contextos reais."
       },
+      "timeline": {
+        "title": "Evolução do Laboratório",
+        "year_2024": "2024",
+        "text_2024": "Primeiros experimentos com IA assistiva.",
+        "year_2025": "2025",
+        "text_2025": "Formalização do laboratório e filosofia IAA™.",
+        "year_2026": "2026",
+        "text_2026": "Consolidação de frameworks experimentais."
+      },
+      "product_flow": {
+        "title": "Como os experimentos acontecem",
+        "description": "Cada fluxo é um estudo de caso.",
+        "step_1_label": "1. Pergunta inicial",
+        "step_1_text": "Formulação do problema ou hipótese.",
+        "step_2_label": "2. Estruturação assistida",
+        "step_2_text": "IA organiza normas, dados e possibilidades.",
+        "step_3_label": "3. Análise humana",
+        "step_3_text": "O humano interpreta e decide.",
+        "step_4_label": "4. Registro",
+        "step_4_text": "O aprendizado vira portfólio."
+      },
       "team": {
         "title": "Quem constrói os experimentos"
+      },
+      "testimonials": {
+        "title": "Percepções do laboratório",
+        "quote_1": "Aqui o valor está no raciocínio, não na resposta.",
+        "name_1": "Especialista técnico",
+        "role_1": "Ambiente regulado",
+        "quote_2": "É um ótimo espaço para construir portfólio real em IA.",
+        "name_2": "Engenheiro",
+        "role_2": "Pesquisa aplicada"
       }
     }
   },
