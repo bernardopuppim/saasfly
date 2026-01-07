@@ -65,16 +65,16 @@ export default async function IndexPage({
         </p>
       </section>
 
-      <TrustedBySection lang={lang} />
+      {/*<TrustedBySection lang={lang} />*/}
       <IAAConceptSection lang={lang} />
       <SuperpowersSection lang={lang} />
-      <AboutSection lang={lang} />
-      <StorySection lang={lang} />
+      {/*<AboutSection lang={lang} />*/}
+      {/*<StorySection lang={lang} />*/}
       <CultureSection lang={lang} />
-      <TimelineSection lang={lang} />
-      <ProductFlowSection lang={lang} />
+      {/*<TimelineSection lang={lang} />*/}
+      {/*<ProductFlowSection lang={lang} />*/}
       <TeamSection lang={lang} />
-      <TestimonialsSection lang={lang} />
+      {/*<TestimonialsSection lang={lang} />*/}
 
       {/* CTA Final */}
       <section className="container py-28 md:py-32 text-center space-y-6">

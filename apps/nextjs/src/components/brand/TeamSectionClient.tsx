@@ -24,7 +24,7 @@ export default function TeamSectionClient({
       <Reveal>
         <SectionTitle>{title}</SectionTitle>
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-1 gap-10 max-w-4xl mx-auto">
           {team.map((person, index) => (
             <TeamMemberCard key={index} {...person} />
           ))}
