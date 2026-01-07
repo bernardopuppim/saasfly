@@ -1,233 +1,183 @@
 {
   "price": {
-    "title": "Cheap, transparent prices!",
-    "pricing": "Pricing",
-    "slogan": "Start at full speed !",
-    "monthly_bill": "Monthly Billing",
-    "annual_bill": "Annual Billing",
-    "annual_info": "will be charged when annual",
-    "monthly_info": "when charged monthly",
-    "mo": "/mo",
-    "contact": "for to contact our support team.",
-    "contact_2": "You can test the subscriptions and won&apos;t be charged.",
+    "title": "Access to an experimentation lab",
+    "pricing": "Access",
+    "slogan": "Build a portfolio. Test ideas. Document learning.",
+    "monthly_bill": "Monthly Access",
+    "annual_bill": "Annual Access",
+    "annual_info": "continuous access to the lab",
+    "monthly_info": "monthly access to the experimental environment",
+    "mo": "/month",
+    "contact": "to discuss collaboration, research, or case studies.",
+    "contact_2": "MindLoop does not offer ready-made solutions or decision automation.",
     "faq": "Frequently Asked Questions",
-    "faq_detail": "Explore our comprehensive FAQ to find quick answers to common inquiries. If you need further assistance, don&apos;t hesitate to contact us for personalized help.",
-    "signup": "Sign up",
-    "upgrade": "Upgrade",
-    "manage_subscription": "Manage Subscription",
-    "go_to_dashboard": "Go to dashboard",
-    "": ""
+    "faq_detail": "Understand the experimental, educational, and exploratory nature of MindLoop.",
+    "signup": "Enter the lab",
+    "upgrade": "Expand access",
+    "manage_subscription": "Manage access",
+    "go_to_dashboard": "Go to experiments"
   },
   "home": {
     "hero": {
       "tagline": "IAA™ · Assisted Artificial Intelligence",
-      "tagline_sub": "AI built to think and evolve with you",
+      "tagline_sub": "A place to experiment with thinking systems",
       "title": "Delegating decisions to AI is risky",
       "title_highlight": "Reasoning with it is powerful",
-      "description": "MindLoop creates intelligent systems that reason, learn and evolve with you. Not instead of you.",
+      "description": "MindLoop is an experimental space to explore how humans and AI systems can think together about complex problems.",
       "image_alt": "MindLoop Mockup"
     },
     "manifesto": {
-      "title": "The intelligence of the future is not artificial — it's shared.",
-      "description": "MindLoop believes that AI should be a tool — not a worker..."
+      "title": "Ideas before products. Reasoning before automation.",
+      "description": "Each MindLoop project is a documented experiment. The goal is not to deliver answers, but to investigate how decisions can be better structured."
     },
     "cta_final": {
-      "title": "Let's build the future of intelligence.",
-      "description": "If you believe AI should amplify — not replace — human potential..."
+      "title": "A portfolio built on real ideas.",
+      "description": "Here you access ideas in progress: projects, texts, articles, reflections, and prototypes I develop over time. MindLoop works as a living extension of my thinking."
     },
     "sections": {
       "trusted_by": {
-        "tagline": "Trusted by EHS, Compliance and Operations professionals",
-        "badge_oil_gas": "Oil & Gas Operations",
-        "badge_energy": "Energy & Generation",
-        "badge_sms": "EHS & Compliance Teams"
+        "tagline": "Explored by curious professionals and applied researchers",
+        "badge_oil_gas": "Oil & Gas",
+        "badge_energy": "Energy",
+        "badge_sms": "SMS & Regulation"
       },
       "iaa_concept": {
         "tagline": "IAA™ — Assisted Artificial Intelligence",
-        "title": "Intelligence is not artificial. It's collaborative.",
-        "description": "MindLoop is designed around learning loops: humans interpret, adjust and guide — and AI records, learns and evolves. Every decision is the result of structured dialogue between experts and systems.",
+        "title": "AI as an object of study",
+        "description": "Assisted Artificial Intelligence is a concept created to guide the conscious use of AI. At MindLoop, AI is not given responsibility nor does it make decisions. It acts as an amplifier of human thinking and as a means of accessing the knowledge accumulated by humanity.",
         "human_label": "Human",
-        "human_desc": "Context, responsibility, judgment and practical experience.",
-        "ai_label": "MindLoop AI",
-        "ai_desc": "Multi-step reasoning, memory, normative search and explanations.",
-        "loop_label": "Learning Loop",
-        "loop_desc": "Each interaction adjusts the model, refines criteria and strengthens trust between people and machine."
+        "human_desc": "Responsible for meaning and decision-making. Formulates hypotheses, interprets results, evaluates consequences, and fully assumes responsibility for choices made.",
+        "ai_label": "IAA™",
+        "ai_desc": "Acts as cognitive support. Organizes information, retrieves knowledge, suggests reasoning paths, and makes relationships explicit to support human thinking.",
+        "loop_label": "Experimental Loop",
+        "loop_desc": "A space of continuous learning between human and AI. The value lies in iteration, reflection, and refinement of reasoning — not in the final answer."
       },
       "superpowers": {
-        "title": "Why",
+        "title": "What makes",
         "title_highlight": "MindLoop",
-        "description": "We are not just \"another AI chat\". MindLoop was created to handle serious decisions, in regulated environments, with real impact on people, assets and the environment.",
-        "item_1_title": "Multi-step reasoning",
-        "item_1_desc": "Goes beyond chat answers. Handles incidents, standards and context in structured decision chains.",
-        "item_2_title": "Total transparency",
-        "item_2_desc": "Each classification comes with criteria, decision trail and normative reference.",
-        "item_3_title": "Continuous learning",
-        "item_3_desc": "Human interventions (HITL) feed the system, improving future decisions without losing control.",
-        "item_4_title": "Ready for critical environments",
-        "item_4_desc": "Architecture designed for regulated operations, audits, process safety and EHS."
+        "description": "An environment to responsibly test complex ideas.",
+        "item_1_title": "Projects as portfolio",
+        "item_1_desc": "Each experiment is a documented artifact of learning.",
+        "item_2_title": "Context engineering",
+        "item_2_desc": "We investigate how context shapes AI-assisted decisions.",
+        "item_3_title": "HITL as a premise",
+        "item_3_desc": "Humans remain at the center of all decisions.",
+        "item_4_title": "Responsible exploration",
+        "item_4_desc": "No promises of automation or human replacement."
       },
       "about": {
-        "title": "About",
-        "title_highlight": "MindLoop",
-        "description_1": "We created MindLoop with the conviction that the artificial intelligence of the future will not replace humans — it will work alongside them.",
-        "description_2": "Our name represents this cycle: a learning loop between human and machine."
+        "title": "About the",
+        "title_highlight": "Lab",
+        "description_1": "MindLoop is an independent laboratory for experimentation in applied AI.",
+        "description_2": "Here, projects exist to generate learning — not commercial products."
       },
       "story": {
-        "title": "Why does MindLoop exist?",
-        "description_1": "MindLoop was born from practice in high-risk environments, where decisions cannot be blindly delegated to AI models. We saw firsthand the risk of treating incidents, standards and people as simple tokens in a prompt.",
-        "description_2": "Our response was to create a different paradigm: Assisted Artificial Intelligence. We don't want to replace the expert — we want to give them a more robust, fast and explainable reasoning structure."
+        "title": "Why a lab?",
+        "description_1": "Because real decisions require reflection before automation.",
+        "description_2": "MindLoop documents paths of thought, not final answers."
       },
       "culture": {
         "title": "Our",
         "title_highlight": "Culture",
-        "description": "MindLoop was born to unite technology, science and humanity.",
-        "item_1_title": "Radical Curiosity",
-        "item_1_desc": "We are always asking 'why?' and 'what if?'.",
-        "item_2_title": "Ethical Responsibility",
-        "item_2_desc": "AI requires care, transparency and respect for humans.",
-        "item_3_title": "Continuous Evolution",
-        "item_3_desc": "Nothing is static. Learning is part of our DNA."
+        "description": "Thinking before building, always grounded in real problems.",
+        "item_1_title": "Applied research",
+        "item_1_desc": "Each project starts from a concrete problem and is treated as a practical experiment.",
+        "item_2_title": "Technical humility",
+        "item_2_desc": "AI is not an authority or a ready-made solution — it is a tool to support human decisions.",
+        "item_3_title": "Verifiable learning",
+        "item_3_desc": "The value lies in documented processes that are tested and applicable to real contexts."
       },
       "timeline": {
-        "title": "Our Journey",
+        "title": "Lab Evolution",
         "year_2024": "2024",
-        "text_2024": "The idea is born: AI must amplify humans, not replace them.",
+        "text_2024": "First experiments with assisted AI.",
         "year_2025": "2025",
-        "text_2025": "Creation of IAA™ philosophy – Assisted Artificial Intelligence.",
+        "text_2025": "Formalization of the lab and the IAA™ philosophy.",
         "year_2026": "2026",
-        "text_2026": "MindLoop establishes its first cognitive agents framework."
+        "text_2026": "Consolidation of experimental frameworks."
       },
       "product_flow": {
-        "title": "How MindLoop thinks with you.",
-        "description": "Behind the simple interface, MindLoop coordinates multiple agents, standards and memories to deliver a solid and explainable decision.",
-        "step_1_label": "1. Event input",
-        "step_1_text": "Free description, attachments and operational context sent by field or control team.",
-        "step_2_label": "2. MindLoop reasoning",
-        "step_2_text": "LATS-P, normative RAG, memory and incident history work together to understand the case.",
-        "step_3_label": "3. Classifications & explanations",
-        "step_3_text": "ANP typology, EHS classification and criteria are returned with decision trail.",
-        "step_4_label": "4. Logs & audit",
-        "step_4_text": "Everything is recorded in structured form, for internal audits, regulators and continuous improvement."
+        "title": "How experiments take place",
+        "description": "Each flow is a case study.",
+        "step_1_label": "1. Initial question",
+        "step_1_text": "Problem or hypothesis formulation.",
+        "step_2_label": "2. Assisted structuring",
+        "step_2_text": "AI organizes rules, data, and possibilities.",
+        "step_3_label": "3. Human analysis",
+        "step_3_text": "The human interprets and decides.",
+        "step_4_label": "4. Record",
+        "step_4_text": "Learning becomes portfolio."
       },
       "team": {
-        "title": "Who is behind MindLoop"
+        "title": "Who builds MindLoop"
       },
       "testimonials": {
-        "title": "What experts say about MindLoop",
-        "quote_1": "MindLoop finally brought structure and explainability to decisions that previously depended on long debates between areas.",
-        "name_1": "EHS Manager",
-        "role_1": "Oil & gas industry",
-        "quote_2": "Seeing the ANP classification, EHS and the reasoning trail side by side changed the quality of our investigations.",
-        "name_2": "Incident Coordinator",
-        "role_2": "Offshore operation"
+        "title": "Lab insights",
+        "quote_1": "Here, the value is in reasoning, not in the answer.",
+        "name_1": "Technical specialist",
+        "role_1": "Regulated environment",
+        "quote_2": "It’s a great space to build a real AI portfolio.",
+        "name_2": "Engineer",
+        "role_2": "Applied research"
       }
     }
   },
   "marketing": {
-    "introducing": "Introducing MindLoop",
-    "title": "Ship your apps to the world easier with ",
-    "sub_title": "An easy-to-use and enterprise-grade Next.js boilerplate. Your complete All-in-One solution for building SaaS services.",
-    "get_started": "Get Started",
-    "view_on_github": "View on GitHub",
-    "explore_product": "Explore Product",
-    "features": "Features",
-    "sub_features": "Cloud-native: Simplifying technology and reducing costs for startups.",
-    "k8s_features": "Fast, simple development",
-    "devops_features": "Easy application deployment",
-    "price_features": "Economically efficient for production environments.",
+    "introducing": "MindLoop Experimental Lab",
+    "title": "A lab to think with AI.",
+    "sub_title": "Exploration, applied research, and portfolio building.",
+    "get_started": "Enter the lab",
+    "view_on_github": "View experiments on GitHub",
+    "explore_product": "Explore projects",
+    "features": "What we investigate",
+    "sub_features": "Methods before tools.",
+    "k8s_features": "Structured reasoning",
+    "devops_features": "AI applied to real contexts",
+    "price_features": "Continuous learning",
     "main_nav_features": "Home",
-    "main_nav_pricing": "Pricing",
-    "main_nav_products": "Products",
+    "main_nav_pricing": "Access",
+    "main_nav_products": "Product",
     "main_nav_projects": "Projects",
-    "main_nav_blog": "Blog",
+    "main_nav_blog": "Publications",
     "main_nav_documentation": "Documentation",
     "login": "Login",
-    "signup": "Sign up",
-    "": "",
+    "signup": "Create account",
     "contributors": {
-      "contributors_desc": "contributors made Saasfly stronger",
-      "developers_first": "Help more than ",
-      "developers_second": " developers"
+      "contributors_desc": "People building knowledge",
+      "developers_first": "More than ",
+      "developers_second": " professionals exploring AI"
     },
     "right_side": {
-      "deploy_on_vercel_title": "Deploy on Vercel",
-      "deploy_on_vercel_desc": "Get started in seconds, see results instantly.",
-      "ship_on_cloudflare_title": "Ship on Cloudflare",
-      "ship_on_cloudflare_desc": "Grow your business with our Cloudflare-powered platform.",
-      "showcase_title": "Best Practice & Showcase",
-      "showcase_desc": "See what people are building and chat with them. And show off your apps to the world."
+      "deploy_on_vercel_title": "Continuous experimentation",
+      "deploy_on_vercel_desc": "Hypotheses tested in real time.",
+      "ship_on_cloudflare_title": "Secure environment",
+      "ship_on_cloudflare_desc": "Infrastructure for experimentation.",
+      "showcase_title": "Living projects",
+      "showcase_desc": "No experiment is definitive."
     },
     "features_grid": {
-      "monorepo_title": "Monorepo",
-      "monorepo_desc": "Manage multiple projects in a unified way to make code sharing easier and collaboration more efficient.",
-      "i18n_title": "i18n",
-      "i18n_desc": "Multilingual support made easy. Give your users a better experience and expand your business globally.",
-      "payments_title": "Global Payments",
-      "payments_desc": "Expand your business globally with our secure, convenient, and efficient payment platform.",
-      "nextauth_title": "NextAuth",
-      "nextauth_desc": "Empower your app with secure and seamless authentication, creating a frictionless login experience."
+      "monorepo_title": "LATS-P",
+      "monorepo_desc": "Research on multi-step reasoning.",
+      "i18n_title": "Contextual RAG",
+      "i18n_desc": "Context as a central variable.",
+      "payments_title": "HITL",
+      "payments_desc": "Humans always in the loop.",
+      "nextauth_title": "Experimental flows",
+      "nextauth_desc": "Adaptable structures."
     },
     "sponsor": {
-      "title": "Loved by our Sponsors",
-      "donate": "Buy us a coffee, Your Brand here"
+      "title": "An open lab",
+      "donate": "Support the lab"
     },
     "video": {
-      "first_text": "Watch a Video, then",
-      "second_text1": "build your App in ",
-      "second_text2": "",
-      "time_text": "1 hour"
+      "first_text": "See ideas being tested",
+      "second_text1": "with assisted reasoning ",
+      "second_text2": "and context",
+      "time_text": "live"
     },
     "people_comment": {
-      "title": "What People Are Saying",
-      "desc": "Don’t just take our word for it. Here’s what real people are saying about Saasfly."
+      "title": "Shared learning",
+      "desc": "Stories from those building portfolios with MindLoop."
     }
-  },
-  "login": {
-    "back": "Back",
-    "welcome_back": "Welcome back",
-    "signin_title": "Enter your email to log into your account",
-    "singup_title": "Don't have an account? Sign up now.",
-    "signin_email": "Log in with Email",
-    "signin_others": "Or continue with",
-    "signup": "Sign up",
-    "privacy": "only your email and profile picture will be stored.",
-    "signup_github": "Sign Up with Github",
-    "": ""
-  },
-  "common": {
-    "copyright": "Copyright © ${currentYear} Nextify Limited. All rights reserved.",
-    "dashboard": {
-      "main_nav_documentation": "Documentation",
-      "main_nav_support": "Support",
-      "sidebar_nav_clusters": "Clusters",
-      "sidebar_nav_billing": "Billing",
-      "sidebar_nav_settings": "Settings",
-      "title_text": "Create and manage clusters."
-    },
-    "": ""
-  },
-  "business": {
-    "k8s": {
-      "new_cluster": "New Cluster",
-      "no_cluster_title": "No clusters created",
-      "no_cluster_content": "You don&apos;t have any clusters yet. Start creating cluster. ",
-      "": ""
-    },
-    "billing": {
-      "billing": "Billing",
-      "content": "Manage your subscription and billing details",
-      "noSubscription": "You are not subscribed to any plan. ",
-      "subscriptionInfo": "You are currently on the <strong>{plan}</strong> plan.Your subscription will renew on <strong>{date}</strong>.",
-      "manage_subscription": "Manage Subscription",
-      "upgrade": "upgrade",
-      "": ""
-    }
-  },
-  "dropdown": {
-    "dashboard": "Dashboard",
-    "billing": "Billing",
-    "settings": "Settings",
-    "sign_out": "Sign out",
-    "": ""
   }
 }
