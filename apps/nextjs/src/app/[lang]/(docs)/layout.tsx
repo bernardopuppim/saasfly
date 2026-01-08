@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { allDocs } from ".contentlayer/generated";
 
 import { getDocsConfig } from "~/config/ui/docs";
+import { getMarketingConfig } from "~/config/ui/marketing";
+import { getDictionary } from "~/lib/get-dictionary";
 
 import { DocsSidebarNav } from "~/components/docs/sidebar-nav";
 
 import { NavBar } from "~/components/navbar";
 import { SiteFooter } from "~/components/site-footer";
 
-export default function DocsLayout({
+export default async function DocsLayout({
   children,
   params: { lang }
 }: {
@@ -17,12 +20,25 @@ export default function DocsLayout({
   params: { lang: string };
 }) {
   const sidebar = getDocsConfig(lang).sidebarNav;
+  const dict = await getDictionary(lang);
+  const marketingConfig = await getMarketingConfig({
+    params: { lang: `${lang}` },
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
 
       {/* 🌐 HEADER */}
-      <NavBar params={{ lang }} />
+      <Suspense fallback="...">
+        <NavBar
+          items={marketingConfig.mainNav}
+          params={{ lang }}
+          scroll={true}
+          user={undefined}
+          marketing={dict.marketing}
+          dropdown={dict.dropdown}
+        />
+      </Suspense>
 
       {/* PAGE CONTENT */}
       <div className="flex-1 container mx-auto w-full mt-6 

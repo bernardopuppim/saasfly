@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import { getProjectsConfig } from "~/config/ui/projects";
+import { getMarketingConfig } from "~/config/ui/marketing";
+import { getDictionary } from "~/lib/get-dictionary";
 import { DocsSidebarNav } from "~/components/docs/sidebar-nav";
 import { NavBar } from "~/components/navbar";
 import { SiteFooter } from "~/components/site-footer";
 
-export default function ProjectsLayout({
+export default async function ProjectsLayout({
   children,
   params: { lang }
 }: {
@@ -11,12 +14,25 @@ export default function ProjectsLayout({
   params: { lang: string };
 }) {
   const sidebar = getProjectsConfig(lang).sidebarNav;
+  const dict = await getDictionary(lang);
+  const marketingConfig = await getMarketingConfig({
+    params: { lang: `${lang}` },
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
 
       {/* HEADER */}
-      <NavBar params={{ lang }} />
+      <Suspense fallback="...">
+        <NavBar
+          items={marketingConfig.mainNav}
+          params={{ lang }}
+          scroll={true}
+          user={undefined}
+          marketing={dict.marketing}
+          dropdown={dict.dropdown}
+        />
+      </Suspense>
 
       {/* PAGE CONTENT */}
       <div className="flex-1 container mx-auto w-full mt-6
