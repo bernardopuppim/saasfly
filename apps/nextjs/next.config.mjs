@@ -23,6 +23,7 @@ const config = {
       "www.twillot.com",
       "cdnv2.ruguoapp.com",
       "www.setupyourpay.com",
+      "mindloop.ia.br",
     ],
   },
 
