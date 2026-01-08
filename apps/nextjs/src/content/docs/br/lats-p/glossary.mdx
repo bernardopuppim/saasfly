@@ -1,0 +1,338 @@
+---
+title: Glossário
+description: Conceitos fundamentais do LoopynLATS
+---
+
+# Glossário
+
+Este glossário define os principais conceitos utilizados pelo **LoopynLATS**.  
+Ele serve como base semântica para toda a documentação e deve ser consultado sempre que um termo técnico aparecer em outras seções.
+
+---
+
+## InvestigationState
+
+Objeto central que representa o estado completo de uma investigação em andamento.
+
+Ele encapsula:
+- Posição atual na árvore
+- Pergunta corrente
+- Opções disponíveis
+- Histórico de decisões
+- Métricas como entropia, profundidade e confiança
+- Flags de controle (HITL, finalização)
+
+O `InvestigationState` é totalmente serializável, permitindo pausar, salvar, restaurar e auditar investigações.
+
+---
+
+## NodeOption
+
+Representa uma opção de decisão disponível em um nó da árvore.
+
+Cada `NodeOption` contém:
+- `id`: identificador do nó filho
+- `score`: valor bruto atribuído pelo avaliador
+- `probability`: valor normalizado após softmax
+- `justification`: explicação textual da avaliação
+- `metadata`: dados adicionais opcionais
+
+As opções são sempre ordenadas por probabilidade decrescente.
+
+---
+
+## NodeDecision
+
+Registro imutável de uma decisão tomada durante a investigação.
+
+Cada decisão inclui:
+- Nó onde a decisão ocorreu
+- Pergunta apresentada
+- Opção selecionada
+- Probabilidade (ou log-probabilidade) associada
+- Metadados como entropia no momento da decisão
+
+Esses registros compõem o histórico completo da investigação.
+
+---
+
+## LatsEngine
+
+Orquestrador principal do sistema.
+
+O `LatsEngine` coordena:
+- Navegação estrutural da árvore
+- Avaliação de opções
+- Normalização probabilística
+- Cálculo de entropia
+- Detecção de HITL
+- Evolução do estado
+
+Ele expõe a API principal: `start()` e `step()`.
+
+---
+
+## TreeNavigator
+
+Componente responsável exclusivamente pela estrutura da árvore.
+
+Suas funções incluem:
+- Carregar a árvore a partir de JSON
+- Indexar nós por identificador
+- Fornecer filhos de um nó
+- Informar se um nó é de decisão ou terminal
+
+O `TreeNavigator` não contém lógica de avaliação ou probabilidade.
+
+---
+
+## NodeEvaluator
+
+Interface abstrata para estratégias de avaliação de opções.
+
+Um `NodeEvaluator` recebe:
+- Descrição do evento
+- Pergunta atual
+- Lista de nós filhos
+- Contexto adicional
+
+E retorna scores brutos e justificativas para cada opção.
+
+---
+
+## MockEvaluator
+
+Implementação de avaliador que retorna scores uniformes.
+
+É usado principalmente para:
+- Testar a estrutura da árvore
+- Simular máxima incerteza
+- Validar fluxos HITL
+
+Não utiliza nenhuma lógica semântica.
+
+---
+
+## HeuristicEvaluator
+
+Avaliador baseado em regras simples e correspondência de palavras-chave.
+
+Ele atribui scores com base na presença de termos relevantes entre:
+- Descrição do evento
+- Identificadores ou metadados dos nós
+
+É rápido, determinístico e não depende de modelos de linguagem.
+
+---
+
+## LLMEvaluator
+
+Avaliador baseado em modelos de linguagem.
+
+Delegaria a pontuação das opções a um LLM externo, permitindo análise semântica avançada.  
+Requer configuração adicional e não está ativo por padrão.
+
+---
+
+## Score
+
+Valor bruto atribuído a uma opção por um avaliador.
+
+O score:
+- Não é limitado a um intervalo específico
+- Não representa probabilidade
+- Serve apenas como entrada para o processo de normalização
+
+---
+
+## Probability
+
+Valor normalizado entre 0 e 1 atribuído a uma opção após aplicação do softmax.
+
+As probabilidades:
+- Sempre somam 1 dentro de um mesmo nó
+- Representam a confiança relativa entre opções
+- São usadas para cálculo de entropia e seleção automática
+
+---
+
+## Softmax
+
+Função matemática usada para converter scores brutos em probabilidades.
+
+Ela amplifica diferenças relativas entre scores e garante uma distribuição probabilística válida.
+
+---
+
+## Temperature (Temperatura)
+
+Parâmetro do softmax que controla a dispersão da distribuição de probabilidades.
+
+- Temperatura baixa → decisões mais concentradas
+- Temperatura alta → decisões mais uniformes
+
+No LoopynLATS, a temperatura pode variar conforme a profundidade da árvore.
+
+---
+
+## Entropy (Entropia)
+
+Métrica de incerteza da distribuição de probabilidades das opções.
+
+- Entropia alta → sistema incerto
+- Entropia baixa → decisão mais clara
+
+A entropia é usada como critério principal para ativar HITL.
+
+---
+
+## HITL (Human-in-the-Loop)
+
+Mecanismo de escalonamento para decisão humana.
+
+Quando ativado:
+- A progressão automática é interrompida
+- O estado é retornado com `requires_hitl = true`
+- Um humano deve escolher explicitamente a próxima opção
+
+---
+
+## hitl_entropy_threshold
+
+Valor numérico que define o limite de entropia aceitável para decisões automáticas.
+
+Se a entropia local exceder esse valor, o sistema ativa HITL.
+
+---
+
+## requires_hitl
+
+Flag booleana no estado indicando que a decisão atual requer intervenção humana.
+
+---
+
+## Deterministic Collapse
+
+Comportamento em que o sistema seleciona automaticamente uma opção quando sua probabilidade excede um limite muito alto (ex.: 0.95).
+
+Esse mecanismo permite decisões determinísticas mesmo em contextos probabilísticos.
+
+---
+
+## Decision Node (Nó de Decisão)
+
+Nó intermediário da árvore que:
+- Contém uma pergunta
+- Possui subnós (opções)
+- Requer avaliação e escolha para continuar a investigação
+
+---
+
+## Terminal Node (Nó Terminal)
+
+Nó folha da árvore.
+
+Ao alcançá-lo:
+- A investigação é encerrada
+- Uma classificação final é produzida
+- O estado passa a ser `is_final = true`
+
+---
+
+## Path (Caminho)
+
+Sequência ordenada de identificadores de nós percorridos desde o root até o estado atual.
+
+O caminho representa a trajetória completa da investigação.
+
+---
+
+## Depth (Profundidade)
+
+Distância do nó atual até o root da árvore.
+
+É usada para:
+- Ajustar temperatura
+- Analisar complexidade do percurso
+- Medir progressão da investigação
+
+---
+
+## State Serialization
+
+Processo de conversão do `InvestigationState` para e a partir de JSON.
+
+Permite:
+- Persistência
+- Checkpoints
+- Restauração
+- Replay
+- Auditoria
+
+---
+
+## History (Histórico)
+
+Lista cronológica de todas as decisões tomadas durante a investigação.
+
+Cada entrada é um `NodeDecision`.
+
+---
+
+## Checkpoint
+
+Snapshot serializado de um `InvestigationState` em um ponto específico do tempo.
+
+Usado para pausar e retomar investigações.
+
+---
+
+## Classification
+
+Resultado final da investigação.
+
+É extraído do campo `classe` do nó terminal alcançado.
+
+---
+
+## Confidence Level
+
+Indicador qualitativo da confiança global da investigação.
+
+É derivado da probabilidade acumulada ao longo do caminho percorrido.
+
+---
+
+## Event Description
+
+Texto de entrada fornecido pelo usuário descrevendo o incidente ou situação a ser analisada.
+
+Serve como principal contexto para avaliação das opções.
+
+---
+
+## Question
+
+Pergunta associada ao nó atual da árvore.
+
+É apresentada ao usuário ou sistema para contextualizar a decisão.
+
+---
+
+## why_this_question
+
+Texto explicativo gerado automaticamente justificando por que a pergunta atual está sendo feita naquele ponto da investigação.
+
+---
+
+## Justification
+
+Texto retornado pelo avaliador explicando o motivo do score atribuído a uma opção específica.
+
+---
+
+## step_count
+
+Contador do número de decisões tomadas desde o início da investigação.
+
+---

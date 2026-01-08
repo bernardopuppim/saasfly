@@ -22,6 +22,8 @@ export const getDocsConfig = (lang: string) => ({
       items: [
         { title: "Overview", href: `/${lang}/docs/lats-p` },
         { title: "Complete Guide", href: `/${lang}/docs/lats-p/complete-guide` },
+        { title: "Glossary", href: `/${lang}/docs/lats-p/glossary` },
+        { title: "How LATS Works", href: `/${lang}/docs/lats-p/how-lats-works` },
         { title: "Introduction to LATS", href: `/${lang}/docs/lats-p/intro-to-lats` },
         { title: "Building Decision Trees", href: `/${lang}/docs/lats-p/building-trees` },
         { title: "Entropy Optimization", href: `/${lang}/docs/lats-p/entropy-optimization` },

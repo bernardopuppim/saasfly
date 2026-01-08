@@ -1,0 +1,212 @@
+---
+title: How LATS-P Works
+description: Internal mechanics of the probabilistic decision process used by LoopynLATS
+---
+
+# How LATS-P Works
+
+LATS-P (Language Agent Tree Search – Probabilistic) é um algoritmo de navegação em árvores de decisão que combina **avaliação probabilística**, **medidas explícitas de incerteza** e **governança humana condicional**.
+
+Diferentemente de árvores determinísticas tradicionais, o LATS-P trata cada decisão como uma **distribuição de probabilidade**, permitindo medir confiança, detectar ambiguidade e escalar decisões críticas para humanos quando necessário.
+
+---
+
+## High-Level Overview
+
+Em alto nível, o LATS-P executa o seguinte ciclo:
+
+1. Avalia todas as opções disponíveis em um nó
+2. Converte avaliações em probabilidades
+3. Mede a incerteza da decisão
+4. Decide entre progressão automática ou HITL
+5. Atualiza o estado da investigação
+6. Repete até alcançar um nó terminal
+
+Todo o processo é **stateful**, **auditável** e **interrompível**.
+
+---
+
+## Step 1 — Starting an Investigation
+
+Uma investigação começa com:
+
+```python
+state = engine.start(event_description)
+Nesse momento:
+
+O InvestigationState é inicializado
+
+O nó atual é definido como root
+
+A pergunta do nó raiz é carregada
+
+Os subnós do root são avaliados
+
+As primeiras probabilidades e entropia são calculadas
+
+Nenhuma decisão é tomada ainda — o sistema apenas prepara o primeiro ponto de escolha.
+
+## Step 2 — Evaluating Options
+Para um nó de decisão, o LATS-P executa:
+
+**Extração estrutural**
+O TreeNavigator fornece todos os subnós do nó atual.
+
+**Avaliação semântica ou heurística**
+O NodeEvaluator atribui um score bruto para cada opção com base no contexto disponível.
+
+**Construção das NodeOptions**
+Cada subnó é convertido em uma NodeOption, contendo score, justificativa e metadados.
+
+Nesse estágio, os scores ainda não são probabilidades.
+
+## Step 3 — From Scores to Probabilities
+Os scores brutos são transformados em probabilidades usando softmax com temperatura.
+
+```python
+p_i = exp(score_i / T) / Σ exp(score_j / T)
+Onde:
+
+T é a temperatura
+
+A soma das probabilidades é sempre 1
+
+**Temperature by Depth**
+A temperatura pode variar conforme a profundidade da árvore:
+
+Profundidades menores → decisões mais concentradas
+
+Profundidades maiores → decisões mais tolerantes à incerteza
+
+Isso evita decisões excessivamente rígidas em estágios avançados da investigação.
+
+## Step 4 — Measuring Uncertainty with Entropy
+Com as probabilidades calculadas, o sistema mede a entropia local:
+
+```python
+H = - Σ (p_i · log₂(p_i))
+Interpretação:
+
+Entropia alta → opções igualmente plausíveis
+
+Entropia baixa → uma opção claramente dominante
+
+A entropia não mede “qualidade” da decisão, apenas incerteza relativa.
+
+## Step 5 — Automatic Decision vs HITL
+A entropia é comparada ao hitl_entropy_threshold.
+
+**Automatic Progression**
+Se:
+
+```python
+entropy ≤ hitl_entropy_threshold
+O sistema pode progredir automaticamente, normalmente selecionando a opção de maior probabilidade.
+
+**HITL Activation**
+Se:
+
+```python
+entropy > hitl_entropy_threshold
+Então:
+
+requires_hitl = true
+
+A execução automática é interrompida
+
+Um humano deve escolher explicitamente a próxima opção
+
+Essa lógica transforma entropia em mecanismo de governança, não apenas métrica estatística.
+
+## Step 6 — Deterministic Collapse (Optional)
+Em casos de altíssima confiança, pode ocorrer deterministic collapse:
+
+max(probability) ≥ deterministic_threshold
+Quando isso acontece:
+
+A opção dominante é selecionada automaticamente
+
+O HITL pode ser ignorado
+
+A decisão se torna efetivamente determinística
+
+Esse mecanismo existe para evitar fricção desnecessária em decisões óbvias.
+
+## Step 7 — State Transition
+Quando uma opção é escolhida (automática ou humana), o sistema executa engine.step().
+
+Durante essa transição:
+
+Um NodeDecision é registrado no histórico
+
+O caminho (path) é atualizado
+
+step_count e current_depth são incrementados
+
+A probabilidade da decisão é acumulada
+
+O nó atual é atualizado para o nó filho escolhido
+
+Nenhuma informação anterior é descartada.
+
+## Step 8 — Terminal Nodes and Finalization
+Se o novo nó for um nó terminal:
+
+is_final = true
+
+final_classification é definida
+
+confidence_level é derivado da probabilidade acumulada
+
+A investigação é encerrada
+
+Caso contrário, o ciclo retorna à avaliação do próximo nó.
+
+Confidence as a Path Property
+No LATS-P, confiança não é local, mas global ao percurso.
+
+Ela emerge da combinação de:
+
+Probabilidades das decisões tomadas
+
+Profundidade do caminho
+
+Entropias enfrentadas ao longo do processo
+
+Isso permite distinguir, por exemplo:
+
+Uma decisão final rápida e confiante
+
+Uma decisão final obtida após muitas escolhas ambíguas
+
+Key Properties of LATS-P
+O algoritmo garante:
+
+Auditabilidade total — cada decisão é registrada
+
+Interrupção segura — estado pode ser serializado a qualquer momento
+
+Governança explícita — incerteza ativa revisão humana
+
+Extensibilidade — novos avaliadores podem ser acoplados
+
+Separação clara de responsabilidades — estrutura ≠ avaliação ≠ decisão
+
+Mental Model Summary
+Uma forma correta de pensar o LATS-P é:
+
+“O sistema não escolhe respostas.
+Ele navega um espaço de decisões, medindo o quão seguro está a cada passo.”
+
+Next Sections
+Compreender o LATS-P permite avançar para:
+
+Configuração de thresholds e temperatura
+
+Trade-offs entre avaliadores
+
+Design correto de árvores de decisão
+
+Integração de HITL em aplicações reais
+
+Esses tópicos são cobertos nas próximas seções da documentação.
