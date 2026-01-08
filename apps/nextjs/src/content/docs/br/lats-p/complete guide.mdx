@@ -1,0 +1,274 @@
+---
+title: LoopynLATS – Complete Guide
+description: Probabilistic decision tree navigation using LATS-P with entropy tracking and HITL support
+---
+
+# LoopynLATS – Complete Guide
+
+This guide demonstrates how to use the **LoopynLATS** library for probabilistic decision tree navigation using the **LATS-P (Language Agent Tree Search – Probabilistic)** algorithm.
+
+---
+
+## What is LoopynLATS?
+
+**LoopynLATS** is a Python library designed to guide investigations through structured decision trees using probabilistic reasoning.
+
+It provides:
+
+- **Entropy-based uncertainty tracking** to measure confidence at each decision
+- **Softmax with temperature** to compute probability distributions
+- **HITL (Human-in-the-Loop)** escalation for ambiguous situations
+- **Full state serialization** to support pause, resume, auditing, and replay
+
+---
+
+## Table of Contents
+
+1. Installation Verification  
+2. Basic Usage  
+3. Understanding State and Options  
+4. Complete Investigation Walkthrough  
+5. State Serialization (Save / Resume)  
+6. Evaluator Types  
+7. HITL (Human-in-the-Loop) Handling  
+8. Decision History  
+9. Custom Decision Trees  
+
+---
+
+## 1. Installation Verification
+
+Verify that the library is installed correctly and check its version.
+
+```python
+import loopynlats
+
+print(f"LoopynLATS version: {loopynlats.__version__}")
+print("✅ Library imported successfully!")
+2. Basic Usage
+The standard workflow consists of:
+
+Creating a TreeConfig
+
+Creating an engine using create_engine
+
+Starting an investigation
+
+Stepping through nodes until reaching a terminal classification
+
+python
+Copiar código
+from loopynlats import create_engine, TreeConfig
+from loopynlats.api import load_sample_tree
+
+sample_tree = load_sample_tree()
+
+config = TreeConfig(
+    tree_dict=sample_tree,
+    evaluator_type="heuristic",
+    hitl_entropy_threshold=2.0
+)
+
+engine = create_engine(config)
+
+print("✅ Engine created successfully!")
+3. Understanding State and Options
+Starting an investigation returns an InvestigationState object.
+
+It contains:
+
+Current question
+
+Available options with scores and probabilities
+
+Decision history
+
+Metadata such as entropy, depth, and confidence
+
+python
+Copiar código
+event_description = "Worker slipped on spilled oil and injured their ankle"
+state = engine.start(event_description)
+Key State Fields
+python
+Copiar código
+print(state.current_question)
+print(state.local_entropy)
+print(state.current_depth)
+print(state.requires_hitl)
+Each available option includes:
+
+id
+
+score
+
+probability
+
+justification
+
+optional metadata
+
+4. Complete Investigation Walkthrough
+Below is a full investigation flow, automatically selecting the highest-probability option at each step.
+
+python
+Copiar código
+event = "Environmental oil spill in the ocean causing wildlife damage"
+state = engine.start(event)
+
+while not state.is_final:
+    selected = state.current_options[0]
+    state = engine.step(state, selected.id)
+Final Output
+python
+Copiar código
+print(state.final_classification)
+print(state.confidence_level)
+print(state.path)
+5. State Serialization (Save / Resume)
+LoopynLATS supports full state persistence.
+
+Serialize State
+python
+Copiar código
+state_json = state.to_json()
+Restore State
+python
+Copiar código
+from loopynlats import InvestigationState
+
+restored_state = InvestigationState.from_json(state_json)
+This enables:
+
+Long-running investigations
+
+Async workflows
+
+Auditing and compliance
+
+Debugging and replay
+
+6. Evaluator Types
+LoopynLATS supports three evaluator strategies:
+
+MockEvaluator
+Uniform scores
+
+Maximum entropy
+
+Ideal for testing tree structure
+
+python
+Copiar código
+evaluator_type="mock"
+HeuristicEvaluator
+Keyword-based scoring
+
+Fast and deterministic
+
+No LLM required
+
+python
+Copiar código
+evaluator_type="heuristic"
+LLMEvaluator
+Uses a language model
+
+Highest semantic accuracy
+
+Requires LLM configuration
+
+python
+Copiar código
+evaluator_type="llm"
+7. HITL (Human-in-the-Loop)
+When entropy exceeds the configured threshold, human review is required.
+
+python
+Copiar código
+config = TreeConfig(
+    tree_dict=load_sample_tree(),
+    evaluator_type="mock",
+    hitl_entropy_threshold=1.5
+)
+python
+Copiar código
+if state.requires_hitl:
+    print(state.hitl_reason)
+This ensures critical decisions are validated when uncertainty is high.
+
+8. Decision History
+Each decision is recorded in state.history.
+
+python
+Copiar código
+for decision in state.history:
+    print(decision.from_node_id, "→", decision.to_node_id)
+Stored metadata includes:
+
+Selected option
+
+Question asked
+
+Entropy at decision time
+
+Tree depth
+
+9. Custom Decision Trees
+You can load your own decision trees using JSON.
+
+Example Tree Structure
+python
+Copiar código
+custom_tree = {
+    "id": "root",
+    "pergunta": "Is this a technical issue?",
+    "tipo": "decisao",
+    "subnodos": [
+        {
+            "id": "technical_yes",
+            "classe": "Technical Issue Confirmed",
+            "tipo": "terminal"
+        },
+        {
+            "id": "technical_no",
+            "pergunta": "Is it a human error?",
+            "tipo": "decisao",
+            "subnodos": [
+                {
+                    "id": "human_error",
+                    "classe": "Human Error",
+                    "tipo": "terminal"
+                }
+            ]
+        }
+    ]
+}
+python
+Copiar código
+config = TreeConfig(
+    tree_dict=custom_tree,
+    evaluator_type="heuristic"
+)
+
+engine = create_engine(config)
+Summary
+This guide covered:
+
+Installation and setup
+
+Core engine workflow
+
+State structure and probabilities
+
+End-to-end investigations
+
+Serialization and recovery
+
+Evaluator strategies
+
+Human-in-the-loop escalation
+
+Decision auditing
+
+Custom decision trees
