@@ -44,7 +44,7 @@ export default async function IndexPage({
           </p>
         </div>
 
-        <div className="relative w-full max-w-xl flex items-center justify-center">
+        <div className="relative w-full max-w-xl flex items-center justify-center ounded-full">
           <Image
             src="/images/avatars/Mindloop_login_laptop.png"
             alt={dict.home.hero.image_alt}
