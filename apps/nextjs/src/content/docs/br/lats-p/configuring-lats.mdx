@@ -1,0 +1,247 @@
+---
+
+title: Configuring LATS-P
+description: How to tune thresholds, temperature and limits for probabilistic decision making
+---------------------------------------------------------------------------------------------
+
+O comportamento do LATS-P é fortemente influenciado por seus parâmetros de configuração.
+Esses parâmetros determinam **o quão autônomo o sistema é**, **quando humanos são acionados** e **como a incerteza é tratada ao longo da árvore**.
+
+Esta seção descreve cada parâmetro configurável, seu impacto prático e os trade-offs envolvidos.
+
+---
+
+## TreeConfig Overview
+
+A configuração principal do LATS-P é feita por meio do objeto `TreeConfig`.
+
+```python
+config = TreeConfig(
+    tree_dict=sample_tree,
+    evaluator_type="heuristic",
+    hitl_entropy_threshold=2.0,
+    max_steps=50,
+    deterministic_threshold=0.95,
+    base_temperature=0.7,
+    temperature_decay=0.1
+)
+```
+
+Nem todos os parâmetros são obrigatórios; valores padrão são fornecidos quando omitidos.
+
+---
+
+## hitl_entropy_threshold
+
+Define o limite de entropia acima do qual o sistema exige **Human-in-the-Loop**.
+
+### Impacto direto
+
+* Valor baixo → mais intervenções humanas
+* Valor alto → maior autonomia do sistema
+
+### Trade-offs
+
+| Threshold   | Comportamento                                     |
+| ----------- | ------------------------------------------------- |
+| Muito baixo | HITL excessivo, fluxo interrompido com frequência |
+| Moderado    | Equilíbrio entre autonomia e governança           |
+| Muito alto  | Decisões automáticas mesmo em cenários ambíguos   |
+
+### Recomendação prática
+
+* Árvores pequenas e bem definidas: `1.5 – 2.0`
+* Árvores grandes ou críticas: `1.0 – 1.5`
+* Ambientes altamente regulados: mais conservador
+
+---
+
+## deterministic_threshold
+
+Probabilidade mínima para **seleção automática determinística**, independentemente da entropia.
+
+```text
+max(probability) ≥ deterministic_threshold
+```
+
+### Impacto direto
+
+* Permite bypass do HITL em decisões óbvias
+* Reduz fricção operacional
+
+### Trade-offs
+
+* Muito baixo → decisões precipitadas
+* Muito alto → pouco efeito prático
+
+### Recomendação prática
+
+* Valor padrão seguro: `0.95`
+* Ajustar apenas se houver métricas claras de confiança
+
+---
+
+## Temperature (base_temperature)
+
+Controla a “suavidade” da distribuição de probabilidades no softmax.
+
+### Impacto direto
+
+* Temperatura baixa → decisões mais agressivas
+* Temperatura alta → decisões mais distribuídas
+
+### Trade-offs
+
+| Temperatura | Efeito                        |
+| ----------- | ----------------------------- |
+| Baixa       | Pode mascarar incerteza real  |
+| Alta        | Pode gerar entropia excessiva |
+
+### Recomendação prática
+
+* `0.6 – 0.8` para decisões iniciais
+* Evitar valores extremos
+
+---
+
+## Temperature Decay (temperature_decay)
+
+Incremento aplicado à temperatura conforme a profundidade da árvore aumenta.
+
+```text
+temperature = base_temperature + depth × decay
+```
+
+### Impacto direto
+
+* Aumenta tolerância à incerteza em decisões profundas
+* Evita colapso precoce em árvores longas
+
+### Trade-offs
+
+* Decay alto demais → entropia cresce rapidamente
+* Decay zero → decisões profundas ficam rígidas demais
+
+### Recomendação prática
+
+* Valor comum: `0.05 – 0.15`
+* Ajustar conforme profundidade média da árvore
+
+---
+
+## max_steps
+
+Limite máximo de decisões permitidas em uma investigação.
+
+### Impacto direto
+
+* Previne loops infinitos
+* Impõe limite operacional
+
+### Trade-offs
+
+* Muito baixo → investigações inconclusas
+* Muito alto → risco de loops silenciosos
+
+### Recomendação prática
+
+* Pequenas árvores: `10 – 20`
+* Árvores grandes: `30 – 60`
+
+---
+
+## evaluator_type
+
+Define a estratégia de avaliação utilizada.
+
+Valores possíveis:
+
+* `"mock"`
+* `"heuristic"`
+* `"llm"`
+
+### Impacto direto
+
+* Afeta qualidade das probabilidades
+* Afeta custo e latência
+* Afeta entropia média do sistema
+
+### Recomendação prática
+
+| Avaliador | Quando usar                     |
+| --------- | ------------------------------- |
+| Mock      | Testes estruturais              |
+| Heuristic | Produção simples, custo zero    |
+| LLM       | Casos complexos, alta semântica |
+
+---
+
+## Interdependência entre Parâmetros
+
+Alguns parâmetros devem ser pensados **em conjunto**, não isoladamente.
+
+### Exemplos críticos
+
+* Temperatura alta + threshold baixo → HITL constante
+* Avaliador fraco + threshold alto → decisões automáticas ruins
+* Deterministic collapse baixo + LLM → excesso de decisões rápidas
+
+A configuração ideal depende **do domínio, risco e governança exigida**.
+
+---
+
+## Configuration Patterns
+
+### Alta Autonomia
+
+```python
+hitl_entropy_threshold = 2.5
+deterministic_threshold = 0.9
+base_temperature = 0.6
+```
+
+Uso típico:
+
+* Classificação interna
+* Baixo risco
+* Alto volume
+
+---
+
+### Alta Governança
+
+```python
+hitl_entropy_threshold = 1.2
+deterministic_threshold = 0.98
+base_temperature = 0.8
+```
+
+Uso típico:
+
+* Compliance
+* Incidentes críticos
+* Ambientes regulados
+
+---
+
+## Key Takeaway
+
+Configurar o LATS-P não é apenas ajuste técnico — é uma **decisão de governança**.
+
+Esses parâmetros definem:
+
+* Quanto o sistema decide sozinho
+* Quando humanos entram no loop
+* O equilíbrio entre velocidade e segurança
+
+---
+
+## Next Sections
+
+Com a configuração compreendida, os próximos tópicos naturais são:
+
+* Designing Good Decision Trees
+* Evaluators Deep Dive
+* HITL Integration Guide
+
+Essas seções mostram como **a configuração se traduz em comportamento real**.

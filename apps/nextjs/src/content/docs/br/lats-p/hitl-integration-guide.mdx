@@ -1,0 +1,195 @@
+---
+
+title: HITL Integration Guide
+description: Integrating Human-in-the-Loop workflows with LATS-P
+----------------------------------------------------------------
+
+Human-in-the-Loop (HITL) é um componente central do LATS-P.
+Ele transforma incerteza estatística em **governança operacional**, permitindo que decisões ambíguas sejam revisadas por humanos no momento certo.
+
+Esta seção descreve como integrar HITL em aplicações reais, cobrindo fluxo de backend, UI, auditoria e boas práticas.
+
+---
+
+## When HITL Is Triggered
+
+O HITL é ativado quando a entropia local da decisão excede o limite configurado:
+
+```text
+local_entropy > hitl_entropy_threshold
+```
+
+Quando isso ocorre:
+
+* `requires_hitl = true`
+* A progressão automática é interrompida
+* O estado atual é retornado ao chamador
+
+Nenhuma decisão é tomada até que uma escolha humana seja fornecida.
+
+---
+
+## HITL Is a Pause, Not a Failure
+
+É importante entender que HITL **não representa erro ou exceção**.
+
+Ele indica que:
+
+> O sistema não tem confiança estatística suficiente para decidir sozinho.
+
+A investigação permanece válida e consistente enquanto aguarda intervenção humana.
+
+---
+
+## Backend Integration Pattern
+
+No backend, HITL deve ser tratado como um **estado intermediário normal**.
+
+### Typical Flow
+
+1. Backend chama `engine.start()` ou `engine.step()`
+2. Recebe um `InvestigationState`
+3. Verifica `state.requires_hitl`
+4. Se `true`, persiste o estado (checkpoint)
+5. Retorna informações para o frontend
+
+Nenhum retry automático deve ocorrer.
+
+---
+
+## What to Send to the Frontend
+
+Quando HITL é ativado, o frontend precisa receber:
+
+* Pergunta atual (`current_question`)
+* Lista de opções (`current_options`)
+
+  * id
+  * probability
+  * justification
+* Motivo do HITL (`hitl_reason`)
+
+Esses dados permitem uma decisão informada.
+
+---
+
+## UI Design Guidelines
+
+### Show Uncertainty Explicitly
+
+A UI deve deixar claro que:
+
+* O sistema está incerto
+* Todas as opções são plausíveis
+* A escolha humana é necessária
+
+Evite esconder probabilidades ou justificativas.
+
+---
+
+### Avoid Default Selections
+
+Nunca pré-selecione automaticamente uma opção em HITL.
+
+Isso introduz viés e invalida o propósito da intervenção humana.
+
+---
+
+### Encourage Deliberate Choice
+
+Boas práticas incluem:
+
+* Exibir probabilidades
+* Mostrar justificativas
+* Permitir inspeção de histórico
+
+---
+
+## Resuming After Human Choice
+
+Após a escolha humana:
+
+```python
+state = engine.step(state, selected_option_id)
+```
+
+O sistema:
+
+* Registra a decisão como qualquer outra
+* Continua a investigação normalmente
+* Reavalia o próximo nó
+
+Não há distinção estrutural entre decisão humana e automática no histórico.
+
+---
+
+## HITL and Auditability
+
+Cada decisão tomada durante HITL:
+
+* É registrada como `NodeDecision`
+* Inclui entropia no momento da escolha
+* Pode ser auditada posteriormente
+
+Isso permite:
+
+* Revisão pós-incidente
+* Análise de padrões de incerteza
+* Avaliação de qualidade da árvore
+
+---
+
+## Common HITL Patterns
+
+### Frequent HITL at Same Node
+
+Indica:
+
+* Nó mal projetado
+* Opções sobrepostas
+* Avaliador inadequado
+
+A solução geralmente é estrutural, não de threshold.
+
+---
+
+### HITL Never Triggered
+
+Indica:
+
+* Threshold alto demais
+* Avaliador excessivamente confiante
+
+Isso pode ocultar incerteza real.
+
+---
+
+## Governance Considerations
+
+HITL define **quem é responsável por decisões ambíguas**.
+
+Antes de ativar em produção, defina:
+
+* Quem pode decidir
+* Como decisões são registradas
+* Como conflitos são resolvidos
+
+O LATS-P fornece o mecanismo — a política é organizacional.
+
+---
+
+## Key Takeaway
+
+> **HITL não desacelera o sistema — ele protege decisões críticas.**
+
+Usado corretamente, HITL transforma incerteza em controle explícito.
+
+---
+
+## Next Sections
+
+Com HITL integrado, o próximo passo natural é:
+
+* API Reference
+
+Essa seção formaliza contratos e métodos públicos do LoopynLATS.

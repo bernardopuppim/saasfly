@@ -1,0 +1,212 @@
+---
+
+title: Designing Good Decision Trees
+description: How to design decision trees that work well with LATS-P
+--------------------------------------------------------------------
+
+A qualidade das decisões produzidas pelo LATS-P depende diretamente da **qualidade da árvore de decisão**.
+
+Mesmo com avaliadores sofisticados e configuração adequada, uma árvore mal projetada resulta em:
+
+* Entropia excessiva
+* HITL constante
+* Caminhos longos e confusos
+* Classificações finais pouco confiáveis
+
+Esta seção descreve princípios práticos para projetar árvores que funcionam bem em um sistema probabilístico.
+
+---
+
+## Core Principle
+
+> **O LATS-P não corrige uma árvore ruim — ele apenas torna explícita a incerteza dela.**
+
+O papel da árvore é **estruturar o espaço de decisão** de forma clara, progressiva e mutuamente exclusiva.
+
+---
+
+## 1. Use Binary or Low-Fanout Decisions
+
+Cada nó de decisão deve ter **poucas opções**.
+
+### Por quê
+
+* Quanto mais opções, maior a entropia máxima
+* Distribuições se tornam mais uniformes
+* HITL é acionado com mais frequência
+
+### Recomendação
+
+* Ideal: 2 a 4 subnós
+* Evitar: listas longas de opções em um único nível
+
+Se houver muitas possibilidades, **quebre a decisão em etapas**.
+
+---
+
+## 2. Make Options Mutually Exclusive
+
+As opções de um mesmo nó **não devem se sobrepor semanticamente**.
+
+### Problema comum
+
+Opções como:
+
+* "Falha mecânica"
+* "Falha de equipamento"
+
+Geram scores semelhantes e alta entropia.
+
+### Boa prática
+
+Cada opção deve representar um **critério distinto e exclusivo**.
+
+---
+
+## 3. Progress from General to Specific
+
+Decisões próximas à raiz devem ser **amplas e estruturais**.
+
+Decisões profundas devem ser **específicas e contextuais**.
+
+### Exemplo
+
+Ruim:
+
+* Root: "Qual componente falhou?"
+
+Bom:
+
+* Root: "O incidente envolve pessoas, processos ou tecnologia?"
+
+---
+
+## 4. Avoid Yes/No Questions Without Context
+
+Perguntas binárias vagas geram ruído.
+
+### Evitar
+
+* "Foi erro humano?"
+
+### Preferir
+
+* "O incidente foi causado principalmente por uma ação humana direta?"
+
+Perguntas bem contextualizadas reduzem entropia.
+
+---
+
+## 5. Keep Terminal Nodes Meaningful
+
+Um nó terminal deve representar uma **classificação final clara e acionável**.
+
+### Problemas comuns
+
+* Terminais genéricos demais
+* Terminais redundantes
+
+### Boa prática
+
+Cada nó terminal deve responder:
+
+> "O que alguém faria diferente ao receber essa classificação?"
+
+---
+
+## 6. Balance Tree Depth
+
+Árvores muito rasas:
+
+* Forçam decisões prematuras
+* Aumentam erro estrutural
+
+Árvores muito profundas:
+
+* Aumentam custo
+* Podem gerar fadiga de HITL
+
+### Recomendação
+
+* Profundidade típica: 4–7 níveis
+* Decisões críticas devem ocorrer cedo
+
+---
+
+## 7. Design for Entropy Reduction
+
+Cada decisão deve **reduzir o espaço de possibilidades**.
+
+Se um nó não reduz entropia média do sistema, ele provavelmente:
+
+* É redundante
+* Está mal posicionado
+* Deve ser fundido com outro
+
+---
+
+## 8. Avoid Semantic Leakage Between Branches
+
+Um mesmo conceito não deve aparecer em múltiplos ramos da árvore.
+
+### Exemplo ruim
+
+* Ramo A: "Falha elétrica"
+* Ramo B → subnó: "Problema elétrico"
+
+Isso confunde avaliadores e humanos.
+
+---
+
+## 9. Treat the Tree as a Contract
+
+A árvore é um **contrato entre quem projeta e quem usa o sistema**.
+
+Ela define:
+
+* O que pode ser decidido
+* O que nunca será decidido
+* Onde a incerteza é aceita
+
+Mudanças na árvore são **mudanças de comportamento do sistema**.
+
+---
+
+## 10. Test Trees with MockEvaluator First
+
+Antes de usar heurísticas ou LLMs:
+
+* Rode a árvore com `MockEvaluator`
+* Observe entropia média
+* Verifique profundidade e caminhos
+
+Se a árvore funciona bem com mock, ela tende a funcionar bem depois.
+
+---
+
+## Common Anti-Patterns
+
+* Nós com mais de 6 opções
+* Perguntas ambíguas
+* Terminais pouco acionáveis
+* Decisões críticas muito profundas
+* Estruturas copiadas de formulários humanos
+
+---
+
+## Key Takeaway
+
+> **Uma boa árvore reduz incerteza estrutural antes de qualquer avaliação semântica.**
+
+O LATS-P amplifica bons designs — e expõe designs ruins.
+
+---
+
+## Next Sections
+
+Com árvores bem projetadas, os próximos tópicos são:
+
+* Evaluators Deep Dive
+* HITL Integration Guide
+
+Essas seções mostram como avaliação e governança interagem com a estrutura da árvore.

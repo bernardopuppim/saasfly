@@ -1,0 +1,251 @@
+---
+
+title: API Reference
+description: Public API and data contracts of LoopynLATS
+--------------------------------------------------------
+
+Esta seção documenta a **API pública** do LoopynLATS.
+Ela descreve contratos, parâmetros, valores retornados e comportamento esperado.
+
+A API é **stateful**, **determinística dado o avaliador** e projetada para **auditabilidade**.
+
+---
+
+## create_engine
+
+Cria uma instância configurada do `LatsEngine`.
+
+```python
+from loopynlats import create_engine
+engine = create_engine(config)
+```
+
+### Parameters
+
+* `config` (`TreeConfig`) — Configuração da árvore e do algoritmo
+
+### Returns
+
+* `LatsEngine`
+
+---
+
+## TreeConfig
+
+Objeto de configuração principal do sistema.
+
+```python
+from loopynlats import TreeConfig
+
+config = TreeConfig(
+    tree_dict=None,
+    tree_path=None,
+    evaluator_type="heuristic",
+    hitl_entropy_threshold=2.0,
+    deterministic_threshold=0.95,
+    max_steps=50,
+    base_temperature=0.7,
+    temperature_decay=0.1
+)
+```
+
+### Fields
+
+* `tree_dict` (`dict | None`)
+  Estrutura da árvore de decisão em memória
+
+* `tree_path` (`str | None`)
+  Caminho para arquivo JSON da árvore
+
+* `evaluator_type` (`str`)
+  Valores: `"mock"`, `"heuristic"`, `"llm"`
+
+* `hitl_entropy_threshold` (`float`)
+  Limite de entropia para ativação de HITL
+
+* `deterministic_threshold` (`float`)
+  Probabilidade mínima para deterministic collapse
+
+* `max_steps` (`int`)
+  Limite máximo de decisões por investigação
+
+* `base_temperature` (`float`)
+  Temperatura base do softmax
+
+* `temperature_decay` (`float`)
+  Incremento de temperatura por profundidade
+
+---
+
+## LatsEngine
+
+Orquestrador principal do LoopynLATS.
+
+### start()
+
+Inicia uma nova investigação.
+
+```python
+state = engine.start(event_description, additional_context=None)
+```
+
+#### Parameters
+
+* `event_description` (`str`) — Descrição textual do evento
+* `additional_context` (`dict | None`) — Contexto opcional adicional
+
+#### Returns
+
+* `InvestigationState`
+
+---
+
+### step()
+
+Avança a investigação selecionando uma opção.
+
+```python
+state = engine.step(state, selected_option_id)
+```
+
+#### Parameters
+
+* `state` (`InvestigationState`) — Estado atual
+* `selected_option_id` (`str`) — ID da opção escolhida
+
+#### Returns
+
+* `InvestigationState` (estado atualizado)
+
+---
+
+## InvestigationState
+
+Representa o estado completo de uma investigação.
+
+### Core Fields
+
+* `event_description` (`str`)
+* `additional_context` (`dict`)
+* `current_node_id` (`str`)
+* `current_question` (`str`)
+* `why_this_question` (`str`)
+* `current_options` (`list[NodeOption]`)
+* `local_entropy` (`float`)
+* `requires_hitl` (`bool`)
+* `hitl_reason` (`str | None`)
+* `current_depth` (`int`)
+* `step_count` (`int`)
+* `path` (`list[str]`)
+* `history` (`list[NodeDecision]`)
+* `is_final` (`bool`)
+* `final_node_id` (`str | None`)
+* `final_classification` (`str | None`)
+* `confidence_level` (`str | None`)
+
+---
+
+### Serialization
+
+#### to_json()
+
+```python
+json_str = state.to_json()
+```
+
+Returns:
+
+* `str` — Representação JSON completa do estado
+
+---
+
+#### to_dict()
+
+```python
+data = state.to_dict()
+```
+
+Returns:
+
+* `dict` — Estado serializado como dicionário Python
+
+---
+
+#### from_json()
+
+```python
+from loopynlats import InvestigationState
+state = InvestigationState.from_json(json_str)
+```
+
+Returns:
+
+* `InvestigationState`
+
+---
+
+## NodeOption
+
+Representa uma opção avaliada em um nó.
+
+### Fields
+
+* `id` (`str`) — Identificador do nó filho
+* `score` (`float`) — Score bruto
+* `probability` (`float`) — Probabilidade normalizada
+* `justification` (`str`) — Justificativa do avaliador
+* `metadata` (`dict`)
+
+---
+
+## NodeDecision
+
+Registro imutável de uma decisão tomada.
+
+### Fields
+
+* `node_id` (`str`) — Nó onde a decisão ocorreu
+* `question` (`str`) — Pergunta apresentada
+* `selected_option_id` (`str`) — Opção escolhida
+* `log_probability` (`float`) — Probabilidade ou log-probabilidade
+* `metadata` (`dict`) — Dados contextuais (ex.: entropia)
+* `timestamp` (`str | None`) — Momento da decisão
+
+---
+
+## Error Handling
+
+A API assume:
+
+* IDs inválidos levantam exceções
+* Estados inconsistentes não são corrigidos automaticamente
+* HITL não é erro
+
+Validação de entrada deve ser feita pelo chamador.
+
+---
+
+## Thread Safety
+
+* `InvestigationState` **não é thread-safe**
+* Cada investigação deve ter sua própria instância de estado
+* `LatsEngine` pode ser reutilizado se não mantiver estado mutável interno
+
+---
+
+## Versioning Considerations
+
+Estados serializados não são garantidos como compatíveis entre versões.
+
+Recomenda-se:
+
+* Versionar schemas
+* Migrar checkpoints explicitamente
+
+---
+
+## Key Takeaway
+
+> **A API do LoopynLATS é simples por design — o comportamento emerge da configuração e da árvore.**
+
+Ela fornece os blocos necessários para construir sistemas auditáveis e governados por incerteza.

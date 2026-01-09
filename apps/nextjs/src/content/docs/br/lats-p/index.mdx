@@ -1,37 +1,141 @@
 ---
-title: "LATS-P Framework"
-description: "Framework de raciocínio estruturado da MindLoop."
----
 
-# LATS-P
+title: LoopynLATS
+sidebar_position: 1
+description: Probabilistic decision trees with explicit uncertainty and Human-in-the-Loop governance
+----------------------------------------------------------------------------------------------------
 
-O **LATS-P** (Language Agent Tree Search – Probabilistic) é o framework de raciocínio estruturado da MindLoop.  
-Ele combina:
+# LoopynLATS
 
-- árvores de decisão dinâmicas  
-- interpretação semântica via LLM  
-- análise probabilística  
-- backtracking inteligente  
-- detecção de incerteza por entropia  
-- colaboração humano-máquina (HITL)
+**LoopynLATS** is a probabilistic decision tree engine designed to navigate complex investigations with **explicit uncertainty handling** and **Human-in-the-Loop (HITL) governance**.
 
-É o núcleo cognitivo dos Agentes Assistidos (IAA™).
+Instead of forcing deterministic decisions, LoopynLATS measures confidence at every step, escalates ambiguity when needed, and produces **fully auditable decision paths**.
 
 ---
 
-## O que o LATS-P resolve?
+## Why LoopynLATS?
 
-- Ambiguidade em textos reais  
-- Tomada de decisão normativa  
-- Explicabilidade e auditabilidade  
-- Redução de erros de interpretação  
-- Consistência entre diferentes operadores  
+Traditional decision trees assume certainty. Real-world investigations rarely have it.
+
+LoopynLATS was built to answer a different question:
+
+> *“How confident are we in this decision — and what should happen if we are not?”*
+
+By combining probabilistic reasoning, entropy-based uncertainty detection, and optional human review, LoopynLATS enables systems that are:
+
+* Safer
+* More transparent
+* Easier to audit
+* Better aligned with real operational risk
 
 ---
 
-## Como navegar na documentação
+## Core Concepts
 
-- **Introduction** — fundamentos teóricos  
-- **Building Trees** — construção de árvores normativas  
-- **Entropy Optimization** — análise probabilística para incerteza  
-- **HITL Collaboration** — quando e como envolver o humano  
+At its core, LoopynLATS is built around a few key ideas:
+
+* **Probabilistic navigation**: every decision is treated as a probability distribution, not a hard rule
+* **Entropy as a signal**: uncertainty is measured explicitly, not inferred implicitly
+* **Human-in-the-Loop**: ambiguity triggers human review by design, not by exception
+* **Stateful investigations**: every step is tracked, serializable, and replayable
+
+These concepts allow LoopynLATS to scale from simple classification tasks to complex, high-risk investigations.
+
+---
+
+## How It Works (High Level)
+
+1. An investigation starts with an event description
+2. Available options are evaluated and scored
+3. Scores are converted into probabilities
+4. Entropy is calculated to measure uncertainty
+5. The system either:
+
+   * Proceeds automatically, or
+   * Requests human input (HITL)
+6. The process repeats until a terminal classification is reached
+
+Every step is recorded. Nothing is hidden.
+
+---
+
+## What LoopynLATS Is (and Is Not)
+
+### It *is*
+
+* A decision **navigation** engine
+* A framework for uncertainty-aware workflows
+* A foundation for audit-friendly systems
+* A bridge between automation and human judgment
+
+### It is *not*
+
+* A black-box classifier
+* A generic rules engine
+* A replacement for domain expertise
+* An autonomous decision-maker without oversight
+
+---
+
+## Typical Use Cases
+
+LoopynLATS is well-suited for domains where:
+
+* Decisions must be explainable
+* Uncertainty must be explicit
+* Human oversight is required
+* Auditability is non-negotiable
+
+Examples include:
+
+* Incident investigation and classification
+* Compliance and risk assessment
+* Safety analysis
+* Operational decision support
+
+---
+
+## Who This Documentation Is For
+
+This documentation is intended for:
+
+* Backend and platform engineers
+* Architects designing decision systems
+* Teams integrating HITL workflows
+* Organizations operating in regulated or high-risk environments
+
+A basic familiarity with Python and decision trees is assumed.
+
+---
+
+## Getting Started
+
+If you are new to LoopynLATS, we recommend the following path:
+
+1. **Glossary** — establish the shared vocabulary
+2. **How LATS-P Works** — understand the algorithm
+3. **Configuring LATS-P** — tune behavior and governance
+4. **Designing Good Decision Trees** — avoid structural pitfalls
+5. **Evaluators Deep Dive** — choose the right evaluation strategy
+6. **HITL Integration Guide** — integrate human review
+7. **API Reference** — implement with confidence
+
+---
+
+## Design Philosophy
+
+LoopynLATS is built on a simple principle:
+
+> *Uncertainty should be measured, not hidden.*
+
+Rather than pretending every decision is clear, the system exposes ambiguity and lets you decide how to handle it.
+
+---
+
+## Ready to Dive In?
+
+Start with the **Glossary** to familiarize yourself with the terminology, or jump directly into **How LATS-P Works** to understand the mechanics behind the engine.
+
+---
+
+*Happy investigating.*

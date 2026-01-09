@@ -1,0 +1,221 @@
+---
+
+title: Evaluators Deep Dive
+description: Understanding evaluator strategies and their trade-offs in LATS-P
+------------------------------------------------------------------------------
+
+Evaluators são responsáveis por atribuir **scores iniciais** às opções disponíveis em cada nó de decisão.
+Esses scores são a base de todo o comportamento probabilístico do LATS-P.
+
+Escolher (ou implementar) um avaliador inadequado impacta diretamente:
+
+* Distribuição de probabilidades
+* Entropia média do sistema
+* Frequência de HITL
+* Qualidade da classificação final
+
+Esta seção descreve em profundidade cada tipo de avaliador suportado e seus trade-offs reais.
+
+---
+
+## Role of the Evaluator in LATS-P
+
+O avaliador **não decide** e **não navega a árvore**.
+
+Seu papel é estritamente:
+
+> Dado um contexto, estimar a relevância relativa de cada opção disponível.
+
+O LATS-P transforma essas estimativas em decisões por meio de normalização, entropia e governança.
+
+---
+
+## MockEvaluator
+
+### What it does
+
+O `MockEvaluator` retorna scores uniformes para todas as opções.
+
+Exemplo conceitual:
+
+```text
+score(option_i) = constant
+```
+
+### Consequências práticas
+
+* Distribuição de probabilidades quase uniforme
+* Entropia próxima do valor máximo
+* HITL acionado com frequência
+
+### When to use
+
+* Testar estrutura da árvore
+* Validar profundidade e caminhos
+* Avaliar impacto de thresholds
+
+### When NOT to use
+
+* Produção
+* Qualquer cenário que exija semântica
+
+---
+
+## HeuristicEvaluator
+
+### What it does
+
+O `HeuristicEvaluator` atribui scores com base em regras simples, normalmente:
+
+* Matching de palavras-chave
+* Pesos fixos por termo
+* Regras determinísticas
+
+Não há compreensão semântica profunda.
+
+---
+
+### Strengths
+
+* Extremamente rápido
+* Totalmente determinístico
+* Custo zero
+* Fácil de depurar
+
+---
+
+### Limitations
+
+* Sensível à escolha de palavras
+* Não entende sinônimos
+* Não lida bem com contexto implícito
+* Pode gerar scores artificiais
+
+---
+
+### Impact on Entropy
+
+* Eventos claros → entropia baixa
+* Eventos ambíguos → entropia alta
+
+Isso torna o HeuristicEvaluator altamente dependente da **qualidade da árvore**.
+
+---
+
+### When to use
+
+* MVPs
+* Domínios bem delimitados
+* Classificações simples
+* Ambientes sem LLM
+
+---
+
+## LLMEvaluator
+
+### What it does
+
+O `LLMEvaluator` delega a avaliação de opções a um modelo de linguagem.
+
+O modelo recebe:
+
+* Descrição do evento
+* Pergunta atual
+* Opções possíveis
+
+E retorna scores baseados em entendimento semântico.
+
+---
+
+### Strengths
+
+* Alta capacidade semântica
+* Melhor generalização
+* Menor dependência de wording exato
+
+---
+
+### Trade-offs
+
+* Latência maior
+* Custo por chamada
+* Variabilidade estatística
+* Dependência externa
+
+---
+
+### Impact on Entropy
+
+* Tende a gerar distribuições mais concentradas
+* Reduz HITL em árvores bem projetadas
+* Pode mascarar árvores ruins
+
+---
+
+### When to use
+
+* Domínios complexos
+* Linguagem natural rica
+* Ambientes onde custo é aceitável
+
+---
+
+## Comparing Evaluators
+
+| Aspect                | Mock       | Heuristic  | LLM           |
+| --------------------- | ---------- | ---------- | ------------- |
+| Velocidade            | Muito alta | Muito alta | Média / Baixa |
+| Custo                 | Zero       | Zero       | Variável      |
+| Semântica             | Nenhuma    | Baixa      | Alta          |
+| Entropia típica       | Alta       | Média      | Baixa         |
+| Dependência da árvore | Muito alta | Alta       | Média         |
+
+---
+
+## Common Failure Modes
+
+### Avaliador forte + árvore fraca
+
+* Entropia baixa artificial
+* Decisões confiantes porém erradas
+
+### Avaliador fraco + threshold alto
+
+* Autonomia excessiva
+* Classificações instáveis
+
+### Avaliador inconsistente
+
+* Entropia flutuante
+* HITL imprevisível
+
+---
+
+## Designing Custom Evaluators
+
+Ao implementar um avaliador customizado:
+
+* Retorne scores comparáveis entre opções
+* Evite ranges extremos
+* Seja consistente entre chamadas
+* Gere justificativas claras
+
+O LATS-P assume **coerência estatística**, não perfeição.
+
+---
+
+## Key Takeaway
+
+> **O avaliador define o sinal; o LATS-P define a decisão.**
+
+A escolha correta do avaliador depende do domínio, risco e custo aceitável.
+
+---
+
+## Next Sections
+
+Com avaliadores compreendidos, o próximo passo natural é:
+
+* HITL Integration Guide
+
+Essa seção mostra como decisões humanas entram no fluxo real do sistema.
