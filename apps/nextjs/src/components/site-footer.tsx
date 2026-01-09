@@ -57,9 +57,9 @@ export function SiteFooter({
         <FooterColumn
           title="Sobre"
           links={[
-            { name: "A MindLoop", href: "/about" },
-            { name: "Manifesto IAA™", href: "/manifesto" },
-            { name: "Nosso Time", href: "/team" },
+            { name: "A MindLoop", href: "/docs/getting-started/what-is-mindloop" },
+            { name: "Manifesto IAA™", href: "/getting-started/iaa-philosophy" },
+            { name: "Nosso Time", href: "" },
           ]}
         />
 
@@ -69,9 +69,7 @@ export function SiteFooter({
         <FooterColumn
           title="Produtos"
           links={[
-            { name: "Classificação ANP", href: "/solutions/anp" },
-            { name: "Classificação SMS", href: "/solutions/sms" },
-            { name: "Plataforma MindLoop", href: "/platform" },
+            { name: "LoopynLATS", href: "/docs/lats-p" },
           ]}
         />
 
@@ -79,15 +77,6 @@ export function SiteFooter({
         {/* COLUNA 4 — LEGAL + THEME */}
         {/* ------------------------ */}
         <div>
-          <h4 className="text-sm font-semibold mb-3 text-foreground/90">
-            Empresa
-          </h4>
-
-          <ul className="space-y-2 text-sm">
-            <FooterLink name="Privacidade" href="/privacy" />
-            <FooterLink name="Termos de Uso" href="/terms" />
-            <FooterLink name="Contato" href="/contact" />
-          </ul>
 
           {/*
           <div className="mt-6">
@@ -104,7 +93,7 @@ export function SiteFooter({
       <div className="border-t border-white/10 dark:border-white/5 py-6">
         <div className="container flex justify-between items-center text-sm">
           <p className="text-neutral-600 dark:text-neutral-400">
-            © {currentYear} MindLoop. Todos os direitos reservados.
+            © {currentYear} LoopynLab. Todos os direitos reservados.
           </p>
           <p className="text-xs text-neutral-500 dark:text-neutral-500">
             IAA™ — Inteligência Artificial Assistida

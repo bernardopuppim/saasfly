@@ -56,7 +56,7 @@ export default async function LoopynLATSSection({ lang }: { lang: Locale }) {
         {/* CTA Button */}
         <div className="text-center">
           <Link
-            href={`/${lang}/docs/br/lats-p`}
+            href={`/${lang}/docs/lats-p`}
             className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-brand hover:bg-brand/90 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             {dict.home.sections.loopynlats.cta}
