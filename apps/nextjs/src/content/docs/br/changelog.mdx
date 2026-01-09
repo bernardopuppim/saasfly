@@ -1,39 +1,173 @@
 ---
-title: "Changelog Br"
-description: "Histórico de mudanças da plataforma MindLoop"
+title: Changelog — Classificador de Eventos SMS com LATS
+description: Histórico estruturado de mudanças, decisões técnicas e evolução conceitual do projeto de classificação normativa de eventos SMS utilizando LATS e LangGraph.
+date: "2026-01-09"
+authors:
+  - bernardo-puppim
 ---
 
-# Changelog
+## 📜 Classificador de Eventos SMS com LATS
 
-Acompanhe aqui a evolução contínua da plataforma MindLoop.
+Este documento registra a **evolução técnica, conceitual e arquitetural** do projeto de Classificação de Eventos de Segurança, Meio Ambiente e Saúde (SMS), baseado no paradigma **Language Agent Tree Search (LATS)** e orquestrado via **LangGraph**.
 
----
-
-## 2025.01 — Lançamento inicial da documentação
-
-- Adicionada a filosofia IAA™
-- Documentação inicial do framework LATS-P
-- Introdução ao módulo de Cognitive Agents
-- Primeira versão da API REST
-- Adicionados templates de agentes
-- Documentação de indexadores do RAG
+O changelog não se limita a alterações de código — ele documenta **decisões de design**, **mudanças de escopo**, **aprendizados experimentais** e **ajustes de governança**, garantindo **rastreabilidade técnica e científica**.
 
 ---
 
-## 2025.02 — Experimental LATS-P v2
+## 🧠 Fase 0 — Concepção e Fundamentação Teórica  
+**Período:** Exploração inicial
 
-- Agora árvores suportam multi-ramos aninhados
-- Introdução de entropia por nó
-- HITL refinado com justificativas
+### ✨ Principais marcos
+- Definição do problema: classificação normativa de eventos SMS a partir de descrições textuais não estruturadas.
+- Identificação das limitações de classificadores planos e regras rígidas.
+- Escolha do **LATS (Language Agent Tree Search)** como base metodológica, inspirado no artigo acadêmico original.
+- Decisão de adotar **árvores normativas configuráveis**, em vez de modelos puramente estatísticos.
 
----
-
-## 2025.03 — MindLoop Memory Engine
-
-- Mecanismo de memória vetorial + simbólica
-- Atualização automática de árvore baseada em eventos reais
-- Camada de Raciocínio Justificado™
+### 🧩 Decisão-chave
+> A classificação deveria ser **explicável, auditável e governável**, mesmo que isso implicasse maior complexidade arquitetural.
 
 ---
 
-> Para versões anteriores, consulte o repositório oficial.
+## 🌱 Fase 1 — Primeira Árvore Normativa  
+**Período:** MVP conceitual
+
+### ✨ Principais marcos
+- Construção da primeira árvore lógica baseada em normar abrangentes.
+- Classificação por níveis (Classe 0 a Classe 5).
+- Ramificações explícitas para:
+  - Lesões
+  - Doenças ocupacionais
+  - Danos ambientais
+  - Danos ao patrimônio
+  - Desvios operacionais
+- Uso inicial de decisões **binárias (sim/não)** mediadas por LLM.
+
+### ⚠️ Limitações identificadas
+- Baixa expressividade semântica das respostas binárias.
+- Fragilidade diante de descrições ambíguas ou incompletas.
+- Ausência de medida explícita de incerteza.
+
+---
+
+## 🌿 Fase 2 — Árvore Modular e Reuso de Engine  
+**Período:** Refatoração estrutural
+
+### ✨ Principais marcos
+- Separação formal entre:
+  - **Engine de decisão** (Python fixo)
+  - **Árvore normativa** (JSON)
+  - **Interpretação semântica** (prompts TXT)
+- Introdução do conceito de **árvore modular reutilizável**.
+- Criação da função genérica `classificar_evento_por_arvore_modular`.
+- Compatibilização da árvore com múltiplos produtos normativos.
+
+### 🧩 Ganho estratégico
+> A simples troca do JSON passou a redefinir completamente o domínio de aplicação, sem alterar o código-fonte.
+
+---
+
+## 🌳 Fase 3 — Expansão para ANP (Resolução nº 882/2022)  
+**Período:** Consolidação regulatória
+
+### ✨ Principais marcos
+- Construção de uma árvore compatível com:
+  - Resolução ANP nº 882/2022
+  - Manual de Comunicação de Incidentes ANP (2022)
+- Inclusão de tipologias específicas:
+  - Vazamentos e tipos de descarga
+  - Incêndios e explosões
+  - Ferimentos e fatalidades
+  - Homem ao mar
+  - Falhas operacionais e perdas de carga
+- Manutenção da **mesma engine LATS**, reforçando a reutilização.
+
+---
+
+## 🔀 Fase 4 — Transição de Decisões Binárias para Interpretação Aberta  
+**Período:** Evolução cognitiva do agente
+
+### ✨ Principais marcos
+- Abandono definitivo de respostas estritamente binárias.
+- Introdução de **respostas abertas interpretadas via LLM**.
+- O LLM passa a:
+  - Avaliar contexto
+  - Justificar o caminho seguido
+  - Mapear semanticamente a resposta para a ramificação correta
+- A árvore deixa de ser apenas lógica e passa a ser **semântica + normativa**.
+
+---
+
+## 📊 Fase 5 — LATS Probabilístico (LATS-P)  
+**Período:** Inovação experimental
+
+### ✨ Principais marcos
+- Introdução de **scores probabilísticos por ramificação**.
+- Cálculo acumulado de probabilidade ao longo do caminho.
+- Avaliação da **entropia de decisão** como sinal de incerteza.
+- Primeira formulação do conceito:
+  > *“Incerteza como sinal de controle de primeira classe”*
+
+### 🧠 Impacto conceitual
+- O sistema deixa de “forçar” uma classificação.
+- Passa a reconhecer quando **não sabe o suficiente**.
+
+---
+
+## 👥 Fase 6 — Human-in-the-Loop (HITL) como Governança  
+**Período:** Maturidade operacional
+
+### ✨ Principais marcos
+- Implementação de **checkpoints humanos (`interrupt()`)** no LangGraph.
+- Ativação automática da revisão humana quando:
+  - Entropia excede limiar definido
+  - Probabilidades concorrentes são similares
+- Registro explícito da decisão humana no estado global.
+- Reformulação do discurso do sistema:
+  - De “classificador automático”
+  - Para **apoio inteligente à decisão humana**
+
+---
+
+## 🧪 Fase 7 — Integração com RAG e Knowledge Graph  
+**Período:** Expansão cognitiva
+
+### ✨ Principais marcos
+- Integração com índices RAG (Normas,histórico de eventos).
+- Uso de **LLMGraphTransformer** para extrair grafos de conhecimento.
+- Exploração de:
+  - Similaridade semântica
+  - Precursores de eventos
+  - Coerência entre decisão e norma
+- Base conceitual para artigos técnicos futuros.
+
+---
+
+## 🚧 Estado Atual do Projeto
+
+- Framework funcional, modular e extensível.
+- Não destinado a uso regulatório automático.
+- Enquadrado como:
+  - Ferramenta experimental
+  - Apoio à classificação
+  - Laboratório de raciocínio normativo assistido por IA
+
+---
+
+## 🧭 Próximos Passos (Roadmap)
+
+- Métricas formais de qualidade da árvore (entropia, centralidade).
+- Aprendizado estrutural a partir do histórico de decisões.
+- Visualização gráfica das árvores e caminhos decisórios.
+- Publicação científica dos resultados.
+- Empacotamento como biblioteca reutilizável.
+
+---
+
+## 📌 Nota Final
+
+Este changelog é parte integrante do projeto e reflete seu compromisso com:
+- Transparência
+- Explicabilidade
+- Governança
+- Evolução científica responsável
+

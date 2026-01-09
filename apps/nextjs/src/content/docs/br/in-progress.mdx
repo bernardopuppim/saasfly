@@ -1,29 +1,56 @@
 ---
-title: "In Progress"
-description: "Conteúdos da documentação que estão em desenvolvimento."
+title: Changelog — In Progress
+description: Evolução em andamento do Classificador de Eventos SMS com LATS, com foco em RAG, Knowledge Graph e empacotamento como biblioteca reutilizável.
+date: "2026-01-09"
+authors:
+  - bernardo-puppim
+status: in-progress
 ---
 
-# Em desenvolvimento
+Este documento registra **etapas em desenvolvimento ativo**, hipóteses ainda em validação e decisões arquiteturais **não consolidadas** do projeto de Classificação Normativa de Eventos SMS com **LATS + LangGraph**.
 
-Algumas seções ainda estão sendo estruturadas.  
-Abaixo você encontra o status atual:
-
----
-
-## Seções em construção
-
-- **API Reference** – especificações de endpoints e SDK  
-- **Design System** – catálogo completo de componentes UI  
-- **Research** – artigos técnicos, benchmarks e validações  
-- **Cognitive Agents** – arquitetura avançada e ciclo cognitivo  
-- **Platform** – detalhes sobre orquestração e módulos internos  
+Nada aqui deve ser interpretado como versão final ou produto estável.
 
 ---
 
-## Como contribuir
+## 🧪 Etapa 7 — Integração Cognitiva com RAG e Knowledge Graph  
+**Status:** Em desenvolvimento
 
-Se você identificar um ponto incompleto ou quiser sugerir melhorias, entre em contato com a equipe MindLoop:
+### 🎯 Objetivo
+Ampliar a capacidade de decisão do sistema incorporando **contexto normativo, histórico e semântico externo**, reduzindo decisões frágeis baseadas apenas na descrição do evento.
 
-👉 contato@mindloop.ai *(exemplo, podemos adaptar)*
+---
 
-Obrigado por acompanhar nossa evolução 🚀
+### 🔧 Componentes em implementação
+
+#### 📚 Retrieval-Augmented Generation (RAG)
+- Índices vetoriais independentes para:
+  - Normas
+  - Históric (from HITL)
+- Seleção dinâmica do índice conforme o tipo de decisão.
+- Uso do RAG como **contexto auxiliar**, nunca como decisão automática.
+
+---
+
+### 🧠 Hipótese central
+> A decisão melhora quando o agente **consulta conhecimento estruturado**, mas **não abdica da árvore normativa** como eixo de governança.
+
+---
+
+### ⚠️ Riscos mapeados
+- Overfitting semântico (o RAG “convencer” o agente).
+- Explosão de contexto irrelevante.
+- Dificuldade de auditoria se o KG não for bem delimitado.
+
+---
+
+## 📦 Etapa 8 — Empacotamento como Biblioteca Reutilizável  
+**Status:** Em definição arquitetural
+
+### 🎯 Objetivo
+Transformar o motor LATS desenvolvido em uma **biblioteca reutilizável**, desacoplada de:
+- normas específicas
+- provedores de LLM
+- interfaces (UI / API / Streamlit / PowerApps)
+
+---
