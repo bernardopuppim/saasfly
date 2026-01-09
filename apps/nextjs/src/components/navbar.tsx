@@ -56,9 +56,9 @@ export function NavBar({
             <h3
               className="
                 font-sans
-                text-2xl
-                md:text-3xl
-                lg:text-4xl
+                text-1xl
+                md:text-2xl
+                lg:text-3xl
                 font-semibold
                 tracking-tight
                 leading-none
