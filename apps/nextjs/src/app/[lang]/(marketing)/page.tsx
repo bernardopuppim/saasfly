@@ -11,6 +11,7 @@ import SuperpowersSection from "~/components/brand/SuperpowersSection";
 import StorySection from "~/components/brand/StorySection";
 import ProductFlowSection from "~/components/brand/ProductFlowSection";
 import TestimonialsSection from "~/components/brand/TestimonialsSection";
+import LoopynLATSSection from "~/components/brand/LoopynLATSSection";
 
 import type { Locale } from "~/config/i18n-config";
 
@@ -73,6 +74,7 @@ export default async function IndexPage({
       <CultureSection lang={lang} />
       {/*<TimelineSection lang={lang} />*/}
       {/*<ProductFlowSection lang={lang} />*/}
+      <LoopynLATSSection lang={lang} />
       <TeamSection lang={lang} />
       {/*<TestimonialsSection lang={lang} />*/}
 

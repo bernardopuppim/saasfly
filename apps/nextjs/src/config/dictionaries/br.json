@@ -119,6 +119,16 @@
         "quote_2": "É um ótimo espaço para construir portfólio real em IA.",
         "name_2": "Engenheiro",
         "role_2": "Pesquisa aplicada"
+      },
+      "loopynlats": {
+        "title": "LoopynLATS",
+        "subtitle": "Árvores de decisão que sabem quando estão incertas",
+        "description": "LoopynLATS é um motor de árvores de decisão probabilísticas construído para sistemas do mundo real — onde as decisões raramente são preto no branco.",
+        "features": "Ele mede a incerteza explicitamente, escala a ambiguidade para humanos e registra cada decisão para auditabilidade completa.",
+        "core_title": "Ideia Central",
+        "core_description": "Se um sistema está incerto, ele deve dizer isso — e pedir ajuda.",
+        "conclusion": "LoopynLATS transforma incerteza em um sinal de controle de primeira classe usando probabilidade, entropia e governança Human-in-the-Loop.",
+        "cta": "Conhecer a documentação completa"
       }
     }
   },

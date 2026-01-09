@@ -116,9 +116,19 @@
         "quote_1": "Here, the value is in reasoning, not in the answer.",
         "name_1": "Technical specialist",
         "role_1": "Regulated environment",
-        "quote_2": "It’s a great space to build a real AI portfolio.",
+        "quote_2": "It's a great space to build a real AI portfolio.",
         "name_2": "Engineer",
         "role_2": "Applied research"
+      },
+      "loopynlats": {
+        "title": "LoopynLATS",
+        "subtitle": "Decision trees that know when they are uncertain",
+        "description": "LoopynLATS is a probabilistic decision tree engine built for real-world systems — where decisions are rarely black or white.",
+        "features": "It measures uncertainty explicitly, escalates ambiguity to humans, and records every decision for full auditability.",
+        "core_title": "Core Idea",
+        "core_description": "If a system is uncertain, it should say so — and ask for help.",
+        "conclusion": "LoopynLATS turns uncertainty into a first-class control signal using probability, entropy, and Human-in-the-Loop governance.",
+        "cta": "Explore full documentation"
       }
     }
   },
