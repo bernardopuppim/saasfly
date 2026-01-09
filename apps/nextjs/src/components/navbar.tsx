@@ -61,6 +61,11 @@ export function NavBar({
               className="opacity-90 hover:opacity-100 transition"
             />
           </Link>
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+            {"Loopyn"}
+            <br />
+            <span className="text-brand">{"Lab"}</span>
+          </h1>
 
           {items?.length ? (
             <nav className="hidden md:flex items-center gap-6">
