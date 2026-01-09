@@ -10,9 +10,20 @@ export default async function LoopynLATSSection({ lang }: { lang: Locale }) {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-4xl md:text-5xl font-semibold">
-            {dict.home.sections.loopynlats.title}
-          </h2>
+            <h2
+              className="
+                font-sans
+                text-3xl
+                md:text-4xl
+                lg:text-5xl
+                font-semibold
+                tracking-tight
+                leading-none
+              "
+            >
+              Loopyn
+              <span className="text-brand font-bold">LATS</span>
+            </h2>
           <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 font-light">
             {dict.home.sections.loopynlats.subtitle}
           </p>
