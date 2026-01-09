@@ -53,20 +53,12 @@ export function NavBar({
         {/* LEFT: Logo + Navigation */}
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/logo.svg"
-              width={150}
-              height={60}
-              alt="MindLoop"
-              className="opacity-90 hover:opacity-100 transition"
-            />
-          </Link>
             <h3
               className="
                 font-sans
-                text-4xl
-                md:text-5xl
-                lg:text-6xl
+                text-2xl
+                md:text-3xl
+                lg:text-4xl
                 font-semibold
                 tracking-tight
                 leading-none
@@ -75,6 +67,8 @@ export function NavBar({
               Loopyn
               <span className="text-brand font-bold">Lab</span>
             </h3>
+          </Link>
+
 
 
           {items?.length ? (

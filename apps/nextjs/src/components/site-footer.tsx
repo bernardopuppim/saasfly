@@ -30,13 +30,20 @@ export function SiteFooter({
         {/* COLUNA 1 — LOGO + TEXTO */}
         {/* ------------------------ */}
         <div className="space-y-4">
-          <Image
-            src="/logo.svg"
-            width={150}
-            height={80}
-            alt="MindLoop logo"
-            className="opacity-95"
-          />
+            <h3
+              className="
+                font-sans
+                text-2xl
+                md:text-3xl
+                lg:text-4xl
+                font-semibold
+                tracking-tight
+                leading-none
+              "
+            >
+              Loopyn
+              <span className="text-brand font-bold">Lab</span>
+            </h3>
 
           <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
             IAA™ · Assisted Artificial Intelligence<br />
